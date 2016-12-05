@@ -1,9 +1,8 @@
-
-package user;
+package src.user;
 
 public abstract class User {
 	
-	private Integer userId;
+	private int userId;
 	private String username;
 	private String passwort;
 	private String realName;
@@ -11,10 +10,10 @@ public abstract class User {
 	private String phone;
 	
 	
-	public Integer getUserId() {
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(Integer userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	public String getUsername() {
@@ -47,6 +46,16 @@ public abstract class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	
+	public User(int ui, String un, String pw, String rn, String e, String p){
+		this.userId=ui;
+		this.username=un;
+		this.passwort=pw;
+		this.realName=rn;
+		this.phone=p;
+	}
+	
+	public User(){}
 	
 	
 }
