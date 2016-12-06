@@ -1,12 +1,12 @@
-package src.user;
+package user;
 
-import src.management.*;
+import management.*;
 
 public class Admin extends User{
 	
 	private AdminManagement management;
 	
-	public Admin(int ui, String un, String pw, String rn, String e, String p, Adminmanagement m){
+	public Admin(int ui, String un, String pw, String rn, String e, String p, AdminManagement m){
 		super(ui, un, pw, rn, e, p);
 		this.management=m;
 	}

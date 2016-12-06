@@ -1,4 +1,4 @@
-package src.user;
+package user;
 
 public abstract class User {
 	

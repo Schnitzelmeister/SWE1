@@ -1,8 +1,8 @@
-package src.user;
+package user;
 
 import java.util.ArrayList;
 
-import src.management.*;
+import management.*;
 
 public class Veranstalter extends User{
 	
@@ -16,7 +16,7 @@ public class Veranstalter extends User{
 	public void setMyEvents(ArrayList<Integer> myEvents) {
 		this.myEvents = myEvents;
 	}
-	public VeranstalerManagement getVeranstalterManagement(){
+	public VeranstalterManagement getVeranstalterManagement(){
 		return management;
 	}
 	
@@ -24,7 +24,7 @@ public class Veranstalter extends User{
 		this.management=m;
 	}
 	
-	public Veranstalter(int ui, String un, String pw, String rn, String e, String p, Adminmanagement m){
+	public Veranstalter(int ui, String un, String pw, String rn, String e, String p, VeranstalterManagement m){
 		super(ui, un, pw, rn, e, p);
 		this.management=m;
 	}
