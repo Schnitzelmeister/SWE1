@@ -1,5 +1,7 @@
 package main;
 
-public class Veranstaltung {
+import DAO.PersistableObject;
+
+public class Veranstaltung extends PersistableObject {
 
 }

@@ -1,8 +1,9 @@
 package user;
 
-public abstract class User {
+import DAO.*;
+
+public abstract class User extends PersistableObject {
 	
-	private int userId;
 	private String username;
 	private String passwort;
 	private String realName;
@@ -11,17 +12,13 @@ public abstract class User {
 	
 	
 	public int getUserId() {
-		return userId;
+		return super.id;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+
 	public String getUsername() {
 		return username;
 	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
+
 	public String getPasswort() {
 		return passwort;
 	}
@@ -48,14 +45,15 @@ public abstract class User {
 	}
 	
 	public User(int ui, String un, String pw, String rn, String e, String p){
-		this.userId=ui;
+		super(ui);
 		this.username=un;
 		this.passwort=pw;
 		this.realName=rn;
 		this.phone=p;
 	}
 	
-	public User(){}
+	public User(){
+	}
 	
 	
 }

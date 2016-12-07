@@ -1,5 +1,7 @@
 package main;
 
-public class Termin {
+import DAO.PersistableObject;
+
+public class Termin extends PersistableObject {
 
 }
