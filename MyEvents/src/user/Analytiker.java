@@ -4,24 +4,8 @@ import management.*;
 
 public class Analytiker extends User{
 	
-	private AnalytikerManagement management;
-	
-	public Analytiker(int ui, String un, String pw, String rn, String e, String p, AnalytikerManagement m){
-		super(ui, un, pw, rn, e, p);
-		this.management=m;
+	public Analytiker(String un, String pw, String rn, String e, String p){
+		super(un, pw, rn, e, p);
 	}
 	
-	public Analytiker() {
-		//leerer Construcot nur zum Testen muss gelöscht werden
-	}
-
-	public AnalytikerManagement getAnManagement(){
-		return management;
-	}
-	
-	public void setAnManagement(AnalytikerManagement m){
-		this.management=m;
-	}
-	
-
 }

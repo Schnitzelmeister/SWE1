@@ -7,7 +7,6 @@ import management.*;
 public class Veranstalter extends User{
 	
 	private ArrayList<Integer> myEvents;
-	private VeranstalterManagement management;
 
 	public ArrayList<Integer> getMyEvents() {
 		return myEvents;
@@ -16,19 +15,19 @@ public class Veranstalter extends User{
 	public void setMyEvents(ArrayList<Integer> myEvents) {
 		this.myEvents = myEvents;
 	}
-	public VeranstalterManagement getVeranstalterManagement(){
-		return management;
+	
+	public Veranstalter(String un, String pw, String rn, String e, String p){
+		super(un, pw, rn, e, p);
+		myEvents = new ArrayList<Integer>();
 	}
 	
-	public void setVeranstalterManagement(VeranstalterManagement m){
-		this.management=m;
+	public void addEventToMyEvents(Integer eventId){
+		myEvents.add(eventId);
 	}
 	
-	public Veranstalter(int ui, String un, String pw, String rn, String e, String p, VeranstalterManagement m){
-		super(ui, un, pw, rn, e, p);
-		this.management=m;
+	public void removeEventFromMyEvents(Integer eventId){
+		myEvents.remove(eventId);
 	}
-	
 	
 
 }
