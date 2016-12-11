@@ -36,7 +36,6 @@ public class CreateNewUserServlet extends HttpServlet {
     	 boolean created=false;
     try{ 
     	 validValues(username, password, realName, email, phone);
-    	 RequestDispatcher rs = request.getRequestDispatcher("register.html");
     	 
     	 if(usertype == "privateuser"){
     		 Privatnutzer newAccount = new Privatnutzer();
@@ -57,6 +56,7 @@ public class CreateNewUserServlet extends HttpServlet {
     	 
     	 
     }catch(IllegalArgumentException e){
+     	 RequestDispatcher rs = request.getRequestDispatcher("register.html");
     
     	out.println("<b>"+e.getMessage()+"</b>"); 
         rs.include(request, response);
