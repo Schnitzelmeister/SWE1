@@ -14,6 +14,7 @@ public class UniversalDAO <T extends PersistableObject> {
 	private java.util.TreeMap<Integer, T> container;
 	private AtomicInteger idGen;
 	
+	@SuppressWarnings("unchecked")
 	public UniversalDAO(String source) throws IllegalArgumentException {
 		this.idGen = new AtomicInteger();
 		this.idGen.set(0);
@@ -42,14 +43,14 @@ public class UniversalDAO <T extends PersistableObject> {
 	/**
 	 * Get Container
 	 */
-	java.util.TreeMap<Integer, T> getItems() {
+	public java.util.TreeMap<Integer, T> getItems() {
 		return container;
 	}
 	
 	/**
 	 * get Item by ItemId
 	 */
-	T getItemById(int id) throws IllegalArgumentException {
+	public T getItemById(int id) throws IllegalArgumentException {
 		if ( !container.containsKey(id) )
 			throw new IllegalArgumentException("Item with id=" + id + " doesn't exist");
 		
@@ -59,7 +60,7 @@ public class UniversalDAO <T extends PersistableObject> {
 	/**
 	 * Save Item in Container (new or exist)
 	 */
-	void speichereItem(T item) throws IllegalArgumentException {
+	public void speichereItem(T item) throws IllegalArgumentException {
 		
 		//add new item, sonst edit
 		if ( item.getId() == -1 ) {
@@ -75,7 +76,7 @@ public class UniversalDAO <T extends PersistableObject> {
 	/**
 	 * Remove Item from Container
 	 */
-	void loescheItem(T item) throws IllegalArgumentException {
+	public void loescheItem(T item) throws IllegalArgumentException {
 		if ( !container.containsKey(item.getId()) )
 			throw new IllegalArgumentException("Item with id=" + String.valueOf( item.getId() ) + " doesn't exist");
 		

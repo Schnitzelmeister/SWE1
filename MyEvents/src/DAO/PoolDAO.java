@@ -9,19 +9,9 @@ import main.*;
  */
 public class PoolDAO {
 	
-	private UniversalDAO<Analytiker> analytikerDAO;
-	public UniversalDAO<Analytiker> getAnalytikerDAO() {
-		return analytikerDAO;
-	}
-	
-	private UniversalDAO<Privatnutzer> privatnutzerDAO;
-	public UniversalDAO<Privatnutzer> getPrivatnutzerDAO() {
-		return privatnutzerDAO;
-	}
-
-	private UniversalDAO<Veranstalter> veranstalterDAO;
-	public UniversalDAO<Veranstalter> getVeranstalterDAO() {
-		return veranstalterDAO;
+	private UniversalDAO<User> userDAO;
+	public UniversalDAO<User> getUserDAO() {
+		return userDAO;
 	}
 
 	private UniversalDAO<Veranstaltung> veranstaltungDAO;
@@ -41,9 +31,7 @@ public class PoolDAO {
 	    if ( !java.nio.file.Files.exists( java.nio.file.Paths.get(dataDir) ) )
 	    	throw new IllegalArgumentException("Illegal Data Directory Path " + dataDir);
 		
-		analytikerDAO = new UniversalDAO<Analytiker>(dataDir + "/analytiker.dao");
-		privatnutzerDAO = new UniversalDAO<Privatnutzer>(dataDir + "/privatnutzer.dao");
-		veranstalterDAO = new UniversalDAO<Veranstalter>(dataDir + "/veranstalter.dao");
+	    userDAO = new UniversalDAO<User>(dataDir + "/user.dao");
 		veranstaltungDAO = new UniversalDAO<Veranstaltung>(dataDir + "/veranstaltung.dao");
 		terminDAO = new UniversalDAO<Termin>(dataDir + "/termin.dao");
 	}
