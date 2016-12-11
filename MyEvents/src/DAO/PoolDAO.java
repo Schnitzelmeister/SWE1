@@ -30,6 +30,7 @@ public class PoolDAO {
 	 * Als Parameter muss man den Pfad vom Verzeichnis mit Daten uebergeben
 	 */
 	public PoolDAO(String dataDir) throws IllegalArgumentException {
+
 	    if ( !java.nio.file.Files.exists( java.nio.file.Paths.get(dataDir) ) )
 	    	throw new IllegalArgumentException("Illegal Data Directory Path " + dataDir);
 		

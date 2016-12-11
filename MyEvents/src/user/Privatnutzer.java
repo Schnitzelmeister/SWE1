@@ -2,18 +2,27 @@ package user;
 
 import java.util.ArrayList;
 
+import main.PrivaterKalender;
 import management.PrivatnutzerManagement;
 
 public class Privatnutzer extends User{
-	private Integer kalender;
+	private PrivaterKalender kalender;
 	private ArrayList<Integer> bewertete_veranstaltungen;
 	private PrivatnutzerManagement management;
 	
-	public Integer getKalender() {
+	
+	public Privatnutzer(String username, String passwort, String realName, String email, String phone){
+		super(username, passwort, realName, email, phone);
+		bewertete_veranstaltungen = new ArrayList<Integer>();
+		management= new PrivatnutzerManagement();
+		kalender = new PrivaterKalender();
+	}
+	
+	public PrivaterKalender getKalender() {
 		return kalender;
 	}
 	
-	public void setKalender(Integer kalender) {
+	public void setKalender(PrivaterKalender kalender) {
 		this.kalender = kalender;
 	}
 	
@@ -30,6 +39,8 @@ public class Privatnutzer extends User{
 	public void setManagement(PrivatnutzerManagement management) {
 		this.management = management;
 	}
+	
+	
 	
 	
 }

@@ -44,8 +44,7 @@ public abstract class User extends PersistableObject {
 		this.phone = phone;
 	}
 	
-	public User(int ui, String un, String pw, String rn, String e, String p){
-		super(ui);
+	public User(String un, String pw, String rn, String e, String p){
 		this.username=un;
 		this.passwort=pw;
 		this.realName=rn;
