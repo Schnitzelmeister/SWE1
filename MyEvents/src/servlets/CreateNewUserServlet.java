@@ -21,9 +21,6 @@ import user.Privatnutzer;
 public class CreateNewUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
-	public void init() throws ServletException {
-    	PoolDAO.poolDAO = new PoolDAO( getServletContext().getRealPath("/WEB-INF/data") );	
-	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendRedirect("/MyEvents/register.html");
@@ -44,7 +41,7 @@ public class CreateNewUserServlet extends HttpServlet {
     	 try{ 
     		 validValues(username, password, realName, email, phone);
     	 
-    		 if(true){
+    		 if(usertype == "private"){
     			 management.createNewPrivateUser(username, password, realName, email, phone);
     			 created=true;
     		 }

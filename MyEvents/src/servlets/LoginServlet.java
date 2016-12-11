@@ -34,10 +34,6 @@ public class LoginServlet extends HttpServlet {
      */
     public void init() throws ServletException {
     	PoolDAO.poolDAO = new PoolDAO( getServletContext().getRealPath("/WEB-INF/data") );
-    	
-    	//Default Users (Admin und vielleicht Analytiker), must be invoked only one time
-    	//PoolDAO.poolDAO.getUserDAO().speichereItem(new user.Admin());
-    	//PoolDAO.poolDAO.getUserDAO().speichereItem(new user.Analytiker());
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

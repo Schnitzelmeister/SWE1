@@ -11,13 +11,11 @@ public class Privatnutzer extends User{
 	
 	private PrivaterKalender kalender;
 	private ArrayList<Integer> bewertete_veranstaltungen;
-	private transient PrivatnutzerManagement management;
 	
 	
 	public Privatnutzer(String username, String passwort, String realName, String email, String phone){
 		super(username, passwort, realName, email, phone);
 		bewertete_veranstaltungen = new ArrayList<Integer>();
-		management= new PrivatnutzerManagement();
 		kalender = new PrivaterKalender();
 	}
 	
@@ -36,12 +34,7 @@ public class Privatnutzer extends User{
 	public void setBewertete_veranstaltungen(ArrayList<Integer> bewertete_veranstaltungen) {
 		this.bewertete_veranstaltungen = bewertete_veranstaltungen;
 	}
-	public PrivatnutzerManagement getManagement() {
-		return management;
-	}
-	public void setManagement(PrivatnutzerManagement management) {
-		this.management = management;
-	}
+	
 	
 	
 	
