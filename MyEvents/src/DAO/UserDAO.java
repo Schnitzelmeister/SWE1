@@ -23,6 +23,13 @@ public class UserDAO extends UniversalDAO<User> {
 		return userByName.get(userName);
 	}
 	
+	public boolean usernameAlreadyUsed(String userName){
+		if ( userByName.containsKey(userName) )
+			return true;
+		else
+			return false;
+	}
+	
 	/**
 	 * Overriding of base Method
 	 */
