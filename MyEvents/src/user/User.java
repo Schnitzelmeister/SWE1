@@ -4,6 +4,8 @@ import DAO.*;
 
 public abstract class User extends PersistableObject {
 	
+	private static final long serialVersionUID = 100L;
+	
 	private String username;
 	private String passwort;
 	private String realName;

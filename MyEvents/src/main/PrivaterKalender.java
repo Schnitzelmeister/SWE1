@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import DAO.PersistableObject;
 
 public class PrivaterKalender extends PersistableObject{
+	
+	private static final long serialVersionUID = 100L;
+	
 	ArrayList<Integer> public_events;
 	ArrayList<Termin> private_appointments;
 	

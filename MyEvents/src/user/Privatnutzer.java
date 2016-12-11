@@ -6,9 +6,12 @@ import main.PrivaterKalender;
 import management.PrivatnutzerManagement;
 
 public class Privatnutzer extends User{
+	
+	private static final long serialVersionUID = 100L;
+	
 	private PrivaterKalender kalender;
 	private ArrayList<Integer> bewertete_veranstaltungen;
-	private PrivatnutzerManagement management;
+	private transient PrivatnutzerManagement management;
 	
 	
 	public Privatnutzer(String username, String passwort, String realName, String email, String phone){
