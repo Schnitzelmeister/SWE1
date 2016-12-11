@@ -11,6 +11,10 @@ public class Analytiker extends User{
 		this.management=m;
 	}
 	
+	public Analytiker() {
+		//leerer Construcot nur zum Testen muss gelöscht werden
+	}
+
 	public AnalytikerManagement getAnManagement(){
 		return management;
 	}
