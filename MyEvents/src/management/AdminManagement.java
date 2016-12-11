@@ -1,7 +1,7 @@
 package management;
 
 import DAO.PoolDAO;
-import user.Privatnutzer;
+import user.*;
 
 public class AdminManagement {
 	/**
@@ -9,27 +9,70 @@ public class AdminManagement {
 	 * sobald ein Benutzer erstellt wird wird er auch automatisch gespeichert. Das RegisterServlet benutzt die Methode createNewPrivateUser() um Privatbenutzer zu erstellen.
 	 */
 	
-	public void createNewPrivateUser
-	(String username,
-	 String passwort,
-	 String realName,
-	 String email,
-	 String phone)
-	{
-		Privatnutzer account = new Privatnutzer(username, passwort, realName, email, phone);
+	public void createNewPrivateUser(
+	String username,
+	String passwort,
+	String realName,
+	String email,
+	String phone){
 		
+	    Privatnutzer account = new Privatnutzer(username, passwort, realName, email, phone);
+		
+	    PoolDAO.poolDAO.getUserDAO().speichereItem(account);
+	}
+	
+	public void createNewAnalyst(
+	String username,
+	String passwort,
+    String realName,
+	String email,
+    String phone){
+		
+		Analytiker account = new Analytiker(username, passwort, realName, email, phone);
+
 		PoolDAO.poolDAO.getUserDAO().speichereItem(account);
 	}
 	
-	public void createNewAnalyst(){
+	public void createNewAdmin(
+	String username,
+	String passwort,
+	String realName,
+	String email,
+	String phone){
 		
-	}
-	
-	public void createNewAdmin(){
-	
+		Admin account = new Admin(username, passwort, realName, email, phone);
+
+		PoolDAO.poolDAO.getUserDAO().speichereItem(account);
 	}
 
-	public void createNewOrganiser(){
-	
+	public void createNewOrganiser(
+	String username,
+	String passwort,
+	String realName,
+	String email,
+	String phone){
+		
+		Veranstalter account = new Veranstalter(username, passwort, realName, email, phone);
+
+		PoolDAO.poolDAO.getUserDAO().speichereItem(account);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
