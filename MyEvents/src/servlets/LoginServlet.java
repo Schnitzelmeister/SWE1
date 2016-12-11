@@ -49,13 +49,13 @@ public class LoginServlet extends HttpServlet {
 	    PrintWriter out = response.getWriter();
 	    
 	    //test
-        out.println("<b>TEST: Physical Path to data Folder (must be exist) = "+ getServletContext().getRealPath("/WEB-INF/data") +"</b>");
+        //out.println("<b>TEST: Physical Path to data Folder (must be exist) = "+ getServletContext().getRealPath("/WEB-INF/data") +"</b>");
 	    
 	    
-	    if(password.length() < 8){
+	    if(password.length() < 8 || username.equals("")){
 	    	RequestDispatcher rs = request.getRequestDispatcher("login.html");
 	        rs.include(request, response);
-	        out.println("<b>Das Passwort muss mindestens 8 Zeichen haben.</b>");
+	        out.println("<b>Benutzername oder Passwort stimmen nicht überein.</b>");
 	        return;
 	    }
 	    
@@ -64,8 +64,10 @@ public class LoginServlet extends HttpServlet {
 	    	currentUser = PoolDAO.poolDAO.getUserDAO().getUserbyUsername(username);
 	    }
 	    catch (IllegalArgumentException e) {
-	    	out.println("<b>" + e.getMessage() + "</b>");
-	    	return;
+	    	RequestDispatcher rs = request.getRequestDispatcher("login.html");
+	        rs.include(request, response);
+	        out.println("<b>Der Benutzername konnte nicht gefunden werden</b>");
+	        return;
 	    }
 	    
 	    if ( (currentUser instanceof Privatnutzer) && currentUser.getPasswort().equals(password) ){

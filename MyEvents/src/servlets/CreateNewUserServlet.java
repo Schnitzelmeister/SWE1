@@ -15,12 +15,16 @@ import javax.servlet.http.HttpServletResponse;
 import DAO.PoolDAO;
 import management.AdminManagement;
 import user.Privatnutzer;
+import user.User;
 
 
 @WebServlet("/register")
 public class CreateNewUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
+	public void init() throws ServletException {
+    	PoolDAO.poolDAO = new PoolDAO( getServletContext().getRealPath("/WEB-INF/data") );
+    }
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendRedirect("/MyEvents/register.html");
@@ -37,32 +41,29 @@ public class CreateNewUserServlet extends HttpServlet {
     	 String phone = request.getParameter("phonenr");
     	 String usertype = request.getParameter("usertype");    	     	  
     	 
-    	 boolean created=false;
     	 try{ 
     		 validValues(username, password, realName, email, phone);
     	 
-    		 if(usertype == "private"){
+    		 if(usertype.equals("private")){
     			 management.createNewPrivateUser(username, password, realName, email, phone);
-    			 created=true;
     		 }
     	 
-    		 if(usertype == "analytiker"){
+    		 if(usertype.equals("analytiker")){
+    			 management.createNewAnalyst(username, password, realName, email, phone);
+    		 }
     		 
-    		}
+    		 if(usertype.equals("admin")){
+    			 management.createNewAdmin(username, password, realName, email, phone);
+    		 }
     	 
-    		 if(usertype == "admin"){
+    		 if(usertype.equals("veranstalter")){
+    			 management.createNewOrganiser(username, password, realName, email, phone);
+    		 }
+    	 
+    		RequestDispatcher rs = request.getRequestDispatcher("login.html");
+    		rs.forward(request, response);
+    		out.println("<b>Das Konto wurde erfolgreich erstellt. </b>");
     		 
-    		 }
-    	 
-    		 if(usertype == "veranstalter"){
-    		 
-    		 }
-    	 
-    		 if(created){
-    			 RequestDispatcher rs = request.getRequestDispatcher("login.html");
-    			 out.println("<b>Das Konto wurde erfolgreich erstellt. </b>"); 
-    			 rs.forward(request, response);
-    		 }
     	 
     	 }catch(IllegalArgumentException e){
     		 RequestDispatcher rs = request.getRequestDispatcher("register.html");
@@ -70,15 +71,21 @@ public class CreateNewUserServlet extends HttpServlet {
     		 rs.include(request, response);
     	 }catch(Exception e){
     		 RequestDispatcher rs = request.getRequestDispatcher("register.html");
+    		 e.printStackTrace();
     		 out.println("<b>Ein Fehler ist aufgetreten</b>"); 
     		 rs.include(request, response);
     	 }
 }
-  
      
-   public void validValues(String username, String password, String realName, String email, String phone) throws IllegalArgumentException{
+    public void validValues(String username, String password, String realName, String email, String phone) throws IllegalArgumentException{
     	
-    	if(username=="" || password=="" || realName=="" || email=="" || phone=="")
+	    boolean usernameBesetzt = PoolDAO.poolDAO.getUserDAO().usernameAlreadyUsed(username);
+	   
+	    if(usernameBesetzt){
+	    	throw new IllegalArgumentException("Der Benutzername ist schon vergeben");
+	    }
+	    
+    	if(username.equals("") || password.equals("") || realName.equals("") || email.equals("") || phone.equals(""))
     		throw new IllegalArgumentException("Kein Feld darf leer bleiben");
 
     	if(username.length() > 30){
