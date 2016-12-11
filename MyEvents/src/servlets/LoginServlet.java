@@ -16,6 +16,7 @@ import user.Analytiker;
 import user.Privatnutzer;
 import user.User;
 import user.Veranstalter;
+import DAO.*;
 
 /**
  * Servlet implementation class LoginServlet
@@ -23,15 +24,23 @@ import user.Veranstalter;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
     
     public LoginServlet() {
 
     }
 
-	
+    /*
+     * Init Application Data in PoolDAO.poolDAO
+     */
+    public void init() throws ServletException {
+    	PoolDAO.poolDAO = new PoolDAO( getServletContext().getRealPath("/WEB-INF/data") );
+    	
+    	//Default Users (Admin und vielleicht Analytiker), must be invoked only one time
+    	//PoolDAO.poolDAO.getUserDAO().speichereItem(new user.Admin());
+    	//PoolDAO.poolDAO.getUserDAO().speichereItem(new user.Analytiker());
+    }
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -43,6 +52,10 @@ public class LoginServlet extends HttpServlet {
 		
 	    PrintWriter out = response.getWriter();
 	    
+	    //test
+        out.println("<b>TEST: Physical Path to data Folder (must be exist) = "+ getServletContext().getRealPath("/WEB-INF/data") +"</b>");
+	    
+	    
 	    if(password.length() < 8){
 	    	RequestDispatcher rs = request.getRequestDispatcher("login.html");
 	        rs.include(request, response);
@@ -50,9 +63,16 @@ public class LoginServlet extends HttpServlet {
 	        return;
 	    }
 	    
-	    User currentUser = getUserbyUsername(username);
+	    User currentUser;
+	    try {
+	    	currentUser = PoolDAO.poolDAO.getUserDAO().getUserbyUsername(username);
+	    }
+	    catch (IllegalArgumentException e) {
+	    	out.println("<b>" + e.getMessage() + "</b>");
+	    	return;
+	    }
 	    
-	    if(loginIsCorrect(username, password) && (currentUser instanceof Privatnutzer)){
+	    if ( (currentUser instanceof Privatnutzer) && currentUser.getPasswort().equals(password) ){
 	    	
 	    	HttpSession session = request.getSession();
 	    	session.setAttribute("username", currentUser);
@@ -60,9 +80,7 @@ public class LoginServlet extends HttpServlet {
 
 	    	response.sendRedirect("/MyEvents/privatnutzer/main.html");
 	    }
-	    
-	    if(loginIsCorrect(username, password) && (currentUser instanceof Admin)){
-	    	
+	    else if ( (currentUser instanceof Admin) && currentUser.getPasswort().equals(password) ){	    	
 	    	HttpSession session = request.getSession();
 	    	session.setAttribute("username", currentUser);
 	    	session.setAttribute("usertype", "admin");
@@ -70,9 +88,8 @@ public class LoginServlet extends HttpServlet {
 	    	
 	    	response.sendRedirect("/MyEvents/admin/main.html");
 	    }
-	    
-	    if(loginIsCorrect(username, password) && (currentUser instanceof Analytiker)){
-	    	
+	    else if ( (currentUser instanceof Analytiker) && currentUser.getPasswort().equals(password) ){	    	
+	    	    	
 	    	HttpSession session = request.getSession();
 	    	session.setAttribute("username", currentUser);
 	    	session.setAttribute("usertype", "analyst");
@@ -81,7 +98,7 @@ public class LoginServlet extends HttpServlet {
 	    	response.sendRedirect("/MyEvents/analytiker/main.html");  	
 	    }
 
-	    if(loginIsCorrect(username, password) && (currentUser instanceof Veranstalter)){
+	    else if ( (currentUser instanceof Veranstalter) && currentUser.getPasswort().equals(password) ){	    	
 	    	
 	    	HttpSession session = request.getSession();
 	    	session.setAttribute("username", currentUser);
@@ -94,16 +111,6 @@ public class LoginServlet extends HttpServlet {
         RequestDispatcher rs = request.getRequestDispatcher("login.html");
         rs.include(request, response);
         out.println("<b>Username or Password incorrect</b>");
-	}
-
-	public boolean loginIsCorrect(String username, String password){
-		//muss noch implementiert werden
-		return true;
-	}
-	
-	public User getUserbyUsername(String username){
-		//muss noch implementiert werden
-		return new Privatnutzer();
 	}
 	
 }

@@ -2,6 +2,9 @@ package DAO;
 
 import java.io.Serializable;
 
+/*
+ * Base Class fuer Objecte, die wir speichern
+ */
 public class PersistableObject implements Serializable {
 	
 	private static final long serialVersionUID = 100L;

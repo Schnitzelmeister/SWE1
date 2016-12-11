@@ -9,8 +9,10 @@ import main.*;
  */
 public class PoolDAO {
 	
-	private UniversalDAO<User> userDAO;
-	public UniversalDAO<User> getUserDAO() {
+	public static PoolDAO poolDAO;
+	
+	private UserDAO userDAO;
+	public UserDAO getUserDAO() {
 		return userDAO;
 	}
 
@@ -31,9 +33,8 @@ public class PoolDAO {
 	    if ( !java.nio.file.Files.exists( java.nio.file.Paths.get(dataDir) ) )
 	    	throw new IllegalArgumentException("Illegal Data Directory Path " + dataDir);
 		
-	    userDAO = new UniversalDAO<User>(dataDir + "/user.dao");
+	    userDAO = new UserDAO(dataDir + "/user.dao");
 		veranstaltungDAO = new UniversalDAO<Veranstaltung>(dataDir + "/veranstaltung.dao");
 		terminDAO = new UniversalDAO<Termin>(dataDir + "/termin.dao");
 	}
-	
 }

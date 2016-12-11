@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.PoolDAO;
 import user.Privatnutzer;
 
 
@@ -24,7 +25,7 @@ public class CreateNewUserServlet extends HttpServlet {
 	}
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//git test m
+
     	 PrintWriter out = response.getWriter();
     	 String username = request.getParameter("username");
     	 String password = request.getParameter("password");
@@ -39,6 +40,13 @@ public class CreateNewUserServlet extends HttpServlet {
     	 
     	 if(usertype == "privateuser"){
     		 Privatnutzer newAccount = new Privatnutzer();
+    		 try {
+    			 PoolDAO.poolDAO.getUserDAO().speichereItem(newAccount);
+    			 created = true;
+    		 }
+    		 catch (IllegalArgumentException e) {
+    			 
+    		 }
          }
     	 
     	 if(usertype == "analytiker"){

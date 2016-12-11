@@ -8,6 +8,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/*
+ * Universal DAO kann nur Objekte, die PersistableObject implementieren, bearbeiten
+ */
 public class UniversalDAO <T extends PersistableObject> {
 	
 	private String source;
