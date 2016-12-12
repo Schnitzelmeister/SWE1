@@ -4,13 +4,7 @@ body {
     background-color: lightblue;
 }
 
-h1{
-	top: 15%;
-	font-family: Verdana;
-	text-align: center;
-	position: relative;
-	
-}
+
 
 p {
     font-family: verdana;
@@ -18,8 +12,8 @@ p {
 }
 
 	
-.loginform {
-    max-width: 500px;
+.registerform{
+    max-width: 600px;
     padding: 10px 20px;
     background: #f4f7f8;
     margin: 10px auto;
@@ -31,6 +25,7 @@ p {
     top: 20%;
 }
 
+
 .button {
   font: bold 15px Verdana;
   text-decoration: none;
@@ -40,13 +35,9 @@ p {
   top: 7px;
   right: 5px;
  }  
-
+ 
 input, textarea {
   font-family : verdana;
-  text-align: center;
-  
-  font-size   : 120%;
-  border-radius: 25px;
-  border-width: 0.5px;
-  line-height: 2em;
+  font-size   : 120%;  
+  line-height: 1em;
 }
