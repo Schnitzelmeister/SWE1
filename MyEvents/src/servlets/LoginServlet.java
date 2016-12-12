@@ -66,6 +66,7 @@ public class LoginServlet extends HttpServlet {
 	    catch (IllegalArgumentException e) {
 	    	RequestDispatcher rs = request.getRequestDispatcher("login.html");
 	        rs.include(request, response);
+	        e.printStackTrace();
 	        out.println("<b>Der Benutzername konnte nicht gefunden werden</b>");
 	        return;
 	    }
