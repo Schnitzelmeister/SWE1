@@ -31,9 +31,14 @@ public class UserDAO extends UniversalDAO<User> {
 	 * Overriding of base Method
 	 */
 	public void speichereItem(User item) throws IllegalArgumentException {
-		if ( item.getId() == -1 && userByName.containsKey(item.getUsername()) )
+		boolean new_item = (item.getId() == -1);
+		
+		if ( new_item && userByName.containsKey(item.getUsername()) )
 			throw new IllegalArgumentException("User with name=" + item.getUsername() + " exist. You can not add new User with existed Name");
 		
 		super.speichereItem(item);
+		
+		if (new_item)
+			userByName.put(item.getUsername(), item);
 	}
 }
