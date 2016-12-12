@@ -5,6 +5,7 @@ package servlets;
 import java.io.IOException;
 import java.util.Calendar;
 
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.Termin;
 import user.Privatnutzer;
+import management.PrivatnutzerManagement;
 
 /**
  * @author 
@@ -46,6 +48,17 @@ public class CreateNewTerminServlet extends HttpServlet {
 				termin.setLocation(location);
 				termin.setStartTime(start);
 				termin.setEndTime(end);
+				
+				PrivatnutzerManagement.addPrivateEvent(termin);
+				RequestDispatcher rs= request.getRequestDispatcher("main.html");
+				rs.forward(request, response);
+	    		out.println("<b>Neuer Termin wurde erstellt. </b>");
 		}
+		catch(IllegalArgumentException e){
+			 RequestDispatcher rs = request.getRequestDispatcher("newTermin.html");
+    		 out.println("<b>"+e.getMessage()+"</b>"); 
+    		 rs.include(request, response);
+		}
+		
 	}
 }
