@@ -12,7 +12,10 @@ import main.*;
 public class PrivatnutzerManagement { 
 	
 	public void addVeranstaltungzuPriv(int id){
-		
+		ArrayList<Integer> ver =new ArrayList<Integer>();
+		ver=PrivaterKalender.getPublic_events();
+		ver.add(id);
+		PrivaterKalender.setPublic_events(ver);
 	}
 	
 	public void removeVeranstaltung(int id){
