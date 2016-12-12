@@ -37,4 +37,6 @@ public class PrivatnutzerManagement {
 		PrivaterKalender.setPrivate_appointments(termine);
 		
 	}
+	
+	//wurdebewertet()
 }
