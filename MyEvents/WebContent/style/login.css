@@ -17,6 +17,15 @@ p {
     font-size: 20px;
 }
 
+.error{
+	text-align: center;
+	position: relative;
+    top: 40%;
+}
+
+.info{
+	
+}
 	
 .loginform {
     max-width: 500px;

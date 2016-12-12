@@ -27,7 +27,7 @@ public class CreateNewUserServlet extends HttpServlet {
     }
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("/MyEvents/register.html");
+		response.sendRedirect("/MyEvents/register.jsp");
 	}
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -59,21 +59,17 @@ public class CreateNewUserServlet extends HttpServlet {
     		 if(usertype.equals("veranstalter")){
     			 management.createNewOrganiser(username, password, realName, email, phone);
     		 }
-    	 
-    		RequestDispatcher rs = request.getRequestDispatcher("login.html");
-    		rs.forward(request, response);
-    		out.println("<b>Das Konto wurde erfolgreich erstellt. </b>");
-    		 
+    	
+    	     request.setAttribute("infoMessage", "Das Konto mit dem Namen <b>"+username+"</b> wurde erfolgreich erstellt");
+	    	 request.getRequestDispatcher("/login.jsp").forward(request, response);
     	 
     	 }catch(IllegalArgumentException e){
-    		 RequestDispatcher rs = request.getRequestDispatcher("register.html");
-    		 out.println("<b>"+e.getMessage()+"</b>"); 
-    		 rs.include(request, response);
+    		 request.setAttribute("errorMessage", e.getMessage());
+ 	    	 request.getRequestDispatcher("/register.jsp").forward(request, response);
+    		 
     	 }catch(Exception e){
-    		 RequestDispatcher rs = request.getRequestDispatcher("register.html");
-    		 e.printStackTrace();
-    		 out.println("<b>Ein Fehler ist aufgetreten</b>"); 
-    		 rs.include(request, response);
+    		 request.setAttribute("errorMessage", "Ein Fehler ist aufgetreten");
+ 	    	 request.getRequestDispatcher("/register.jsp").forward(request, response);
     	 }
 }
      
