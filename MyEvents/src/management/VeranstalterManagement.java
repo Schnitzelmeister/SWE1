@@ -1,3 +1,4 @@
+/*
 package management;
 
 import user.Veranstalter;
@@ -13,3 +14,4 @@ public class VeranstalterManagement {
 	}
 
 }
+*/

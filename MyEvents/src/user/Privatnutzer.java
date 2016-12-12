@@ -3,7 +3,6 @@ package user;
 import java.util.ArrayList;
 
 import main.PrivaterKalender;
-import management.PrivatnutzerManagement;
 
 public class Privatnutzer extends User{
 	

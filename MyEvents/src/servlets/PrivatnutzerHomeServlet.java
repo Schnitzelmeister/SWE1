@@ -18,7 +18,7 @@ import javax.servlet.RequestDispatcher;
 import main.*;
 
 
-@WebServlet("PrivatnutzerHomeServlet")
+@WebServlet("/privateuserServlet")
 public class PrivatnutzerHomeServlet extends HttpServlet{
 	
 	public PrivatnutzerHomeServlet(){

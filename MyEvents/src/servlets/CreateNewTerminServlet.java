@@ -1,6 +1,6 @@
-/**
+/** 
  * 
- */
+
 package servlets;
 import java.io.IOException;
 import java.util.Calendar;
@@ -17,10 +17,7 @@ import main.Termin;
 import user.Privatnutzer;
 import management.PrivatnutzerManagement;
 
-/**
- * @author 
- *
- */
+
 @WebServlet("/NewTermin")
 public class CreateNewTerminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -62,3 +59,5 @@ public class CreateNewTerminServlet extends HttpServlet {
 		
 	}
 }
+
+*/

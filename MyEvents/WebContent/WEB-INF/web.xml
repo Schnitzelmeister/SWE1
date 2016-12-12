@@ -19,6 +19,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>logout</servlet-name>
-    <url-pattern>/MyEvents/logout</url-pattern>
+    <url-pattern>/MyEvents/logout.jsp</url-pattern>
   </servlet-mapping>
 </web-app>
