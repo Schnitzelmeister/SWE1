@@ -3,6 +3,7 @@
         <title>MyEvents Login</title>
         <link rel="stylesheet" type="text/css" href="/MyEvents/style/login.css">
     </head>
+    
     <body>
      <h1>Willkommen bei MyEvents</h1>
     <div class="loginform">
@@ -13,9 +14,13 @@
         <input type="submit" value="Anmelden" />
         </form>
      </div>
+     
         <div class="button">
-        <a href="/MyEvents/register.html">Neues Benutzerkonto erstellen</a>
+          <a href="/MyEvents/register.html">Neues Benutzerkonto erstellen</a>
         </div>
+        
+        <div class="error">${errorMessage}</div>
+        <div class="info">${infoMessage}</div>
       
     </body>
 </html>

@@ -22,8 +22,10 @@
        </div> 
         
        <div class="button">
-        <a href="/MyEvents/login.html">Abbrechen</a>
+        <a href="/MyEvents/login.jsp">Abbrechen</a>
         </div>
+       
+       ${errorMessage}
        
     </body>
 
