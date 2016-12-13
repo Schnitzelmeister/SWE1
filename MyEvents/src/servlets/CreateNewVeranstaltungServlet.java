@@ -1,6 +1,6 @@
 /**
  * 
- */
+ 
 package servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,10 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.Veranstaltung;
 
-/**
- * @author 
- *
- */
+
 @WebServlet("/NewVeranstaltung")
 public class CreateNewVeranstaltungServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
@@ -55,7 +52,6 @@ public class CreateNewVeranstaltungServlet extends HttpServlet{
 				veranstaltung.setCategory(kat);
 				veranstaltung.setAvailablePlaces(platz);
 				
-				/** veranstaltung zu Liste des Veranstalters hinzufügen*/
 				
 				RequestDispatcher rs= request.getRequestDispatcher("/veranstalter/main.jsp");
 				rs.forward(request, response);
@@ -70,3 +66,4 @@ public class CreateNewVeranstaltungServlet extends HttpServlet{
 	
 
 }
+*/

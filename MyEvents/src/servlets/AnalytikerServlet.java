@@ -14,7 +14,7 @@ public class AnalytikerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().println("<HTML><BODY>"
+		response.getWriter().println("<HTML><HEAD><link rel=\"stylesheet\" type=\"text/css\" href=\"/MyEvents/style/login.css\"></HEAD><BODY>"
 				+ "<form method=\"post\"><input type=\"hidden\" name=\"step\" value=\"1\" /><select name=\"report\">");
 
 		for(java.util.Iterator<java.util.Map.Entry<String, String> > it = AnalytikerManagement.getReportList().entrySet().iterator(); it.hasNext(); ) {
@@ -32,7 +32,7 @@ public class AnalytikerServlet extends HttpServlet {
     		
     		String report = request.getParameter("report");
     		
-    		response.getWriter().println("<HTML><BODY>"
+    		response.getWriter().println("<HTML><HEAD><link rel=\"stylesheet\" type=\"text/css\" href=\"/MyEvents/style/login.css\"></HEAD><BODY>"
     				+ "<form method=\"post\"><input type=\"hidden\" name=\"step\" value=\"2\" />"
     				+ "<input type=\"hidden\" name=\"report\" value=\"" + report + "\" />"
     				+ "<table>");

@@ -21,6 +21,27 @@ import user.*;
 public class CreateNewUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	public void init() throws ServletException {
+    	if (PoolDAO.poolDAO == null) {
+			PoolDAO.poolDAO = new PoolDAO( getServletContext().getRealPath("/WEB-INF/data") );
+			
+	    	//default users
+			try {
+		    	Admin admin = new Admin("admin", "admin", "admin", "admin@myevents.at", "123");
+				PoolDAO.poolDAO.getUserDAO().speichereItem(admin);
+			}
+			catch (Exception e) {
+			}
+			
+			try {
+				Analytiker analytiker = new Analytiker("analytiker", "123456789", "analytiker", "analytiker@myevents.at", "123");
+				PoolDAO.poolDAO.getUserDAO().speichereItem(analytiker);
+			}
+			catch (Exception e) {
+			}
+    	}
+    }
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendRedirect("/MyEvents/register.jsp");
 	}
