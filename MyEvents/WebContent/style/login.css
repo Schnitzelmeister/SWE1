@@ -51,7 +51,7 @@ p {
   right: 5px;
  }  
 
-input, textarea {
+input, textarea, select {
   font-family : verdana;
   text-align: center;
   

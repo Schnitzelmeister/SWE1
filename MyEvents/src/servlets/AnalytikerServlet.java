@@ -32,7 +32,16 @@ public class AnalytikerServlet extends HttpServlet {
     		
     		String report = request.getParameter("report");
     		
-    		response.getWriter().println("<HTML><HEAD><link rel=\"stylesheet\" type=\"text/css\" href=\"/MyEvents/style/login.css\"></HEAD><BODY>"
+    		response.getWriter().println("<HTML><HEAD><link rel=\"stylesheet\" type=\"text/css\" href=\"/MyEvents/style/login.css\"><link rel=\"stylesheet\" href=\"https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css\">"
+    				+ "<script src=\"https://code.jquery.com/jquery-1.12.4.js\"></script><script src=\"https://code.jquery.com/ui/1.12.1/jquery-ui.js\"></script><script>$( function() {\r\n");
+    		
+    		for(java.util.Iterator<java.util.Map.Entry<String, reporting.ParamType> > it = AnalytikerManagement.getReportByName(report).getParams().entrySet().iterator(); it.hasNext(); ) {
+    			java.util.Map.Entry<String, reporting.ParamType> e = it.next();
+    			if (e.getValue().equals(reporting.ParamType.Date) )
+    				response.getWriter().println("$( \"#"+e.getKey()+"\" ).datepicker({ dateFormat: \"dd.mm.yy\" });\r\n");
+    		}
+    		
+    		response.getWriter().println("\r\n} );</script></HEAD><BODY>"
     				+ "<form method=\"post\"><input type=\"hidden\" name=\"step\" value=\"2\" />"
     				+ "<input type=\"hidden\" name=\"report\" value=\"" + report + "\" />"
     				+ "<table>");
@@ -40,7 +49,7 @@ public class AnalytikerServlet extends HttpServlet {
     		for(java.util.Iterator<java.util.Map.Entry<String, reporting.ParamType> > it = AnalytikerManagement.getReportByName(report).getParams().entrySet().iterator(); it.hasNext(); ) {
     			java.util.Map.Entry<String, reporting.ParamType> e = it.next();
     			if (e.getValue().equals(reporting.ParamType.Date) )
-    				response.getWriter().println("<tr><td>" + e.getKey() + ":</td><td><input name=\"" + e.getKey() + "\" type=\"text\"/></td></tr>");
+    				response.getWriter().println("<tr><td>" + e.getKey() + ":</td><td><input id=\"" + e.getKey() + "\" name=\"" + e.getKey() + "\" type=\"text\"/></td></tr>");
     		}
     			
     		response.getWriter().println("</table><input type=\"submit\" value=\"Download as CSV\"/></form>"
