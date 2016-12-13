@@ -6,6 +6,8 @@ import management.*;
 
 public class Veranstalter extends User{
 	
+	private static final long serialVersionUID = 100L;
+	
 	private ArrayList<Integer> myEvents;
 
 	public ArrayList<Integer> getMyEvents() {

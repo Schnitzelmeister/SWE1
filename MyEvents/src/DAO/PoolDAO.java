@@ -9,7 +9,7 @@ import main.*;
  */
 public class PoolDAO {
 	
-	public static PoolDAO poolDAO;
+	public static PoolDAO poolDAO = null;
 	
 	private UserDAO userDAO;
 	public UserDAO getUserDAO() {

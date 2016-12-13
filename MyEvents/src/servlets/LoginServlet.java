@@ -11,11 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import user.Admin;
-import user.Analytiker;
-import user.Privatnutzer;
-import user.User;
-import user.Veranstalter;
+import user.*;
 import DAO.*;
 
 /**
@@ -32,8 +28,25 @@ public class LoginServlet extends HttpServlet {
     /*
      * Init Application Data in PoolDAO.poolDAO
      */
-    public void init() throws ServletException {
-    	PoolDAO.poolDAO = new PoolDAO( getServletContext().getRealPath("/WEB-INF/data") );
+	public void init() throws ServletException {
+    	if (PoolDAO.poolDAO == null) {
+			PoolDAO.poolDAO = new PoolDAO( getServletContext().getRealPath("/WEB-INF/data") );
+			
+	    	//default users
+			try {
+		    	Admin admin = new Admin("admin", "admin", "admin", "admin@myevents.at", "123");
+				PoolDAO.poolDAO.getUserDAO().speichereItem(admin);
+			}
+			catch (Exception e) {
+			}
+			
+			try {
+				Analytiker analytiker = new Analytiker("analytiker", "123456789", "analytiker", "analytiker@myevents.at", "123");
+				PoolDAO.poolDAO.getUserDAO().speichereItem(analytiker);
+			}
+			catch (Exception e) {
+			}
+    	}
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

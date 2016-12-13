@@ -12,19 +12,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.PoolDAO;
-import management.AdminManagement;
-import user.Privatnutzer;
-import user.User;
+import DAO.*;
+import management.*;
+import user.*;
 
 
 @WebServlet("/register")
 public class CreateNewUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-	public void init() throws ServletException {
-    	PoolDAO.poolDAO = new PoolDAO( getServletContext().getRealPath("/WEB-INF/data") );
-    }
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendRedirect("/MyEvents/register.jsp");
