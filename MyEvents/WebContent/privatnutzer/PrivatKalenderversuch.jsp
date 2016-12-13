@@ -5,9 +5,9 @@
 <head>
 <meta charset='utf-8' />
 <title> Home Privat</title>
-<link href='...' rel='stylesheet' /> /*../fullcalendar.min.css
+<link href='...' rel='stylesheet' /> <!-- /*../fullcalendar.min.css -->
 <link href='../fullcalendar.print.min.css' rel='stylesheet' media='print' />
-link href...dorthin geht der link
+<!-- link href...dorthin geht der link -->
 <script src='../lib/moment.min.js'></script>
 <script src='../lib/jquery.min.js'></script>
 <script src='../lib/jquery-ui.min.js'></script>
