@@ -1,5 +1,5 @@
 /** 
- * 
+ *  
 
 package servlets;
 import java.io.IOException;
@@ -30,8 +30,9 @@ public class CreateNewTerminServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		Termin termin =new Termin();
-		String name= request.getParameter("Name");
+		String name= request.getParameter("name");
 		String location=request.getParameter("location");
+		String info =request.getParameter("info");
 		Calendar start = request.getParameter("starttime");
 		Calendar end = request.getParameter("endtime");
 		
@@ -45,6 +46,7 @@ public class CreateNewTerminServlet extends HttpServlet {
 				termin.setLocation(location);
 				termin.setStartTime(start);
 				termin.setEndTime(end);
+				termin.setBeschreibung(info);
 				
 				PrivatnutzerManagement.addPrivateEvent(termin);
 				RequestDispatcher rs= request.getRequestDispatcher("main.html");

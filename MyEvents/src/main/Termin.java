@@ -7,15 +7,17 @@ import DAO.PersistableObject;
 public class Termin extends PersistableObject {
 	private String name;
 	private String location;
+	private String beschreibung;
 	private Calendar startTime;
 	private Calendar endTime;
 	
-	public Termin(int id, String name, String location, Calendar startTime, Calendar endTime) {
+	public Termin(int id, String name, String location, Calendar startTime, Calendar endTime, String beschreibung) {
 		super(id);
 		this.name=name;
 		this.location=location;
 		this.startTime=startTime;
 		this.endTime=endTime;
+		this.beschreibung=beschreibung;
 	}
 	
 	public int getAppointmentId() {
@@ -52,6 +54,14 @@ public class Termin extends PersistableObject {
 	
 	public void setEndTime(Calendar endTime) {
 		this.endTime = endTime;
+	}
+	
+	public String getBeschreibung(){
+		return this.beschreibung;
+	}
+	
+	public void setBeschreibung(String beschreib){
+		this.beschreibung=beschreib;
 	}
 	
 }
