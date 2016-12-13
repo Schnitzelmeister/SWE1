@@ -7,7 +7,7 @@ import java.io.Writer;
  */
 public abstract class Report {
 
-	private java.util.TreeMap<String, ParamType> params = new java.util.TreeMap<String, ParamType>();
+	protected java.util.TreeMap<String, ParamType> params = new java.util.TreeMap<String, ParamType>();
 	
 	public java.util.TreeMap<String, ParamType> getParams() { return params; }
 
