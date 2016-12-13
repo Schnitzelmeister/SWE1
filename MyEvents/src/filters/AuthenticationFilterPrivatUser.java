@@ -38,7 +38,7 @@ public class AuthenticationFilterPrivatUser implements Filter{
         if (loggedIn && usertype=="privateuser") {
             chain.doFilter(request, response);
         } else {
-            ((HttpServletResponse) response).sendRedirect("/MyEvents/login.html");
+            ((HttpServletResponse) response).sendRedirect("/MyEvents/login.jsp");
         }
 		
 	}

@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
 	    	session.setAttribute("username", currentUser);
 	    	session.setAttribute("usertype", "privateuser");
 
-	    	response.sendRedirect("/MyEvents/privatnutzer/main.html");
+	    	response.sendRedirect("/MyEvents/privatnutzer/main.jsp");
 	    	return;
 	    }
 	    else if ( (currentUser instanceof Admin) && currentUser.getPasswort().equals(password) ){	    	
@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 	    	session.setAttribute("username", currentUser);
 	    	session.setAttribute("usertype", "admin");
 	    	
-	    	response.sendRedirect("/MyEvents/admin/main.html");
+	    	response.sendRedirect("/MyEvents/admin/main.jsp");
 	    	return;
 	    }
 	    else if ( (currentUser instanceof Analytiker) && currentUser.getPasswort().equals(password) ){	    	   	
@@ -75,7 +75,7 @@ public class LoginServlet extends HttpServlet {
 	    	session.setAttribute("username", currentUser);
 	    	session.setAttribute("usertype", "analyst");
 	    	
-	    	response.sendRedirect("/MyEvents/analytiker/main.html");  	
+	    	response.sendRedirect("/MyEvents/analytiker/main.jsp");  	
 	    	return;
 	    }
 
@@ -84,7 +84,7 @@ public class LoginServlet extends HttpServlet {
 	    	session.setAttribute("username", currentUser);
 	    	session.setAttribute("usertype", "organiser");
 	    	
-	    	response.sendRedirect("/MyEvents/veranstalter/main.html");
+	    	response.sendRedirect("/MyEvents/veranstalter/main.jsp");
 	    	return;
 	    }
 	    

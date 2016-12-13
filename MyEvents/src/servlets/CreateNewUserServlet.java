@@ -33,13 +33,13 @@ public class CreateNewUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
     	 AdminManagement management = new AdminManagement();
-    	 PrintWriter out = response.getWriter();
     	 String username = request.getParameter("username");
     	 String password = request.getParameter("password");
     	 String realName = request.getParameter("name");
     	 String email = request.getParameter("email");
     	 String phone = request.getParameter("phonenr");
-    	 String usertype = request.getParameter("usertype");    	     	  
+    	 String usertype = request.getParameter("usertype");
+    	 String formtype = request.getParameter("formtype");
     	 
     	 try{ 
     		 validValues(username, password, realName, email, phone);
@@ -59,17 +59,32 @@ public class CreateNewUserServlet extends HttpServlet {
     		 if(usertype.equals("veranstalter")){
     			 management.createNewOrganiser(username, password, realName, email, phone);
     		 }
-    	
+    		 
+    	if(formtype.equals("publicform")){
     	     request.setAttribute("infoMessage", "Das Konto mit dem Namen <b>"+username+"</b> wurde erfolgreich erstellt");
 	    	 request.getRequestDispatcher("/login.jsp").forward(request, response);
+    	 }else if(formtype.equals("privateform")){
+    		 request.setAttribute("infoMessage", "Das Konto mit dem Namen <b>"+username+"</b> wurde erfolgreich erstellt");
+	    	 request.getRequestDispatcher("/admin/main.jsp").forward(request, response);
+    	 }
     	 
     	 }catch(IllegalArgumentException e){
-    		 request.setAttribute("errorMessage", e.getMessage());
- 	    	 request.getRequestDispatcher("/register.jsp").forward(request, response);
+    		 if(formtype.equals("publicform")){
+    			 request.setAttribute("errorMessage", e.getMessage());
+    			 request.getRequestDispatcher("/register.jsp").forward(request, response);
+    		 }else if(formtype.equals("privateform")){
+    			 request.setAttribute("errorMessage", e.getMessage());
+    			 request.getRequestDispatcher("/admin/main.jsp").forward(request, response);
+    		 }
     		 
     	 }catch(Exception e){
-    		 request.setAttribute("errorMessage", "Ein Fehler ist aufgetreten");
- 	    	 request.getRequestDispatcher("/register.jsp").forward(request, response);
+    		 if(formtype.equals("publicform")){
+    			 request.setAttribute("errorMessage", "Ein Fehler ist aufgetreten");
+    			 request.getRequestDispatcher("/register.jsp").forward(request, response);
+    		 }else if(formtype.equals("privateform")){
+    			 request.setAttribute("errorMessage", "Ein Fehler ist aufgetreten");
+    			 request.getRequestDispatcher("/admin/main.jsp").forward(request, response);
+    		 }
     	 }
 }
      
@@ -103,7 +118,4 @@ public class CreateNewUserServlet extends HttpServlet {
 		
 		return mat.matches();
     }
-    
-   
-
 }

@@ -8,8 +8,7 @@ h1{
 	top: 15%;
 	font-family: Verdana;
 	text-align: center;
-	position: relative;
-	
+	position: relative;	
 }
 
 p {
@@ -18,13 +17,15 @@ p {
 }
 
 .error{
-	text-align: center;
-	position: relative;
-    top: 40%;
+	text-color: #D8000C;
+    background-color: #FFBABA;
+    font-family: Verdana;
 }
 
 .info{
-	
+	text-color: #D8000C;
+    background-color: #7CFC00;
+    font-family: Verdana;
 }
 	
 .loginform {

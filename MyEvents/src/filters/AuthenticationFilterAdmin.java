@@ -1,3 +1,4 @@
+
 package filters;
 
 import java.io.IOException;
@@ -38,7 +39,7 @@ public class AuthenticationFilterAdmin implements Filter{
         if (loggedIn && usertype=="admin") {
             chain.doFilter(request, response);
         } else {
-            ((HttpServletResponse) response).sendRedirect("/MyEvents/login.html");
+            ((HttpServletResponse) response).sendRedirect("/MyEvents/login.jsp");
         }
 		
 	}
@@ -50,3 +51,4 @@ public class AuthenticationFilterAdmin implements Filter{
 	}
 
 }
+

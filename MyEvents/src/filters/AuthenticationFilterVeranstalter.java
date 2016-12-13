@@ -38,7 +38,7 @@ public class AuthenticationFilterVeranstalter implements Filter{
         if (loggedIn && usertype=="organiser") {
             chain.doFilter(request, response);
         } else {
-            ((HttpServletResponse) response).sendRedirect("/MyEvents/login.html");
+            ((HttpServletResponse) response).sendRedirect("/MyEvents/login.jsp");
         }
 		
 	}

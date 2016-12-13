@@ -38,7 +38,7 @@ public class AuthenticationFilterAnalyst implements Filter{
         if (loggedIn && usertype=="analyst") {
             chain.doFilter(request, response);
         } else {
-            ((HttpServletResponse) response).sendRedirect("/MyEvents/login.html");
+            ((HttpServletResponse) response).sendRedirect("/MyEvents/login.jsp");
         }
 		
 	}
