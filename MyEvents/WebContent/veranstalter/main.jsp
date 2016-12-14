@@ -8,9 +8,12 @@
 
     <body>
     <b>Willkommen auf der Hauptseite des Veranstalters</b>
-     <a href "NewVeranstaltung.jsp"> <input type ="button" value="Termin erstellen"/></a>
+     <!--<a href "NewVeranstaltung.jsp"> <input type ="button" value="Termin erstellen"/></a>-->
     </body>
     
+    <form method="post" action="/MyEvents/newVeranstaltung">
+    <input type="submit" value="Neue Veranstaltung"/>
+    </form>
  	<form method="post" action="/MyEvents/logout">
     <input type="submit" value="Abmelden" />
     </form>
