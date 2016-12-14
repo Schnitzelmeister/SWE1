@@ -21,14 +21,12 @@ public class AnalytikerManagement {
 		java.util.TreeMap<String, String> ret = new java.util.TreeMap<String, String>();
 		//load package
 		Class<reporting.ParamType> tmp = reporting.ParamType.class;
-		reporting.ParamType tmp2 = reporting.ParamType.Date;
+		
 		for (Class<?> cls : getClassesForPackage(Package.getPackage("reporting"))) {
 			if (cls.getSuperclass() == reporting.Report.class) {
 				ret.put(cls.getName(), cls.getAnnotation(reporting.ReportDescription.class).Description());
 			}
 		}
-		if (tmp2.equals(tmp))
-			;
 		return ret;
 	}
 
@@ -61,8 +59,6 @@ public class AnalytikerManagement {
 		}
 		catch (Exception e) {
 		}
-		
-		
 	}
 
 	/*

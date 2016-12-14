@@ -41,4 +41,15 @@ public class UserDAO extends UniversalDAO<User> {
 		if (new_item)
 			userByName.put(item.getUsername(), item);
 	}
+	
+	/**
+	 * Overriding of base Method
+	 */
+	public void loescheItem(User item) throws IllegalArgumentException {
+		if ( !userByName.containsKey(item.getUsername()) )
+			throw new IllegalArgumentException("User with name=" + item.getUsername() + " doesn't exist");
+
+		super.loescheItem(item);
+		userByName.remove(item);
+	}
 }
