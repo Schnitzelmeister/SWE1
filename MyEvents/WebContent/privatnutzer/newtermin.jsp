@@ -10,11 +10,11 @@
 <!--Titel-->
 Titel: <br> <input type="text" name="name">
 <!--Datum-->
-<input type="date" name="datum">
+<input type="text" name="datum">
 <!--Startzeit-->
-Startzeit: <input type="time" name="starttime">
+Startzeit: <input type="text" name="starttime">
 <!--Endzeit-->
-Endzeit: <input type="time" name="endtime">
+Endzeit: <input type="text" name="endtime">
 <!--Ort-->
 Ort: <br> <input type="text" name="location">
 <!--Beschreibung-->

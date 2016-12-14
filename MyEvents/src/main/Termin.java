@@ -20,6 +20,8 @@ public class Termin extends PersistableObject {
 		this.beschreibung=beschreibung;
 	}
 	
+	public Termin(){}
+	
 	public int getAppointmentId() {
 		return super.id;
 	}
