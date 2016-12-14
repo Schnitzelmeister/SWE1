@@ -11,7 +11,7 @@
      <!--<a href "NewVeranstaltung.jsp"> <input type ="button" value="Termin erstellen"/></a>-->
     </body>
     
-    <form method="post" action="/MyEvents/newVeranstaltung">
+    <form method="post" action="/MyEvents/veranstalter/NewVeranstaltung.jsp">
     <input type="submit" value="Neue Veranstaltung"/>
     </form>
  	<form method="post" action="/MyEvents/logout">

@@ -8,17 +8,17 @@
 
 <form action="NewVeranstaltung" method="post">
 	<!--Titel-->
-	Titel: <br> <input type="text" name="name">
+	Titel: <input type="text" name="name"></br>
 	<!--Datum-->
-	<input type="text" name="datum">
+	Datum: <input type="text" name="datum"></br>
 	<!--Startzeit-->
-	Startzeit: <input type="text" name="starttime">
+	Startzeit: <input type="text" name="starttime"></br>
 	<!--Endzeit-->
-	Endzeit: <input type="text" name="endtime">
+	Endzeit: <input type="text" name="endtime"></br>
 	<!--Ort-->
-	Ort: <br> <input type="text" name="location">
+	Ort: <input type="text" name="location"></br>
 	<!--Platzbeschränkung-->
-	Platzbeschränkung: <input type = "number" name="availablePlaces">
+	Platzbeschränkung: <input type = "number" name="availablePlaces"></br>
 	<p>
 		<label for="kat"> Kategorie: </label>
 		<select name="kat">
@@ -28,7 +28,7 @@
 		</select>
 	</p>
 	<!--Beschreibung-->
-	Beschreibung: <br> <input type="text" name="info">
+	Beschreibung: <input type="text" name="info"></br>
 
 <input type="submit" value="Erstellen">
 </form>

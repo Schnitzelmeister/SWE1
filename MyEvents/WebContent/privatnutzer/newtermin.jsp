@@ -8,17 +8,17 @@
 
 <form action="NewTermin" method="post">
 <!--Titel-->
-Titel: <br> <input type="text" name="name">
+Titel: <input type="text" name="name"></br>
 <!--Datum-->
-<input type="text" name="datum">
+Datum: <input type="text" name="datum"></br>
 <!--Startzeit-->
-Startzeit: <input type="text" name="starttime">
+Startzeit: <input type="text" name="starttime"></br>
 <!--Endzeit-->
-Endzeit: <input type="text" name="endtime">
+Endzeit: <input type="text" name="endtime"></br>
 <!--Ort-->
-Ort: <br> <input type="text" name="location">
+Ort: <br> <input type="text" name="location"></br>
 <!--Beschreibung-->
-Beschreibung <br> <input type="text" name="info">
+Beschreibung <br> <input type="text" name="info"></br>
 
 <input type="submit" value="Erstellen">
 </form>
