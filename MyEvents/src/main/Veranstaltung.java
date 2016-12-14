@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import DAO.PersistableObject;
@@ -16,6 +17,7 @@ public class Veranstaltung extends PersistableObject {
 	private double averageRating;
 	private int numberOfRatings;
 	
+	
 	public Veranstaltung(int eventId, int userId, String name, String description,
 			String category, String location, Calendar startTime, Calendar endTime,
 			int availablePlaces, double averageRating, int numberOfRatings) {
@@ -31,6 +33,8 @@ public class Veranstaltung extends PersistableObject {
 		this.averageRating=averageRating;
 		this.numberOfRatings=numberOfRatings;
 	}
+	
+	public Veranstaltung(){}
 	
 	public int getEventId() {
 		return super.id;

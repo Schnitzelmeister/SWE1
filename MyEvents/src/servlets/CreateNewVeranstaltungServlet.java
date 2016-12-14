@@ -34,10 +34,23 @@ public class CreateNewVeranstaltungServlet extends HttpServlet{
 		String name= request.getParameter("name");
 		String location=request.getParameter("location");
 		String info =request.getParameter("info");
-		Calendar start = request.getParameter("starttime");
-		Calendar end = request.getParameter("endtime");
+		String starts = request.getParameter("starttime");
+		String ends = request.getParameter("endtime");
+		String datums=request.getParameter("datum");
 		int platz=request.getParameter("availablePlaces");
 		String kat =request.getParameter("kat");
+		Calender start = getZeit(starts);
+		Calendar end = getZeit(ends);
+		Calendar datum=getDatum(datums);
+		int month=datum.get(Calendar.MONTH);
+		int year=datum.get(Calendar.YEAR);
+		int day=datum.get(Calendar.DAY_OF_MONTH);
+		start.set(DAY_OF_MONTH,day);
+		start.set(MONTH, month);
+		start.set(YEAR, year);
+		end.set(DAY_OF_MONTH,day);
+		end.set(MONTH, month);
+		end.set(YEAR, year);
 		try{
 			if(!end.after(start)){
 				throw new IllegalArgumentException("Endzeitpunkt muss nach Startzeit liegen.");
@@ -51,6 +64,7 @@ public class CreateNewVeranstaltungServlet extends HttpServlet{
 				veranstaltung.setDescription(info);
 				veranstaltung.setCategory(kat);
 				veranstaltung.setAvailablePlaces(platz);
+				//veranstaltung.setDatum(datum);
 				
 				
 				RequestDispatcher rs= request.getRequestDispatcher("/veranstalter/main.jsp");
@@ -63,6 +77,34 @@ public class CreateNewVeranstaltungServlet extends HttpServlet{
 			rs.forward(request, response);
 		}
 	}
+	
+	public Calendar getZeit(String s){
+	 if(s.charAt(2)!=":") throw new IllegalArgumentException("Bitte Zeit im Format HH:MM ausgeben");
+	 int hour; int min;
+	 	String hours=s.charAt(0)+s.charAt(1);
+	 	Stringmins=s.charAt(3)+s.charAt(4);
+		hour=Integer.parseInt(hours);
+		min=Integer.parseInt(mins);	 
+	 Calendar c= Calendar.getInstance();
+	 c.set(Calendar.HOUR_OF_DAY, hour);
+	 c.set(Calendar.Minute(min);
+	 return c;
+	}
+	
+	public Calendar getDatum(String s){
+	if((s.charAt(2)!="-")&&(s.charAt(5)!="-") thorw new IllegalArgumentException ("Bitte Datum im Format DD-MM-YYYY angeben");
+	int month, int year, int day;
+	String days=s.charAt(0)+s.charAt(1);
+	String months = s.charAt(3)+charAt(4);
+	String years = s-charAt(6)+s.charAt(7); 
+	month=Integer.parseInt(months);
+	year=Integer.parseInt(years);
+	day=Integer.parseInt(days);
+	Calendar c=Calendar.getInstance();
+	c.set(year, month, day);
+	return c;
+	}
+	
 	
 
 }
