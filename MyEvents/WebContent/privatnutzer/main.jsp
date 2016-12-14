@@ -12,9 +12,14 @@
      
     </body>
     
-    <form method="post" action="/MyEvents/newTermin">
+    <form method="post" action="/MyEvents/privatnutzer/newtermin.jsp">
     <input type="submit" value="Neuer Termin"/>
     </form>
+    </br>
+    <form method="post" action="/MyEvents/privatnutzer/PrivatKalenderversuch.jsp">
+    <input type="submit" value="Privatkalender"/>
+    </form>
+    </br>
     <form method="post" action="/MyEvents/logout">
     <input type="submit" value="Abmelden" />
     </form>
