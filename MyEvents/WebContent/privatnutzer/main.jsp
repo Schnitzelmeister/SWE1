@@ -9,9 +9,12 @@
 
     <body>
     <b>Willkommen auf der Hauptseite des Privatbenutzers</b>
-     <a href "NewTermin.jsp"> <input type ="button" value="Termin erstellen"/></a>
+     
     </body>
     
+    <form method="post" action="/MyEvents/newTermin">
+    <input type="submit" value="Neuer Termin"/>
+    </form>
     <form method="post" action="/MyEvents/logout">
     <input type="submit" value="Abmelden" />
     </form>
