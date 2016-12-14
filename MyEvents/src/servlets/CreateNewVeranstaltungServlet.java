@@ -66,7 +66,7 @@ public class CreateNewVeranstaltungServlet extends HttpServlet{
 				veranstaltung.setAvailablePlaces(platz);
 				//veranstaltung.setDatum(datum);
 				
-				
+				//VeranstalterManagement.addIDtomyEvents(id);
 				RequestDispatcher rs= request.getRequestDispatcher("/veranstalter/main.jsp");
 				rs.forward(request, response);
 		}

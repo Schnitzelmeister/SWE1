@@ -28,7 +28,7 @@ public class PrivaterKalender extends PersistableObject{
 		return private_appointments;
 	}
 
-	public void setPrivate_appointments(ArrayList<Termin> private_appointments) {
+	public  void setPrivate_appointments(ArrayList<Termin> private_appointments) {
 		this.private_appointments = private_appointments;
 	}
 	

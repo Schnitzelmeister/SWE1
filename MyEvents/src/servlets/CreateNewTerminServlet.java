@@ -60,7 +60,7 @@ public class CreateNewTerminServlet extends HttpServlet {
 				termin.setEndTime(end);
 				termin.setBeschreibung(info);
 				
-				PrivatnutzerManagement.addPrivateEvent(termin);
+				//PrivatnutzerManagement.addPrivateEvent(termin);
 				RequestDispatcher rs= request.getRequestDispatcher("/privatnutzer/main.jsp");
 				rs.forward(request, response);
 	    		out.println("<b>Neuer Termin wurde erstellt. </b>");

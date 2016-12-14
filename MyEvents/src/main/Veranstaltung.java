@@ -6,6 +6,8 @@ import java.util.Calendar;
 import DAO.PersistableObject;
 
 public class Veranstaltung extends PersistableObject {
+	private static final long serialVersionUID = 100L;
+	
 	private int userId;
 	private String name;
 	private String description;
