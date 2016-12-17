@@ -52,6 +52,12 @@ h1{
     font-family: Verdana;
 }
 
+.info{
+	text-color: #D8000C;
+    background-color: #7CFC00;
+    font-family: Verdana;
+}
+
 .button {
   font: bold 15px Verdana;
   text-decoration: none;

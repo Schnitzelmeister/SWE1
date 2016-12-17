@@ -13,8 +13,7 @@ public class Termin extends PersistableObject {
 	private Calendar startTime;
 	private Calendar endTime;
 	
-	public Termin(int id, String name, String location, Calendar startTime, Calendar endTime, String beschreibung) {
-		super(id);
+	public Termin(String name, String location, Calendar startTime, Calendar endTime, String beschreibung) {
 		this.name=name;
 		this.location=location;
 		this.startTime=startTime;

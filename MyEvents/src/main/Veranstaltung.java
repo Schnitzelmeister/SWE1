@@ -20,10 +20,9 @@ public class Veranstaltung extends PersistableObject {
 	private int numberOfRatings;
 	
 	
-	public Veranstaltung(int eventId, int userId, String name, String description,
+	public Veranstaltung(int userId, String name, String description,
 			String category, String location, Calendar startTime, Calendar endTime,
 			int availablePlaces, double averageRating, int numberOfRatings) {
-		super(eventId);
 		this.userId=userId;
 		this.name=name;
 		this.description=description;

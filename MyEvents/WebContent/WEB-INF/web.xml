@@ -14,12 +14,24 @@
     <servlet-class>servlets.LoginServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>loaddata</servlet-name>
+    <servlet-class>servlets.LoadDataServlet</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>register</servlet-name>
     <servlet-class>servlets.LoginServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>logout</servlet-name>
     <servlet-class>servlets.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>NewTermin</servlet-name>
+    <servlet-class>servlets.CreateNewTerminServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>manageuserdata</servlet-name>
+    <servlet-class>servlets.ManageUserDataServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>login</servlet-name>
@@ -32,5 +44,17 @@
   <servlet-mapping>
     <servlet-name>register</servlet-name>
     <url-pattern>/MyEvents/register</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NewTermin</servlet-name>
+    <url-pattern>/MyEvents/privatnutzer/NewTermin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>manageuserdata</servlet-name>
+    <url-pattern>/MyEvents/privatnutzer/manageuserdata</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>loaddata</servlet-name>
+    <url-pattern>/MyEvents/privatnutzer/loaddata</url-pattern>
   </servlet-mapping>
 </web-app>

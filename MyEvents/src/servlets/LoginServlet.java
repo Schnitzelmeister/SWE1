@@ -41,6 +41,13 @@ public class LoginServlet extends HttpServlet {
 			}
 			
 			try {
+		    	Veranstalter veranstalter = new Veranstalter("organiser", "organiser", "organiser", "admin@myevents.at", "123");
+				PoolDAO.poolDAO.getUserDAO().speichereItem(veranstalter);
+			}
+			catch (Exception e) {
+			}
+			
+			try {
 				Analytiker analytiker = new Analytiker("analytiker", "123456789", "analytiker", "analytiker@myevents.at", "123");
 				PoolDAO.poolDAO.getUserDAO().speichereItem(analytiker);
 			}
@@ -50,7 +57,7 @@ public class LoginServlet extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.sendRedirect("login.jsp");
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -71,6 +78,7 @@ public class LoginServlet extends HttpServlet {
 	    	HttpSession session = request.getSession();
 	    	session.setAttribute("username", currentUser);
 	    	session.setAttribute("usertype", "privateuser");
+	    	session.setAttribute("userid", currentUser.getId());
 
 	    	response.sendRedirect("/MyEvents/privatnutzer/main.jsp");
 	    	return;
@@ -79,6 +87,7 @@ public class LoginServlet extends HttpServlet {
 	    	HttpSession session = request.getSession();
 	    	session.setAttribute("username", currentUser);
 	    	session.setAttribute("usertype", "admin");
+	    	session.setAttribute("userid", currentUser.getId());
 	    	
 	    	response.sendRedirect("/MyEvents/admin/main.jsp");
 	    	return;
@@ -87,6 +96,7 @@ public class LoginServlet extends HttpServlet {
 	    	HttpSession session = request.getSession();
 	    	session.setAttribute("username", currentUser);
 	    	session.setAttribute("usertype", "analyst");
+	    	session.setAttribute("userid", currentUser.getId());
 	    	
 	    	response.sendRedirect("/MyEvents/analytiker/main.jsp");  	
 	    	return;
@@ -96,6 +106,7 @@ public class LoginServlet extends HttpServlet {
 	    	HttpSession session = request.getSession();
 	    	session.setAttribute("username", currentUser);
 	    	session.setAttribute("usertype", "organiser");
+	    	session.setAttribute("userid", currentUser.getId());
 	    	
 	    	response.sendRedirect("/MyEvents/veranstalter/main.jsp");
 	    	return;
