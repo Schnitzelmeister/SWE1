@@ -1,5 +1,6 @@
 package reporting;
 
 public enum ParamType {
-	Date
+	Date,
+	Boolean
 }

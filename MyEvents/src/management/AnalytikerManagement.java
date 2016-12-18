@@ -64,9 +64,9 @@ public class AnalytikerManagement {
 	/*
 	 * executiert Report
 	 */
-	public static void execReport(Writer w, String reportName, java.util.TreeMap<String, Object> paramValues) {
+	public static void execReport(javax.servlet.http.HttpServletResponse response, String reportName, java.util.TreeMap<String, Object> paramValues) throws IOException {
 		Report rep = getReportByName(reportName);
-		rep.exec(w, paramValues);
+		rep.exec(response.getWriter(), paramValues, response);
 	}
 
 	private static ArrayList<Class<?>> getClassesForPackage(Package pkg) {

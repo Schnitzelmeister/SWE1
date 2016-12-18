@@ -14,5 +14,9 @@ public abstract class Report {
 	/*
 	 * executiert den Report
 	 */
-	public abstract void exec(Writer w, java.util.TreeMap<String, Object> paramValues);
+	public abstract void exec(Writer w, java.util.TreeMap<String, Object> paramValues, javax.servlet.http.HttpServletResponse response);
+
+	public void exec(Writer w, java.util.TreeMap<String, Object> paramValues) {
+		exec(w, paramValues, null);
+	}
 }

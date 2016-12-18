@@ -15,14 +15,14 @@ public class AnalytikerServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().println("<HTML><HEAD><link rel=\"stylesheet\" type=\"text/css\" href=\"/MyEvents/style/login.css\"></HEAD><BODY>"
-				+ "<form method=\"post\"><input type=\"hidden\" name=\"step\" value=\"1\" /><select name=\"report\">");
+				+ "<form method=\"post\"><table><tr><td>List of Reporting:</td><td><input type=\"hidden\" name=\"step\" value=\"1\" /><select name=\"report\">");
 
 		for(java.util.Iterator<java.util.Map.Entry<String, String> > it = AnalytikerManagement.getReportList().entrySet().iterator(); it.hasNext(); ) {
 			java.util.Map.Entry<String, String> e = it.next();
 			response.getWriter().println("<option value=\""+ e.getKey() + "\">"+ e.getValue() + "</option>");
 		}
 			
-		response.getWriter().println("</select><input type=\"submit\" value=\"Weiter\"/></form>"
+		response.getWriter().println("</select></td><td><input type=\"submit\" value=\"Weiter\"/></td></tr></table></form>"
 				+ "</BODY></HTML>");
 	}
     
@@ -50,9 +50,13 @@ public class AnalytikerServlet extends HttpServlet {
     			java.util.Map.Entry<String, reporting.ParamType> e = it.next();
     			if (e.getValue().equals(reporting.ParamType.Date) )
     				response.getWriter().println("<tr><td>" + e.getKey() + ":</td><td><input id=\"" + e.getKey() + "\" name=\"" + e.getKey() + "\" type=\"text\"/></td></tr>");
+    			else if (e.getValue().equals(reporting.ParamType.Boolean) )
+    				response.getWriter().println("<tr><td>" + e.getKey() + ":</td><td><select name=\"" + e.getKey() + "\"/><option value=\"1\">True</option><option value=\"0\">False</option></select></td></tr>");
+    			else
+    				throw new java.lang.UnsupportedOperationException("not impl");
     		}
     			
-    		response.getWriter().println("</table><input type=\"submit\" value=\"Download as CSV\"/></form>"
+    		response.getWriter().println("</table><input type=\"submit\" value=\"Done\"/></form>"
     				+ "</BODY></HTML>");
     	}
     	else if (step.equals("2")) {
@@ -73,7 +77,7 @@ public class AnalytikerServlet extends HttpServlet {
     				paramValues.put(e.getKey(), request.getParameter(e.getKey()) );
     		}
     		
-    		AnalytikerManagement.execReport(response.getWriter(), report, paramValues);
+    		AnalytikerManagement.execReport(response, report, paramValues);
     		
     		//AnalytikerManagement.execReport(getServletContext().getRealPath("/analytiker/report.csv"), report, paramValues);
     		//response.getWriter().println(getServletContext().getRealPath("/analytiker/report.csv"));
