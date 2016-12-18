@@ -2,6 +2,9 @@ package DAO;
 
 
 import user.*;
+
+import javax.servlet.ServletException;
+
 import main.*;
 
 /*
@@ -10,6 +13,54 @@ import main.*;
 public class PoolDAO {
 	
 	public static PoolDAO poolDAO = null;
+	private static final Object lockObj = new Object();
+	
+    /*
+     * Init Application Data in PoolDAO.poolDAO
+     */
+	public static void init(String path) {
+    	if (PoolDAO.poolDAO == null) {
+    		synchronized(lockObj) {
+	    		System.out.println("Path to DATA Folder = "+ path);
+	    		System.out.println("Die Daten werden in diesem Folder gespeichert");
+	    		
+				PoolDAO.poolDAO = new PoolDAO( path );
+				
+				//Bitte kreiert euere Default Users und vielleciht andere Objekte (Veranstaltungen, Termine, etc)
+				//Damit koennen wir alles testen
+				
+		    	//default users
+				
+				//Admin
+				try {
+			    	Admin admin = new Admin("admin", "admin", "admin", "admin@myevents.at", "123");
+					PoolDAO.poolDAO.getUserDAO().speichereItem(admin);
+				}
+				catch (Exception e) {
+				}
+				
+				//Analytiker
+				try {
+					Analytiker analytiker = new Analytiker("analytiker", "123456789", "analytiker", "analytiker@myevents.at", "123");
+					PoolDAO.poolDAO.getUserDAO().speichereItem(analytiker);
+				}
+				catch (Exception e) {
+				}
+				
+				//Privatnutzer
+				
+				
+				//Veranstalter
+				
+				
+				//Veranstaltungen
+				
+				
+				//Termine
+				
+    		}
+    	}
+    }
 	
 	private UserDAO userDAO;
 	public UserDAO getUserDAO() {
