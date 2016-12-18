@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import DAO.PoolDAO;
 import main.Termin;
 import user.Privatnutzer;
+import user.User;
 import management.PrivatnutzerManagement;
 
 
@@ -45,6 +46,8 @@ public class CreateNewTerminServlet extends HttpServlet {
 		Calendar dateStart=Calendar.getInstance();
 		Calendar dateEnd=Calendar.getInstance();
 		
+		Integer id = (Integer) request.getSession().getAttribute("userid");
+		Privatnutzer user = (Privatnutzer) PoolDAO.poolDAO.getUserDAO().getItemById(id);
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd.MM.yyyy");
 		try {
@@ -62,7 +65,10 @@ public class CreateNewTerminServlet extends HttpServlet {
 		checkValidityOfInput(dateStart, dateEnd, name, location, info);
 		
 		Termin termin = new Termin(name, location, dateStart, dateEnd, info);
-		PoolDAO.poolDAO.getTerminDAO().speichereItem(termin);
+		user.getKalender().getPrivate_appointments().add(termin);
+		PoolDAO.poolDAO.getUserDAO().speichereItem(user);
+		
+		// PoolDAO.poolDAO.getTerminDAO().speichereItem(termin);
 		request.setAttribute("infoMessage", "Der Termin "+name+" wurde erfolgreich im Privatkalender gespeichert.");
 		request.getRequestDispatcher("/privatnutzer/newtermin.jsp").forward(request, response);
 		System.out.println("Ein Terminobjekt mit dem Anfangsdatum: "+dateStart.getTime()+" wurde erstellt");
