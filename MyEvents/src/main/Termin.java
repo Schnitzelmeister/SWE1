@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 import DAO.PersistableObject;
 
-public class Termin extends PersistableObject {
+public class Termin  implements java.io.Serializable {
 	private static final long serialVersionUID = 100L;
 	
 	private String name;
@@ -22,10 +22,6 @@ public class Termin extends PersistableObject {
 	}
 	
 	public Termin(){}
-	
-	public int getAppointmentId() {
-		return super.id;
-	}
 	
 	public String getName() {
 		return name;
