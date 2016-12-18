@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import DAO.PersistableObject;
 
-public class PrivaterKalender extends PersistableObject{
+public class PrivaterKalender implements java.io.Serializable {
 	
 	private static final long serialVersionUID = 100L;
 	
