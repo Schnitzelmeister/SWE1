@@ -49,6 +49,7 @@ public abstract class User extends PersistableObject {
 	public User(String un, String pw, String rn, String e, String p){
 		this.username=un;
 		this.passwort=pw;
+		this.email=e;
 		this.realName=rn;
 		this.phone=p;
 	}

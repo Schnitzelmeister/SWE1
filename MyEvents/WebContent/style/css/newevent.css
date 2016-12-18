@@ -11,7 +11,7 @@ p {
     font-size: 20px;
 }
 	
-.registerform{
+.form{
     max-width: 600px;
     padding: 10px 20px;
     background: #f4f7f8;
@@ -45,16 +45,15 @@ h1{
 	position: relative;	
 }
 
+.info{
+	text-color: #D8000C;
+    background-color: #7CFC00;
+    font-family: Verdana;
+}
 
 .error{
 	text-color: #D8000C;
     background-color: #FFBABA;
-    font-family: Verdana;
-}
-
-.info{
-	text-color: #D8000C;
-    background-color: #7CFC00;
     font-family: Verdana;
 }
 

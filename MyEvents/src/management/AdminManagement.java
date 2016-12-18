@@ -17,7 +17,6 @@ public class AdminManagement {
 	String phone){
 		
 	    Privatnutzer account = new Privatnutzer(username, passwort, realName, email, phone);
-		
 	    PoolDAO.poolDAO.getUserDAO().speichereItem(account);
 	    System.out.println("Benutzer "+username+" erstellt");
 	}

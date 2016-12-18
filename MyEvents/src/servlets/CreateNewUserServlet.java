@@ -45,6 +45,7 @@ public class CreateNewUserServlet extends HttpServlet {
     	 
     		 if(usertype.equals("private")){
     			 management.createNewPrivateUser(username, password, realName, email, phone);
+    			 
     		 }
     	 
     		 if(usertype.equals("analytiker")){
@@ -87,7 +88,7 @@ public class CreateNewUserServlet extends HttpServlet {
     	 }
 }
      
-    public void validValues(String username, String password, String realName, String email, String phone) throws IllegalArgumentException{
+        public void validValues(String username, String password, String realName, String email, String phone) throws IllegalArgumentException{
     	
 	    boolean usernameBesetzt = PoolDAO.poolDAO.getUserDAO().usernameAlreadyUsed(username);
 	   

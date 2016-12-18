@@ -1,27 +1,30 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head> <title> Neuen Termin erstellen </title>
+<html>
+<head> 
+	<title> Neuen Termin erstellen </title>
+	<link rel="stylesheet" type="text/css" href="/MyEvents/style/newevent.css">
 </head>
 
-<body>
+ <body>
+  <div class="form">
+  <br> <br> <br> 
+  <form action="NewTermin" method="post">
+  
+	<label>Titel :</label> <input type="text" name="name" /> </br>
+	<label>Datum (Von) :</label> <input type="text" name="startdatum" /> </br>
+	<label>Startzeit :</label> <input type="text" name="starttime" /> </br>
+	<label>Datum (Bis) :</label> <input type="text" name="enddatum" /> </br>
+	<label>Endzeit :</label> <input type="text" name="endtime" /> </br>
+	<label>Ort :</label> <input type="text" name="location" /> </br>
+	<label>Beschreibung :</label> <input type="text" name="info" /> </br>
+    <input type="submit" value="Erstellen" />
 
-<form action="NewTermin" method="post">
-<!--Titel-->
-Titel: <input type="text" name="name"></br>
-<!--Datum-->
-Datum: <input type="text" name="datum"></br>
-<!--Startzeit-->
-Startzeit: <input type="text" name="starttime"></br>
-<!--Endzeit-->
-Endzeit: <input type="text" name="endtime"></br>
-<!--Ort-->
-Ort: <br> <input type="text" name="location"></br>
-<!--Beschreibung-->
-Beschreibung <br> <input type="text" name="info"></br>
+    <br> <br> <br> <br> <br> <br> 
 
-<input type="submit" value="Erstellen">
-</form>
-</body>
-
+	<div class="error"><b>${errorMessage}</b></div>
+	<div class="info"><b>${infoMessage}</b></div>
+	
+     
+  </form>
+  </div>
+ </body>
 </html>

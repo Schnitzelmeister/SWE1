@@ -4,47 +4,17 @@ body {
     background-color: lightblue;
 }
 
-
-
-p {
-    font-family: verdana;
-    font-size: 20px;
-}
-	
-.registerform{
-    max-width: 600px;
-    padding: 10px 20px;
-    background: #f4f7f8;
-    margin: 10px auto;
-    padding: 20px;
-    background: #f4f7f8;
-    border-radius: 8px;
-    text-align: center;
-    position: relative;
-    top: 20%;
-}
-
-confirm{
-	position: relative; /* or absolute */
-    left: 50%;
-}
-
-label{
-    display: block;
-    float: left;
-    clear: left;
-    width: 250px;
-    text-align: right;
-    font-family: verdana;
-}
-
 h1{
-	top: 15%;
+	top: 20%;
 	font-family: Verdana;
 	text-align: center;
 	position: relative;	
 }
 
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
 
 .error{
 	text-color: #D8000C;
@@ -57,6 +27,29 @@ h1{
     background-color: #7CFC00;
     font-family: Verdana;
 }
+	
+.loginform {
+    max-width: 500px;
+    padding: 10px 20px;
+    background: #f4f7f8;
+    margin: 10px auto;
+    padding: 20px;
+    background: #f4f7f8;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    top: 20%;
+}
+
+.topleft{
+  font: bold 15px Verdana;
+  text-decoration: none;
+  color: #333333;
+  position:absolute;
+  text-decoration: none;
+  top: 7px;
+  left: 5px;
+}
 
 .button {
   font: bold 15px Verdana;
@@ -67,14 +60,13 @@ h1{
   top: 7px;
   right: 5px;
  }  
- 
-input {
+
+input, textarea, select {
   font-family : verdana;
   text-align: center;
-  display: inline-block;
-  float: left;
+  
   font-size   : 120%;
   border-radius: 25px;
   border-width: 0.5px;
-  line-height: 1em;
+  line-height: 2em;
 }

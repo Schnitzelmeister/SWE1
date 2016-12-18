@@ -4,7 +4,10 @@
 package servlets;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Date;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,96 +16,79 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.PoolDAO;
 import main.Termin;
 import user.Privatnutzer;
+import user.User;
 import management.PrivatnutzerManagement;
 
 
-@WebServlet("/NewTermin")
+@WebServlet("/privatnutzer/NewTermin")
 public class CreateNewTerminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	CreateNewTerminServlet(){}
+	public CreateNewTerminServlet(){}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		response.sendRedirect("/MyEvents/newtermin.jsp");
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, IllegalArgumentException{
+	
+	try{
+		String name = request.getParameter("name");
+		String location = request.getParameter("location");
+		String info = request.getParameter("info");
+		String startTime = request.getParameter("starttime");
+		String endTime = request.getParameter("endtime");
+		String startDatum = request.getParameter("startdatum");
+		String endDatum = request.getParameter("enddatum");
+		Calendar dateStart=Calendar.getInstance();
+		Calendar dateEnd=Calendar.getInstance();
+		
+		Integer id = (Integer) request.getSession().getAttribute("userid");
+		Privatnutzer user = (Privatnutzer) PoolDAO.poolDAO.getUserDAO().getItemById(id);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd.MM.yyyy");
+		try {
+			dateStart.setTime(sdf.parse(startTime+" "+startDatum));
+		} catch (ParseException e) {
+			throw new IllegalArgumentException("Ungültiges Datum oder Uhrzeit wurde angegeben");
+		}
+		
+		try {
+			dateEnd.setTime(sdf.parse(endTime+" "+endDatum));
+		} catch (ParseException e) {
+			throw new IllegalArgumentException("Ungültiges Datum oder Uhrzeit wurde angegeben");
+		}
+		
+		checkValidityOfInput(dateStart, dateEnd, name, location, info);
+		
+		Termin termin = new Termin(name, location, dateStart, dateEnd, info);
+		user.getKalender().getPrivate_appointments().add(termin);
+		PoolDAO.poolDAO.getUserDAO().speichereItem(user);
+		
+		// PoolDAO.poolDAO.getTerminDAO().speichereItem(termin);
+		request.setAttribute("infoMessage", "Der Termin "+name+" wurde erfolgreich im Privatkalender gespeichert.");
+		request.getRequestDispatcher("/privatnutzer/newtermin.jsp").forward(request, response);
+		System.out.println("Ein Terminobjekt mit dem Anfangsdatum: "+dateStart.getTime()+" wurde erstellt");
+		
+		
+	}catch(IllegalArgumentException e){ //Specific Error message tied to the error
+		request.setAttribute("errorMessage", e.getMessage());
+		request.getRequestDispatcher("/privatnutzer/newtermin.jsp").forward(request, response);
+	}catch(Exception e){ //Generic Error Message
+		request.setAttribute("errorMessage", "Ein Fehler ist aufgetreten");
+		request.getRequestDispatcher("/privatnutzer/newtermin.jsp").forward(request, response);
+		e.printStackTrace();
+	}
 		
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		Termin termin =new Termin();
-		String name= request.getParameter("name");
-		String location=request.getParameter("location");
-		String info =request.getParameter("info");
-		String starts = request.getParameter("starttime");
-		String ends = request.getParameter("endtime");
-		String datums=request.getParameter("datum");
-		Calendar start = getZeit(starts);
-		Calendar end = getZeit(ends);
-		Calendar datum=getDatum(datums);
-		int month=datum.get(Calendar.MONTH);
-		int year=datum.get(Calendar.YEAR);
-		int day=datum.get(Calendar.DAY_OF_MONTH);
-		start.set(Calendar.DAY_OF_MONTH,day);
-		start.set(Calendar.MONTH, month);
-		start.set(Calendar.YEAR, year);
-		end.set(Calendar.DAY_OF_MONTH,day);
-		end.set(Calendar.MONTH, month);
-		end.set(Calendar.YEAR, year);
-		try{
-			if(!end.after(start)){
-				throw new IllegalArgumentException("Endzeitpunkt muss nach Startzeit liegen.");
-				
-			}
-			else
-				termin.setName(name);
-				termin.setLocation(location);
-				termin.setStartTime(start);
-				termin.setEndTime(end);
-				termin.setBeschreibung(info);
-				
-				//PrivatnutzerManagement.addPrivateEvent(termin);
-				RequestDispatcher rs= request.getRequestDispatcher("/privatnutzer/main.jsp");
-				rs.forward(request, response);
-	    		out.println("<b>Neuer Termin wurde erstellt. </b>");
-		}
-		catch(IllegalArgumentException e){
-			 RequestDispatcher rs = request.getRequestDispatcher("privatnutzer/newTermin.jsp");
-    		 out.println("<b>"+e.getMessage()+"</b>"); 
-    		 rs.include(request, response);
-		}
-				
+	void checkValidityOfInput(Calendar from, Calendar to, String name, String location, String info){
+		if(from.after(to)) throw new IllegalArgumentException("Das Anfangsdatum muss vor dem Enddatum stehen.");
+		if(name.length()==0 || location.length()==0 || info.length()==0) throw new IllegalArgumentException("Kein Feld darf leer bleiben.");
 	}
-	public Calendar getZeit(String s) throws IllegalArgumentException{
-		 if(s.charAt(2)!=':') {throw new IllegalArgumentException("Bitte Zeit im Format HH:MM ausgeben");}
-		 int hour; int min;
-		 	char h1= s.charAt(0); char h2=s.charAt(1);
-		 	char m1=s.charAt(3); char m2=s.charAt(4);
-		 	String hours=Character.toString(h1)+Character.toString(h2);
-		 	String mins=Character.toString(m1)+Character.toString(m2);
-			hour=Integer.parseInt(hours);
-			min=Integer.parseInt(mins);	 
-		 Calendar c= Calendar.getInstance();
-		 c.set(Calendar.HOUR_OF_DAY, hour);
-		 c.set(Calendar.MINUTE, min);
-		 return c;
-		}
-		
-		public Calendar getDatum(String v)throws IllegalArgumentException{
-		if((v.charAt(2)!='-')&&(v.charAt(5)!='-')) {throw new IllegalArgumentException("Bitte Datum im Format DD-MM-YYYY angeben");}
-		int month; int year; int day;
-		char d1=v.charAt(0); char d2=v.charAt(1);
-		char m1=v.charAt(3); char m2=v.charAt(4);
-		char y1=v.charAt(6); char y2=v.charAt(7);
-		
-		String days=Character.toString(d1)+Character.toString(d2);
-		String months =Character.toString(m1)+Character.toString(m2);
-		String years = Character.toString(y1)+Character.toString(y2); 
-		month=Integer.parseInt(months);
-		year=Integer.parseInt(years);
-		day=Integer.parseInt(days);
-		Calendar c=Calendar.getInstance();
-		c.set(year, month, day);
-		return c;
-		}
+	
 }
 
