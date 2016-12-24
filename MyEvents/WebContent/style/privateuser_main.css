@@ -1,11 +1,6 @@
 @CHARSET "ISO-8859-1";
 
-body {
-    background-color: lightblue;
-}
-
 h1{
-	top: 20%;
 	font-family: Verdana;
 	text-align: center;
 	position: relative;	
@@ -14,6 +9,16 @@ h1{
 p {
     font-family: verdana;
     font-size: 20px;
+}
+
+.topleft{
+  font: bold 15px Verdana;
+  text-decoration: none;
+  color: #333333;
+  position:absolute;
+  text-decoration: none;
+  top: 7px;
+  left: 5px;
 }
 
 .error{
@@ -28,19 +33,6 @@ p {
     font-family: Verdana;
 }
 	
-.loginform {
-    max-width: 500px;
-    padding: 10px 20px;
-    background: #f4f7f8;
-    margin: 10px auto;
-    padding: 20px;
-    background: #f4f7f8;
-    border-radius: 8px;
-    text-align: center;
-    position: relative;
-    top: 20%;
-}
-
 .topleft{
   font: bold 15px Verdana;
   text-decoration: none;

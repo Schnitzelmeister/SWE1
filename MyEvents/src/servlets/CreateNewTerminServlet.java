@@ -23,7 +23,7 @@ import user.User;
 import management.PrivatnutzerManagement;
 
 
-@WebServlet("/privatnutzer/NewTermin")
+@WebServlet("/privatnutzer/CreateNewTerminServlet")
 public class CreateNewTerminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -65,7 +65,10 @@ public class CreateNewTerminServlet extends HttpServlet {
 		checkValidityOfInput(dateStart, dateEnd, name, location, info);
 		
 		Termin termin = new Termin(name, location, dateStart, dateEnd, info);
-		user.getKalender().getPrivate_appointments().add(termin);
+		PoolDAO.poolDAO.getTerminDAO().speichereItem(termin);
+		
+		user.getKalender().getPrivate_appointments().add(termin.getId());
+		System.out.println("Termin wurde ins array hinzugefügt.");
 		PoolDAO.poolDAO.getUserDAO().speichereItem(user);
 		
 		// PoolDAO.poolDAO.getTerminDAO().speichereItem(termin);

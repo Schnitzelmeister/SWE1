@@ -4,7 +4,7 @@
 	<link rel="stylesheet" type="text/css" href="/MyEvents/style/newevent.css">
 </head>
   <body>
-   <form action="NewVeranstaltung" method="post">
+   <form action="CreateNewVeranstaltungServlet" method="post">
 	<label>Titel :</label> <input type="text" name="name"></br>
 	<label>Datum (Von):</label> <input type="text" name="startdatum"></br>
 	<label>Startzeit :</label> <input type="text" name="starttime"></br>

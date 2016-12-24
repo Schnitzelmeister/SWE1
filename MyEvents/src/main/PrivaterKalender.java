@@ -9,11 +9,11 @@ public class PrivaterKalender implements java.io.Serializable {
 	private static final long serialVersionUID = 100L;
 	
 	ArrayList<Integer> public_events;
-	ArrayList<Termin> private_appointments;
+	ArrayList<Integer> private_appointments;
 	
 	public PrivaterKalender(){
 		public_events = new ArrayList<Integer>();
-		private_appointments = new ArrayList<Termin>();		
+		private_appointments = new ArrayList<Integer>();		
 	}
 
 	public ArrayList<Integer> getPublic_events() {
@@ -24,11 +24,11 @@ public class PrivaterKalender implements java.io.Serializable {
 		this.public_events = public_events;
 	}
 
-	public ArrayList<Termin> getPrivate_appointments() {
+	public ArrayList<Integer> getPrivate_appointments() {
 		return private_appointments;
 	}
 
-	public  void setPrivate_appointments(ArrayList<Termin> private_appointments) {
+	public  void setPrivate_appointments(ArrayList<Integer> private_appointments) {
 		this.private_appointments = private_appointments;
 	}
 	

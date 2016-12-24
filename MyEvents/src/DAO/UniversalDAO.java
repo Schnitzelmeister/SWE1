@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
 /*
  * Universal DAO kann nur Objekte, die PersistableObject implementieren, bearbeiten
  */
@@ -86,6 +87,7 @@ public class UniversalDAO <T extends PersistableObject> {
 		this.container.remove(item.getId());
 		save();
 	}
+	
 	
 	/**
 	 * Speichert Container in einem Datei

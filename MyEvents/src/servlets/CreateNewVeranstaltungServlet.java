@@ -21,7 +21,7 @@ import DAO.PoolDAO;
 import main.Veranstaltung;
 
 
-@WebServlet("/veranstalter/NewVeranstaltung")
+@WebServlet("/veranstalter/CreateNewVeranstaltungServlet")
 public class CreateNewVeranstaltungServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
@@ -65,7 +65,7 @@ public class CreateNewVeranstaltungServlet extends HttpServlet{
 			int currentUserId = (Integer) request.getSession().getAttribute("userid");
 			int plaetze = Integer.parseInt(platzAnzahl);
 			
-			Veranstaltung veranstaltung = new Veranstaltung(currentUserId, name, info, kat, location, dateStart, dateEnd, plaetze, 0, 0);
+			Veranstaltung veranstaltung = new Veranstaltung(currentUserId, name, info, kat, location, dateStart, dateEnd, plaetze);
 			PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem(veranstaltung);
 			request.setAttribute("infoMessage", "Die Veranstaltung mit dem Namen "+name+" wurde erfolgreich erstellt ");
 			request.getRequestDispatcher("/veranstalter/NewVeranstaltung.jsp").forward(request, response);

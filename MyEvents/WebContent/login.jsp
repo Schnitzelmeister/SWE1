@@ -7,7 +7,7 @@
     <body>
      <h1>Willkommen bei MyEvents</h1>
     <div class="loginform">
-        <form method="post" action="/MyEvents/login">
+        <form method="post" action="/MyEvents/LoginServlet">
         <p>Benutzername:</p><input type="text" name="username" /><br/>
         <p>Passwort:</p><input type="password" name="password" /><br/>
         <br/>

@@ -8,13 +8,16 @@ public class Event {
 	private String title;
     private String start;
     private String end;
+    private String color;
     
-    public Event(String title, String from, String to){
+    public Event(Integer id,String title, String from, String to, String color){ 
+    	this.id=id;
     	this.title=title;
     	this.start=from;
     	this.end=to;
+    	this.color=color;
     }
-    
+ /*   
     public Integer getId(){
     	return id;
     }
@@ -22,7 +25,7 @@ public class Event {
     public void setId(Integer id){
     	this.id=id;
     }
-    
+   */ 
 	public String getTitle() {
 		return title;
 	}
@@ -40,6 +43,14 @@ public class Event {
 	}
 	public void setEnd(String end) {
 		this.end = end;
+	}
+    
+    public String color(){
+    	return this.color;
+    }
+	
+	public void setColor(String color){
+		this.color=color;
 	}
     
     

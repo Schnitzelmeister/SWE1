@@ -5,9 +5,10 @@
 </head>
 
  <body>
+  <h1>Privaten Termin erstellen</h1>
   <div class="form">
   <br> <br> <br> 
-  <form action="NewTermin" method="post">
+  <form action="CreateNewTerminServlet" method="post">
   
 	<label>Titel :</label> <input type="text" name="name" /> </br>
 	<label>Datum (Von) :</label> <input type="text" name="startdatum" /> </br>
@@ -26,5 +27,10 @@
      
   </form>
   </div>
+  
+   <div class="topleft">
+     <a href="/MyEvents/privatnutzer/main.jsp">&lt;&lt; Zurück</a>
+    </div>
+  
  </body>
 </html>

@@ -67,13 +67,6 @@ public class PoolDAO {
 					Privatnutzer privatnutzer = new Privatnutzer("jakub", "123456789", "jakub", "jakub@myevents.at", "123");
 					PoolDAO.poolDAO.getUserDAO().speichereItem(privatnutzer);
 					
-					//Termin
-					java.util.Calendar from = java.util.Calendar.getInstance();
-					from.set(2016, 12, 31, 22, 00);
-					java.util.Calendar till = java.util.Calendar.getInstance();
-					till.set(2017, 01, 01, 05, 00);
-					privatnutzer.getKalender().getPrivate_appointments().add( new Termin("Silvester Party", "Zu Hause", from, till, "Willkommen!!!") );
-					PoolDAO.poolDAO.getUserDAO().speichereItem(privatnutzer);
 				}
 				catch (Exception e) {
 				}
@@ -113,7 +106,7 @@ public class PoolDAO {
 					java.util.Calendar till = java.util.Calendar.getInstance();
 					till.set(2017, 01, 01, 05, 00);
 
-					Veranstaltung veranstaltung = new Veranstaltung(veranstalter1, "Veranstaltung 1", "Veranstaltung 1", "sport", "Wien", from, till, 10, 0, 0);
+					Veranstaltung veranstaltung = new Veranstaltung(veranstalter1, "Veranstaltung 1", "Veranstaltung 1", "sport", "Wien", from, till, 10);
 					PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem(veranstaltung);
 					veranstaltung1 = veranstaltung.getId();
 				}
@@ -126,7 +119,7 @@ public class PoolDAO {
 					java.util.Calendar till = java.util.Calendar.getInstance();
 					till.set(2017, 01, 01, 05, 00);
 
-					Veranstaltung veranstaltung = new Veranstaltung(veranstalter1, "Veranstaltung 2", "Veranstaltung 2", "sport", "Wien", from, till, 10, 0, 0);
+					Veranstaltung veranstaltung = new Veranstaltung(veranstalter1, "Veranstaltung 2", "Veranstaltung 2", "sport", "Wien", from, till, 10);
 					PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem(veranstaltung);
 					veranstaltung2 = veranstaltung.getId();
 				}
@@ -139,7 +132,7 @@ public class PoolDAO {
 					java.util.Calendar till = java.util.Calendar.getInstance();
 					till.set(2017, 01, 01, 05, 00);
 
-					Veranstaltung veranstaltung = new Veranstaltung(veranstalter2, "Veranstaltung 3", "Veranstaltung 3", "kochkurs", "Wien", from, till, 10, 0, 0);
+					Veranstaltung veranstaltung = new Veranstaltung(veranstalter2, "Veranstaltung 3", "Veranstaltung 3", "kochkurs", "Wien", from, till, 10);
 					PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem(veranstaltung);
 					veranstaltung3 = veranstaltung.getId();
 				}
@@ -152,7 +145,7 @@ public class PoolDAO {
 					java.util.Calendar till = java.util.Calendar.getInstance();
 					till.set(2017, 01, 01, 05, 00);
 
-					Veranstaltung veranstaltung = new Veranstaltung(veranstalter2, "Veranstaltung 4", "Veranstaltung 4", "kochkurs", "Wien", from, till, 10, 0, 0);
+					Veranstaltung veranstaltung = new Veranstaltung(veranstalter2, "Veranstaltung 4", "Veranstaltung 4", "kochkurs", "Wien", from, till, 10);
 					PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem(veranstaltung);
 					veranstaltung4 = veranstaltung.getId();
 				}
@@ -211,6 +204,11 @@ public class PoolDAO {
 		return veranstaltungDAO;
 	}
 
+	private UniversalDAO<Termin> terminDAO;
+	public UniversalDAO<Termin> getTerminDAO() {
+		return terminDAO;
+	}
+	
 	/*
 	 * Als Parameter muss man den Pfad vom Verzeichnis mit Daten uebergeben
 	 */
@@ -221,5 +219,6 @@ public class PoolDAO {
 		
 	    userDAO = new UserDAO(dataDir + "/user.dao");
 		veranstaltungDAO = new UniversalDAO<Veranstaltung>(dataDir + "/veranstaltung.dao");
+		terminDAO = new UniversalDAO<Termin>(dataDir + "/termin.dao");
 	}
 }

@@ -16,13 +16,12 @@ public class Veranstaltung extends PersistableObject {
 	private Calendar startTime;
 	private Calendar endTime;
 	private int availablePlaces;
-	private double averageRating;
-	private int numberOfRatings;
+	ArrayList<Integer> rating;
 	
 	
 	public Veranstaltung(int userId, String name, String description,
 			String category, String location, Calendar startTime, Calendar endTime,
-			int availablePlaces, double averageRating, int numberOfRatings) {
+			int availablePlaces) {
 		this.userId=userId;
 		this.name=name;
 		this.description=description;
@@ -31,8 +30,7 @@ public class Veranstaltung extends PersistableObject {
 		this.startTime=startTime;
 		this.endTime=endTime;
 		this.availablePlaces=availablePlaces;
-		this.averageRating=averageRating;
-		this.numberOfRatings=numberOfRatings;
+		rating = new ArrayList<Integer>();
 	}
 	
 	public Veranstaltung(){}
@@ -105,20 +103,31 @@ public class Veranstaltung extends PersistableObject {
 		this.availablePlaces = availablePlaces;
 	}
 	
-	public double getAverageRating() {
-		return averageRating;
+	public ArrayList<Integer> getRating(){
+		return rating;
 	}
 	
-	public void setAverageRating(double averageRating) {
-		this.averageRating = averageRating;
+	public void addRating(Integer ratingFromUser){
+		rating.add(ratingFromUser);
 	}
 	
-	public int getNumberOfRatings() {
-		return numberOfRatings;
+	public double calculateRatingAverage(){
+		double average=0;
+		Integer sum=0;
+		
+		for(int i=0; i<rating.size(); i++){
+			sum+=rating.get(i);
+		}
+		
+		return average=(((double)sum)/((double)rating.size()));
 	}
 	
-	public void setNumberOfRatings(int numberOfRatings) {
-		this.numberOfRatings = numberOfRatings;
-	}
+	
+	
+	
+	
+	
+	
+	
 	
 }

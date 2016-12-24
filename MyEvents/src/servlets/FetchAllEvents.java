@@ -17,8 +17,13 @@ import com.google.gson.Gson;
 import DAO.PoolDAO;
 import main.Event;
 import main.Termin;
+import main.Veranstaltung;
 import user.Privatnutzer;
 
+
+/*
+ * Diese Servlet ist dafür zuständig die privat erstellten Termine zu laden und im Fallcalendar anzuzeigen. 
+ */
 
 @WebServlet("/FetchAllEvents")
 public class FetchAllEvents extends HttpServlet {
@@ -36,28 +41,42 @@ public class FetchAllEvents extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Integer userid = (Integer) request.getSession().getAttribute("userid");
 		Privatnutzer user = (Privatnutzer) PoolDAO.poolDAO.getUserDAO().getItemById(userid);
+		
+		ArrayList<Integer> terminListe = user.getKalender().getPrivate_appointments();
 
-		ArrayList<Termin> terminListe = user.getKalender().getPrivate_appointments();
-
+		ArrayList<Integer> publicEvent = user.getKalender().getPublic_events();
 		ArrayList<Event> eventListe = new ArrayList<Event>();
 		
 		Event eventToAdd;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 		String from;
 		String to;
+		Termin termin;
 		
-		for(int i=0; i<terminListe.size(); i++){
-			from=sdf.format(terminListe.get(i).getStartTime().getTime());
-			to=sdf.format(terminListe.get(i).getEndTime().getTime());
-			System.out.println(from+" "+to);
-			eventToAdd = new Event(terminListe.get(i).getName(), from, to);
+		for(int i=0; i<terminListe.size(); i++){ //Privat erstellte Termine werden gesammelt
+			termin = PoolDAO.poolDAO.getTerminDAO().getItemById(terminListe.get(i));
+			from=sdf.format(termin.getStartTime().getTime());
+			to=sdf.format(termin.getEndTime().getTime());
+			
+			eventToAdd = new Event(termin.getId(), termin.getName(), from, to, "FFC900"); //Termine die der Privatbenutzer erstellt hat werden hinzugefügt (KEINE ÖFFENTLICHEN TERMINE)
 			eventListe.add(eventToAdd);
 		}
-
+		
+		Veranstaltung veranstaltung;
+		for(int i=0; i<terminListe.size(); i++){ //öffentliche Veranstaltungen werden hinzugefügt
+			veranstaltung = PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(terminListe.get(i));
+			from = sdf.format(veranstaltung.getStartTime().getTime());
+			to = sdf.format(veranstaltung.getStartTime().getTime());
+			
+			eventToAdd = new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#fddfe5"); //Veranstaltungen die der Privatbenutzer hinzugefügt hat werden geladen
+			eventListe.add(eventToAdd);
+		}
+		
 		Gson gson = new Gson();
 		PrintWriter out = response.getWriter();
 		out.write(gson.toJson(eventListe));			 //Arrayliste wird in JSON transformiert
 		System.out.println(gson.toJson(eventListe)); //Das Ergebnis wird ausgegeben
+		
 	}
 
 

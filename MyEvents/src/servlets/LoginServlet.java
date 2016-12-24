@@ -17,7 +17,7 @@ import DAO.*;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/login")
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -54,7 +54,9 @@ public class LoginServlet extends HttpServlet {
 	    	HttpSession session = request.getSession();
 	    	session.setAttribute("username", currentUser);
 	    	session.setAttribute("usertype", "privateuser");
+	    	session.setAttribute("userid", currentUser.getId());
 
+	    	
 	    	response.sendRedirect("/MyEvents/privatnutzer/main.jsp");
 	    	return;
 	    }
@@ -62,7 +64,8 @@ public class LoginServlet extends HttpServlet {
 	    	HttpSession session = request.getSession();
 	    	session.setAttribute("username", currentUser);
 	    	session.setAttribute("usertype", "admin");
-	    	
+	    	session.setAttribute("userid", currentUser.getId());
+
 	    	response.sendRedirect("/MyEvents/admin/main.jsp");
 	    	return;
 	    }
@@ -70,7 +73,8 @@ public class LoginServlet extends HttpServlet {
 	    	HttpSession session = request.getSession();
 	    	session.setAttribute("username", currentUser);
 	    	session.setAttribute("usertype", "analyst");
-	    	
+	    	session.setAttribute("userid", currentUser.getId());
+
 	    	response.sendRedirect("/MyEvents/analytiker/main.jsp");  	
 	    	return;
 	    }
@@ -79,7 +83,8 @@ public class LoginServlet extends HttpServlet {
 	    	HttpSession session = request.getSession();
 	    	session.setAttribute("username", currentUser);
 	    	session.setAttribute("usertype", "organiser");
-	    	
+	    	session.setAttribute("userid", currentUser.getId());
+
 	    	response.sendRedirect("/MyEvents/veranstalter/main.jsp");
 	    	return;
 	    }

@@ -1,7 +1,8 @@
 <html>
 <head>
-<meta charset='utf-8' />
-<link href='../fullcalendar/fullcalendar.min.css' rel='stylesheet' />
+   <jsp:include page="/MyEvents/privatnutzer/LoadInfoMessage/" />
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+ <link href='../fullcalendar/fullcalendar.min.css' rel='stylesheet' />
 <link href='../fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 <script src='../fullcalendar/lib/moment.min.js'></script>
 <script src='../fullcalendar/lib/jquery.min.js'></script>
@@ -16,11 +17,19 @@
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay,listWeek'
 			},
-			defaultDate: '2016-12-14',
+			eventClick: function(calEvent, jsEvent, view) {
+
+		        location.href = "/MyEvents/privatnutzer/termindetails.jsp?id="+calEvent.id;
+				
+		        $(this).css('border-color', 'red');
+
+		    },
+		    
 			navLinks: true, // can click day/week names to navigate views
-			editable: true,
+			editable: false,
 			eventLimit: true, // allow "more" link when too many events
 			events: "/MyEvents/FetchAllEvents"
+			
 		 });
 		
 	});
@@ -36,15 +45,49 @@
 	}
 
 	#calendar {
-		max-width: 900px;
+		top: 5%;
+		max-width: 1000px;
 		margin: 0 auto;
+		position: relative;
 	}
 
+.topleft{
+  font: bold 15px Verdana;
+  text-decoration: none;
+  color: #333333;
+  position:absolute;
+  text-decoration: none;
+  top: 7px;
+  left: 5px;
+}
+		
+.info{
+	text-color: #D8000C;
+    background-color: #7CFC00;
+    font-family: Verdana;
+    text-align: center;
+    position: relative;
+}	
+
+.error{
+	text-color: #D8000C;
+    background-color: #FFBABA;
+    font-family: Verdana;
+    text-align: center;
+    position: relative;
+}														
 </style>
 </head>
 <body>
 
-	<div id='calendar'></div>
+	<div class="topleft">
+     <a href="/MyEvents/privatnutzer/main.jsp">&lt;&lt; Zurück</a>
+    </div>
 
+	<div id='calendar'></div>
+	<div class="info">${infoMessage}</div>
+	<div class="error">${errorMessage}</div>
+	
+	
 </body>
 </html>

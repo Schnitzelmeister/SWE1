@@ -14,7 +14,7 @@ import DAO.PoolDAO;
 import user.Privatnutzer;
 
 
-@WebServlet("/privatnutzer/manageuserdata")
+@WebServlet("/privatnutzer/ManageUserDataServlet")
 public class ManageUserDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

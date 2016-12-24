@@ -2,13 +2,13 @@
  <head>
   <title>Profileinstellungen verwalten</title>
   <link rel="stylesheet" type="text/css" href="/MyEvents/style/register.css">
-  <jsp:include page="/MyEvents/privatnutzer/loaddata" />
+  <jsp:include page="/MyEvents/privatnutzer/LoadDataServlet/" />
  </head>
   
   <body>
    <h1>Benutzerdaten für Benutzer: ${benutzername} ändern </h1>
    <div class="registerform">
-    <form method="post" action="/MyEvents/privatnutzer/manageuserdata">
+    <form method="post" action="/MyEvents/privatnutzer/ManageUserDataServlet">
      
         <label>Password     :</label><input type="password" name="password" value="${password}" /><br/><br/>
         <label>Name         :</label><input type="text" name="name" value="${name}" /><br/><br/>
@@ -20,6 +20,11 @@
    		
    </form>
   </div>
+  
+  <div class="topleft">
+     <a href="/MyEvents/privatnutzer/main.jsp">&lt;&lt; Zurück</a>
+    </div>
+  
  </body>
 
 </html>
