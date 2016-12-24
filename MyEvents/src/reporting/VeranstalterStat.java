@@ -27,7 +27,6 @@ public class VeranstalterStat extends Report {
 			}
 
 			w.flush();
-			w.close();
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());

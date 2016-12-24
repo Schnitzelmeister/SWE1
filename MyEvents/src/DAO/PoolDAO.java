@@ -158,6 +158,13 @@ public class PoolDAO {
 					Privatnutzer user = (Privatnutzer)PoolDAO.poolDAO.getUserDAO().getUserbyUsername("ayrat");
 					user.getKalender().getPublic_events().add(veranstaltung1);
 					user.getKalender().getPublic_events().add(veranstaltung2);
+					
+					//vielleicht noch
+					//PoolDAO.poolDAO.getUserDAO().speichereItem(user);
+					//oder
+					//PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem( PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(veranstaltung1) );
+					//PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem( PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(veranstaltung2) );
+
 				}
 				catch (Exception e) {
 				}
@@ -167,6 +174,13 @@ public class PoolDAO {
 					Privatnutzer user = (Privatnutzer)PoolDAO.poolDAO.getUserDAO().getUserbyUsername("markus");
 					user.getKalender().getPublic_events().add(veranstaltung3);
 					user.getKalender().getPublic_events().add(veranstaltung4);
+					
+					//vielleicht noch
+					//PoolDAO.poolDAO.getUserDAO().speichereItem(user);
+					//oder
+					//PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem( PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(veranstaltung3) );
+					//PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem( PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(veranstaltung4) );
+
 				}
 				catch (Exception e) {
 				}
@@ -176,6 +190,13 @@ public class PoolDAO {
 					Privatnutzer user = (Privatnutzer)PoolDAO.poolDAO.getUserDAO().getUserbyUsername("jakub");
 					user.getKalender().getPublic_events().add(veranstaltung1);
 					user.getKalender().getPublic_events().add(veranstaltung3);
+
+					//vielleicht noch
+					//PoolDAO.poolDAO.getUserDAO().speichereItem(user);
+					//oder
+					//PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem( PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(veranstaltung1) );
+					//PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem( PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(veranstaltung3) );
+
 				}
 				catch (Exception e) {
 				}
@@ -185,6 +206,12 @@ public class PoolDAO {
 					Privatnutzer user = (Privatnutzer)PoolDAO.poolDAO.getUserDAO().getUserbyUsername("katharina");
 					user.getKalender().getPublic_events().add(veranstaltung2);
 					user.getKalender().getPublic_events().add(veranstaltung3);
+					
+					//vielleicht noch
+					//PoolDAO.poolDAO.getUserDAO().speichereItem(user);
+					//oder
+					//PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem( PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(veranstaltung2) );
+					//PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem( PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(veranstaltung3) );
 				}
 				catch (Exception e) {
 				}
