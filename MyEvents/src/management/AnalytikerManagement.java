@@ -19,14 +19,19 @@ public class AnalytikerManagement {
 	 */
 	public static java.util.TreeMap<String, String> getReportList() {
 		java.util.TreeMap<String, String> ret = new java.util.TreeMap<String, String>();
-		//load package
-		Class<reporting.ParamType> tmp = reporting.ParamType.class;
-		
-		for (Class<?> cls : getClassesForPackage(Package.getPackage("reporting"))) {
-			if (cls.getSuperclass() == reporting.Report.class) {
-				ret.put(cls.getName(), cls.getAnnotation(reporting.ReportDescription.class).Description());
+		try {
+			//load package
+			Class.forName("reporting.ParamType");
+			
+			for (Class<?> cls : getClassesForPackage(Package.getPackage("reporting"))) {
+				if (cls.getSuperclass() == reporting.Report.class) {
+					ret.put(cls.getName(), cls.getAnnotation(reporting.ReportDescription.class).Description());
+				}
 			}
 		}
+		catch (java.lang.ClassNotFoundException ex) {
+		}
+		
 		return ret;
 	}
 
