@@ -9,15 +9,17 @@ public class Event {
     private String start;
     private String end;
     private String color;
+    private String type;
     
-    public Event(Integer id,String title, String from, String to, String color){ 
+    public Event(Integer id,String title, String from, String to, String color, String type){ 
     	this.id=id;
     	this.title=title;
     	this.start=from;
     	this.end=to;
     	this.color=color;
+    	this.type=type;
     }
- /*   
+   
     public Integer getId(){
     	return id;
     }
@@ -25,7 +27,7 @@ public class Event {
     public void setId(Integer id){
     	this.id=id;
     }
-   */ 
+   
 	public String getTitle() {
 		return title;
 	}

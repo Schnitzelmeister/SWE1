@@ -16,6 +16,8 @@
 <input type="hidden" name="id" value="${id}">
 
 <a href="/MyEvents/privatnutzer/AddVeranstaltungToPrivateCal?id=${id}">An Veranstaltung teilnehmen</a>
+<a href="/MyEvents/veranstalter/veranstalter_profil.jsp?veranstaltername=${veranstalterusername}">Profil von Veranstalter</a>
+
 ${errorMessage}
   </body>
 </html>

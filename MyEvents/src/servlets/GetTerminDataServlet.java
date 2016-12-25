@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.PoolDAO;
 import main.Termin;
+import main.Veranstaltung;
 
 /**
  * Servlet implementation class GetTerminDataServlet
@@ -25,11 +26,11 @@ public class GetTerminDataServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  try{
-		String id = request.getParameter("id");
+		Integer id = Integer.parseInt(request.getParameter("id"));
+		Termin termin = PoolDAO.poolDAO.getTerminDAO().getItemById(id);
+		
 		request.setAttribute("id", id);	
-		
-		Termin termin = PoolDAO.poolDAO.getTerminDAO().getItemById(Integer.parseInt(id));
-		
+	
 		SimpleDateFormat sdf1 = new SimpleDateFormat("dd.MM.yyyy");
 		SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
 		
@@ -51,14 +52,15 @@ public class GetTerminDataServlet extends HttpServlet {
 			String error = request.getParameter("error");
 			request.setAttribute("errorMessage", error);
 		}	
-	  }catch(Exception e){
+	  }catch(IllegalArgumentException e){
+			System.out.println("catch clause executed");
+
 			response.sendRedirect("/MyEvents/privatnutzer/privatkalendar.jsp");
-			return;
 	  }
+	  
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 	}
 
 }

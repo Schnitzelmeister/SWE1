@@ -19,8 +19,11 @@
 			},
 			eventClick: function(calEvent, jsEvent, view) {
 
-		        location.href = "/MyEvents/privatnutzer/termindetails.jsp?id="+calEvent.id;
-				
+				if(calEvent.type == "private"){
+		        	location.href = "/MyEvents/privatnutzer/termindetails.jsp?id="+calEvent.id;
+				}else{
+		        	location.href = "/MyEvents/privatnutzer/veranstaltung_privatkalender.jsp?id="+calEvent.id;
+				}
 		        $(this).css('border-color', 'red');
 
 		    },

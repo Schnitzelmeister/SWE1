@@ -8,6 +8,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import main.Termin;
+
 
 /*
  * Universal DAO kann nur Objekte, die PersistableObject implementieren, bearbeiten
@@ -75,6 +77,17 @@ public class UniversalDAO <T extends PersistableObject> {
 			throw new IllegalArgumentException("Item with id=" + String.valueOf( item.getId() ) + " doesn't exist");
 
 		save();
+	}
+	
+	public boolean itemWithIdIsTermin(Integer id){
+		if(container.containsKey(id)){
+		   Object object = container.get(id);
+		   if(object instanceof Termin)
+			   return true;
+		   else
+			   return false;
+		}
+		return false;
 	}
 	
 	/**

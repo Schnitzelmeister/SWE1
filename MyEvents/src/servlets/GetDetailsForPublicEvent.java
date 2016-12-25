@@ -32,6 +32,7 @@ public class GetDetailsForPublicEvent extends HttpServlet {
 		SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm");
 		SimpleDateFormat sdf2 = new SimpleDateFormat("dd.MM.yyyy");
 		
+		String errorMessage = request.getParameter("error");
 		String name=veranstaltung.getName();
 		String kategorie=veranstaltung.getCategory();
 		String vonTime= sdf1.format(veranstaltung.getStartTime().getTime());
@@ -54,6 +55,7 @@ public class GetDetailsForPublicEvent extends HttpServlet {
 		request.setAttribute("average", average);
 		request.setAttribute("info", info);
 		request.setAttribute("location", location);
+		request.setAttribute("errorMessage", errorMessage);
 		
 	}
 

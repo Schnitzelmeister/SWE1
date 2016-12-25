@@ -58,26 +58,23 @@ public class FetchAllEvents extends HttpServlet {
 			from=sdf.format(termin.getStartTime().getTime());
 			to=sdf.format(termin.getEndTime().getTime());
 			
-			eventToAdd = new Event(termin.getId(), termin.getName(), from, to, "FFC900"); //Termine die der Privatbenutzer erstellt hat werden hinzugefügt (KEINE ÖFFENTLICHEN TERMINE)
+			eventToAdd = new Event(termin.getId(), termin.getName(), from, to, "FFC900", "private"); //Termine die der Privatbenutzer erstellt hat werden hinzugefügt (KEINE ÖFFENTLICHEN TERMINE)
 			eventListe.add(eventToAdd);
 		}
-		
+
 		Veranstaltung veranstaltung;
-		for(int i=0; i<terminListe.size(); i++){ //öffentliche Veranstaltungen werden hinzugefügt
-			veranstaltung = PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(terminListe.get(i));
+		for(int i=0; i<publicEvent.size(); i++){ //öffentliche Veranstaltungen werden hinzugefügt
+			veranstaltung = PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(publicEvent.get(i));
 			from = sdf.format(veranstaltung.getStartTime().getTime());
 			to = sdf.format(veranstaltung.getStartTime().getTime());
 			
-			eventToAdd = new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#fddfe5"); //Veranstaltungen die der Privatbenutzer hinzugefügt hat werden geladen
+			eventToAdd = new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#fddfe5", "public"); //Veranstaltungen die der Privatbenutzer hinzugefügt hat werden geladen
 			eventListe.add(eventToAdd);
 		}
-		
+
 		Gson gson = new Gson();
 		PrintWriter out = response.getWriter();
 		out.write(gson.toJson(eventListe));			 //Arrayliste wird in JSON transformiert
-		System.out.println(gson.toJson(eventListe)); //Das Ergebnis wird ausgegeben
-		
+		System.out.println(out);
 	}
-
-
 }

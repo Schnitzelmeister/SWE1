@@ -5,7 +5,7 @@
    <jsp:include page="/MyEvents/privatnutzer/GetTerminDataServlet/" />
   </head>
    <body>
-   <h1>Ausgewählten Termin bearbeiten</h1>
+   <h1>Ausgewählten privaten Termin bearbeiten</h1>
     <div class="topleft"><a href="../privatnutzer/privatkalendar.jsp">&lt;&lt; Zurück</a></div>
 	<div class="form">
 	 <form action="UpdateTermin" method="post">
