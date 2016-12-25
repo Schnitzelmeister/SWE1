@@ -31,6 +31,10 @@ public class PoolDAO {
 				//Bitte kreiert euere Default Users und vielleciht andere Objekte (Veranstaltungen, Termine, etc)
 				//Damit koennen wir alles testen
 				
+				//wenn admin exists, dann heist es, dass Default Daten schon hinzugefuegt wurden
+				if (PoolDAO.poolDAO.getUserDAO().usernameAlreadyUsed("admin"))
+					return;
+				
 		    	//default users
 				//Admin
 				try {
