@@ -14,6 +14,14 @@
     <servlet-class>servlets.LoginServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>LoadInfoMainPage</servlet-name>
+    <servlet-class>servlets.LoadInfoMainPage</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteVeranstaltungFromPrivCal</servlet-name>
+    <servlet-class>servlets.DeleteVeranstaltungFromPrivCal</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>AddVeranstaltungToPrivateCal</servlet-name>
     <servlet-class>servlets.AddVeranstaltungToPrivateCal</servlet-class>
   </servlet>
@@ -112,5 +120,13 @@
   <servlet-mapping>
     <servlet-name>AddVeranstaltungToPrivateCal</servlet-name>
     <url-pattern>/MyEvents/privatnutzer/AddVeranstaltungToPrivateCal/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteVeranstaltungFromPrivCal</servlet-name>
+    <url-pattern>/MyEvents/privatnutzer/DeleteVeranstaltungFromPrivCal/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoadInfoMainPage</servlet-name>
+    <url-pattern>/MyEvents/privatnutzer/LoadInfoMainPage/</url-pattern>
   </servlet-mapping>
 </web-app>

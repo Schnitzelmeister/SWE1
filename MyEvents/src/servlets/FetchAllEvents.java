@@ -41,7 +41,6 @@ public class FetchAllEvents extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Integer userid = (Integer) request.getSession().getAttribute("userid");
 		Privatnutzer user = (Privatnutzer) PoolDAO.poolDAO.getUserDAO().getItemById(userid);
-		
 		ArrayList<Integer> terminListe = user.getKalender().getPrivate_appointments();
 
 		ArrayList<Integer> publicEvent = user.getKalender().getPublic_events();
@@ -54,22 +53,26 @@ public class FetchAllEvents extends HttpServlet {
 		Termin termin;
 		
 		for(int i=0; i<terminListe.size(); i++){ //Privat erstellte Termine werden gesammelt
-			termin = PoolDAO.poolDAO.getTerminDAO().getItemById(terminListe.get(i));
-			from=sdf.format(termin.getStartTime().getTime());
-			to=sdf.format(termin.getEndTime().getTime());
+		 try{	
+			 termin = PoolDAO.poolDAO.getTerminDAO().getItemById(terminListe.get(i));
+			 from=sdf.format(termin.getStartTime().getTime());
+			 to=sdf.format(termin.getEndTime().getTime());
 			
-			eventToAdd = new Event(termin.getId(), termin.getName(), from, to, "FFC900", "private"); //Termine die der Privatbenutzer erstellt hat werden hinzugefügt (KEINE ÖFFENTLICHEN TERMINE)
-			eventListe.add(eventToAdd);
+			 eventToAdd = new Event(termin.getId(), termin.getName(), from, to, "FFC900", "private"); //Termine die der Privatbenutzer erstellt hat werden hinzugefügt (KEINE ÖFFENTLICHEN TERMINE)
+			 eventListe.add(eventToAdd);
+		  }catch(Exception e){}
 		}
 
 		Veranstaltung veranstaltung;
 		for(int i=0; i<publicEvent.size(); i++){ //öffentliche Veranstaltungen werden hinzugefügt
-			veranstaltung = PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(publicEvent.get(i));
-			from = sdf.format(veranstaltung.getStartTime().getTime());
-			to = sdf.format(veranstaltung.getStartTime().getTime());
+		 try{
+		   	 veranstaltung = PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(publicEvent.get(i));
+			 from = sdf.format(veranstaltung.getStartTime().getTime());
+			 to = sdf.format(veranstaltung.getEndTime().getTime());
 			
-			eventToAdd = new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#fddfe5", "public"); //Veranstaltungen die der Privatbenutzer hinzugefügt hat werden geladen
-			eventListe.add(eventToAdd);
+			 eventToAdd = new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#fddfe5", "public"); //Veranstaltungen die der Privatbenutzer hinzugefügt hat werden geladen
+			 eventListe.add(eventToAdd);
+		 }catch(Exception e){}
 		}
 
 		Gson gson = new Gson();

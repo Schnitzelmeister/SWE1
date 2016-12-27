@@ -23,23 +23,14 @@ public class DeleteEventFromPrivate extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Servlet wurde gestartet");
 		Integer eventId = Integer.parseInt(request.getParameter("id"));
 		
 		boolean eventDeleted=false;
 		
 		Termin terminObject=PoolDAO.poolDAO.getTerminDAO().getItemById(eventId);
-		if(terminObject != null){
-			PoolDAO.poolDAO.getTerminDAO().loescheItem(terminObject);
-			eventDeleted=true;
-		}else{
-			eventDeleted=false;
-		}
-		
-		if(eventDeleted)
-			response.sendRedirect("/MyEvents/privatnutzer/privatkalendar.jsp?info=Der Kalendereintrag wurde erfolgreich entfernt");
-		else	
-			response.sendRedirect("/MyEvents/privatnutzer/privatkalendar.jsp?error=Der Kalendereintrag konnte nicht gelöscht werden");
+		PoolDAO.poolDAO.getTerminDAO().loescheItem(terminObject);
+			
+		response.sendRedirect("/MyEvents/privatnutzer/privatkalendar.jsp?info=Der Kalendereintrag wurde erfolgreich entfernt");
 	}
 
 

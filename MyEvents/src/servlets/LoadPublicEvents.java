@@ -33,17 +33,17 @@ public class LoadPublicEvents extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Das Servlet wurde gestartet");
 		TreeMap<Integer, Veranstaltung> treemap = PoolDAO.poolDAO.getVeranstaltungDAO().getItems();
+		String kategorie = request.getParameter("kategorie");
 		ArrayList<Veranstaltung> liste = new ArrayList<Veranstaltung>(treemap.values());
 		ArrayList<Event> eventListe = new ArrayList<Event>();
-		
-		System.out.println("Die Daten sind in der Datenstruktur");
+		System.out.println("Die Kategorie ist: "+kategorie);
 		
 		Event eventToAdd;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 		String from;
 		String to;
 		Veranstaltung veranstaltung;
-		
+	  if(kategorie == null || kategorie.equals("Alle Kategorien") || kategorie.equals("")){
 		for(int i=0; i<liste.size(); i++){
 			veranstaltung=liste.get(i);
 			from=sdf.format(veranstaltung.getStartTime().getTime());
@@ -51,14 +51,24 @@ public class LoadPublicEvents extends HttpServlet {
 			
 			eventToAdd= new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#00ff00", "private");
 			eventListe.add(eventToAdd);
-		}	
+		}
+	  }else{	
+	    for(int i=0; i<liste.size(); i++){
+			veranstaltung=liste.get(i);
+			if(veranstaltung.getCategory().equals(kategorie)){
+			  from=sdf.format(veranstaltung.getStartTime().getTime());
+			  to=sdf.format(veranstaltung.getEndTime().getTime());
+			
+			eventToAdd= new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#00ff00", "private");
+			eventListe.add(eventToAdd);
+		 }
+		}
+	  }
 			Gson gson = new Gson();
 			PrintWriter out = response.getWriter();
 			out.write(gson.toJson(eventListe));			 //Arrayliste wird in JSON transformiert
 			System.out.println(gson.toJson(eventListe)); //Das Ergebnis wird ausgegeben
-			System.out.println("Das Servlet wurde abgeschlossen");
-	}
-
+    }
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

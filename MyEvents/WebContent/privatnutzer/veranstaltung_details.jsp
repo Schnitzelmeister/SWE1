@@ -13,11 +13,13 @@
 <b>Beschreibung:</b> ${info} <br>
 <b>Ort:</b>   ${location} <br>
 
+
 <input type="hidden" name="id" value="${id}">
 
 <a href="/MyEvents/privatnutzer/AddVeranstaltungToPrivateCal?id=${id}">An Veranstaltung teilnehmen</a>
 <a href="/MyEvents/veranstalter/veranstalter_profil.jsp?veranstaltername=${veranstalterusername}">Profil von Veranstalter</a>
 
 ${errorMessage}
+${infoMessage}
   </body>
 </html>

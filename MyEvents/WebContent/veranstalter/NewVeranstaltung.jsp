@@ -22,7 +22,7 @@
 			<option> Kochkurs </option>
 			<option> Andere Kategorie </option>
 	   </select>
-	   </label>>
+	   </label>
 	 </p>
 	<label><input type="submit" value="Erstellen"></label>
 	

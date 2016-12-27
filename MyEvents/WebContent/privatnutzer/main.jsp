@@ -1,5 +1,7 @@
 <html>
 <head>
+  <jsp:include page="/MyEvents/privatnutzer/LoadInfoMainPage/" />
+
  <title>Hauptseite des Privatbenutzers</title>
  	 <link rel="stylesheet" type="text/css" href="/MyEvents/style/privateuser_main.css">
  	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
@@ -11,10 +13,9 @@
 <script>
 
 	$(document).ready(function() {
-		
 		$('#calendar').fullCalendar({
 			header: {
-				left: 'prev,next today',
+				left: 'prev,next today myCustomButton',
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay,listWeek'
 			},
@@ -29,10 +30,8 @@
 			navLinks: true, // can click day/week names to navigate views
 			editable: false,
 			eventLimit: true, // allow "more" link when too many events
-			events: "/MyEvents/LoadPublicEvents"
-			
+			events: "/MyEvents/LoadPublicEvents?kategorie=${kategorie}"	
 		 });
-		
 	});
 
 </script>
@@ -68,5 +67,19 @@
      <b> | </b>
      <a href="/MyEvents/logout">Abmelden</a></div>
      	<div id='calendar'></div>
+     
+     Veranstaltungen nach bestimmter Kategorie anzeigen:
+     <form action="/MyEvents/privatnutzer/main.jsp" method="get">
+      <label for="kategorie"> Kategorie: </label>
+	   <select name="kategorie">
+	    	<option>Alle Kategorien</option>
+			<option>Fortbildungskurs</option>
+			<option>Sport</option>
+			<option>Kochkurs</option>
+			<option>Andere Kategorie</option>
+	   </select>
+	   <input type="submit" value="Filtern">
+	   </label>
+	   </form>
  </body>
 </html>
