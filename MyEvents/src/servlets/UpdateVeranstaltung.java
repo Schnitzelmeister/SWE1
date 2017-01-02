@@ -48,7 +48,7 @@ public class UpdateVeranstaltung extends HttpServlet{
 			int platz=Integer.parseInt(plaetze);
 			
 			
-			Veranstaltung event = PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(veranstaltungid); //Veranstaltung vs Event
+			Veranstaltung event = PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(veranstaltungid); //Veranstaltung vs Event, Veranstaltung wird zum Speichern gebraucht
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd.MM.yyyy");
 			

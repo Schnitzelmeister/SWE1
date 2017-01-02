@@ -28,6 +28,11 @@
 	<input type="submit" value="Änderungen speichern" />
 	</form>
 	
+	
+	<div> class="button">
+	<a href="/MyEvents/veranstalter/DeleteVeranstaltung?id=${id}"> Löschen</a>
+	</div>
+	
 	<div class="button">
 	<a href="MyEvents/veranstalter/main.jsp"> Zurück</a>
 	</div>

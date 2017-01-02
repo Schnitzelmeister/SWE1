@@ -45,6 +45,7 @@ public class AddVeranstaltungToPrivateCal extends HttpServlet {
 		if(available <= 0) throw new IllegalArgumentException("Es gibt keine freien Plätze, Sie können nicht an der Veranstaltung teilnehmen");
 		
 		veranstaltung.setAvailablePlaces(--available);
+		veranstaltung.setTeilnehmer(1);
 		user.getKalender().getPublic_events().add(eventId);
 		PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem(veranstaltung);
 		PoolDAO.poolDAO.getUserDAO().speichereItem(user);

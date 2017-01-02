@@ -17,6 +17,7 @@ public class Veranstaltung extends PersistableObject {
 	private Calendar endTime;
 	private int availablePlaces;
 	ArrayList<Integer> rating;
+	Integer teilnehmer;
 	
 	
 	public Veranstaltung(int userId, String name, String description,
@@ -31,6 +32,7 @@ public class Veranstaltung extends PersistableObject {
 		this.endTime=endTime;
 		this.availablePlaces=availablePlaces;
 		rating = new ArrayList<Integer>();
+		this.teilnehmer=0;
 	}
 	
 	public Veranstaltung(){}
@@ -122,6 +124,13 @@ public class Veranstaltung extends PersistableObject {
 		return average=(((double)sum)/((double)rating.size()));
 	}
 	
+	public void setTeilnehmer(int t){
+		this.teilnehmer=teilnehmer+t;
+	}
+	
+	public Integer getTeilnehmer(){
+		return teilnehmer;
+	}
 	
 	
 	
