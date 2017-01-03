@@ -79,17 +79,6 @@ public class UniversalDAO <T extends PersistableObject> {
 		save();
 	}
 	
-	public boolean itemWithIdIsTermin(Integer id){
-		if(container.containsKey(id)){
-		   Object object = container.get(id);
-		   if(object instanceof Termin)
-			   return true;
-		   else
-			   return false;
-		}
-		return false;
-	}
-	
 	/**
 	 * Remove Item from Container
 	 */

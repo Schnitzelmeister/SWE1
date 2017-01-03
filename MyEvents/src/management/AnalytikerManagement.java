@@ -4,9 +4,6 @@ import reporting.*;
 import java.io.*;
 import java.util.*;
 import java.util.jar.*;
-
-import DAO.PoolDAO;
-
 import java.net.*;
 
 /*
@@ -118,9 +115,10 @@ public class AnalytikerManagement {
 	        }
 	    }
 	    else {
+            String jarPath = fullPath.replaceFirst("[.]jar[!].*", ".jar").replaceFirst("file:", "");
+            JarFile jarFile = null;         
 	        try {
-	            String jarPath = fullPath.replaceFirst("[.]jar[!].*", ".jar").replaceFirst("file:", "");
-	            JarFile jarFile = new JarFile(jarPath);         
+	        	jarFile = new JarFile(jarPath);
 	            Enumeration<JarEntry> entries = jarFile.entries();
 	            while(entries.hasMoreElements()) {
 	                JarEntry entry = entries.nextElement();
@@ -139,6 +137,12 @@ public class AnalytikerManagement {
 	            }
 	        } catch (IOException e) {
 	            throw new RuntimeException(pkgname + " (" + directory + ") does not appear to be a valid package", e);
+	        }
+	        finally {
+	        	try {
+					jarFile.close();
+				} catch (Exception e) {
+				}
 	        }
 	    }
 	    return classes;
