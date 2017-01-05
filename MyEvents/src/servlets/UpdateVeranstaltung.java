@@ -73,11 +73,11 @@ public class UpdateVeranstaltung extends HttpServlet{
 		}
 		catch(IllegalArgumentException e){
 			Integer veranstaltungid= Integer.parseInt(request.getParameter("id"));
-			response.sendRedirect("MyEvents/veranstalter/detailsVeranstaltung.jsp?id="+veranstaltungid + "&error="+e.getMessage());
+			response.sendRedirect("MyEvents/veranstalter/UpdateVeranstaltung.jsp?id="+veranstaltungid + "&error="+e.getMessage());
 		}
 		catch(Exception e){
 			Integer veranstaltungid= Integer.parseInt(request.getParameter("id"));
-			response.sendRedirect("MyEvents/vernatslter/detailsVeranstaltung.jsp?id="+veranstaltungid + "&error=Ein Fehler ist aufgetreten.");
+			response.sendRedirect("MyEvents/veranstalter/UpdateVeranstaltung.jsp?id="+veranstaltungid + "&error=Ein Fehler ist aufgetreten.");
 		}
 	}
 
