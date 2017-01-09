@@ -33,7 +33,8 @@ public class UniversalDAO <T extends PersistableObject> {
 			this.container = (java.util.TreeMap<Integer, T>)ois.readObject();
 			ois.close();
 			
-			this.idGen.set( this.container.lastKey() );
+			if (this.container.size() > 0)
+				this.idGen.set( this.container.lastKey() );
 		}
 		catch (FileNotFoundException e) {
 	        return;
@@ -94,7 +95,7 @@ public class UniversalDAO <T extends PersistableObject> {
 	/**
 	 * Speichert Container in einem Datei
 	 */
-	private void save() throws IllegalArgumentException {
+	private synchronized void save() throws IllegalArgumentException {
 		try
 		{
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(this.source));

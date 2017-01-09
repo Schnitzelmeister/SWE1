@@ -14,7 +14,19 @@ public class AnalytikerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().println("<HTML><HEAD><link rel=\"stylesheet\" type=\"text/css\" href=\"/MyEvents/style/login.css\"></HEAD><BODY>"
+		response.getWriter().println("<HTML><HEAD>"
+				+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"/MyEvents/style/login.css\">"
+				/*+ "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">"
+				+ "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+				+ "<!-- The above 2 meta tags *must* come first in the head; any other head content must come *after* these tags -->"
+				+ "<meta http-equiv=\"Content-Type\" content=\"text/html;charset=ISO-8859-1\">"
+				+ "<!-- Bootstrap core CSS -->"
+				+ "<link href=\"../style/css/bootstrap.min.css\" rel=\"stylesheet\">"
+				+ "<!-- Bootstrap theme -->"
+				+ "<link href=\"../style/css/bootstrap-theme.min.css\" rel=\"stylesheet\">"
+				+ "<!-- Custom styles for this template -->"
+				+ "<link href=\"../style/css/bootstrap-general-theme.css\" rel=\"stylesheet\">"*/
+				+ "</HEAD><BODY>"
 				+ "<form method=\"post\"><table><tr><td>List of Reporting:</td><td><input type=\"hidden\" name=\"step\" value=\"1\" /><select name=\"report\">");
 
 		for(java.util.Iterator<java.util.Map.Entry<String, String> > it = AnalytikerManagement.getReportList().entrySet().iterator(); it.hasNext(); ) {
@@ -32,7 +44,19 @@ public class AnalytikerServlet extends HttpServlet {
     		
     		String report = request.getParameter("report");
     		
-    		response.getWriter().println("<HTML><HEAD><link rel=\"stylesheet\" type=\"text/css\" href=\"/MyEvents/style/login.css\"><link rel=\"stylesheet\" href=\"https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css\">"
+    		response.getWriter().println("<HTML><HEAD><HEAD>"
+    			+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"/MyEvents/style/login.css\">"
+				/*+ "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">"
+				+ "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+				+ "<!-- The above 2 meta tags *must* come first in the head; any other head content must come *after* these tags -->"
+				+ "<meta http-equiv=\"Content-Type\" content=\"text/html;charset=ISO-8859-1\">"
+				+ "<!-- Bootstrap core CSS -->"
+				+ "<link href=\"../style/css/bootstrap.min.css\" rel=\"stylesheet\">"
+				+ "<!-- Bootstrap theme -->"
+				+ "<link href=\"../style/css/bootstrap-theme.min.css\" rel=\"stylesheet\">"
+				+ "<!-- Custom styles for this template -->"
+				+ "<link href=\"../style/css/bootstrap-general-theme.css\" rel=\"stylesheet\">"*/
+				+ "<link rel=\"stylesheet\" href=\"https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css\">"
     				+ "<script src=\"https://code.jquery.com/jquery-1.12.4.js\"></script><script src=\"https://code.jquery.com/ui/1.12.1/jquery-ui.js\"></script><script>$( function() {\r\n");
     		
     		for(java.util.Iterator<java.util.Map.Entry<String, reporting.ParamType> > it = AnalytikerManagement.getReportByName(report).getParams().entrySet().iterator(); it.hasNext(); ) {
