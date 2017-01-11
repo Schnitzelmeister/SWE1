@@ -13,7 +13,7 @@
 <b>Beschreibung:</b> ${info} <br>
 <b>Ort:</b>   ${location} <br>
 <br><br><br><br>
-<form action ="/MyEvents/privatnutzer/AddRatingToEvent" method="post">
+<form action ="/MyEvents/privatnutzer/AddRatingToEvent?id=${id}" method="post">
 	<label class="radio-inline">
 	<input type = "radio" name="wertung" value="1"> 1
 	</label>
@@ -30,7 +30,7 @@
 	<input type = "radio" name="wertung" value="5"> 5
 	</label>
 	<input type = "submit" value="Bewerten">
-
+</form>
 <input type="hidden" name="id" value="${id}">
 
 <a href="/MyEvents/privatnutzer/DeleteVeranstaltungFromPrivCal?id=${id}">Ich möchte nicht mehr an der Veranstaltung teilnehmen</a>

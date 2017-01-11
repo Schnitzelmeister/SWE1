@@ -105,7 +105,7 @@ public class PoolDAO {
 					java.util.Calendar till = java.util.Calendar.getInstance();
 					till.set(2017, java.util.Calendar.JANUARY, 01, 05, 0, 0);
 
-					Veranstaltung veranstaltung = new Veranstaltung(veranstalter1, "Veranstaltung 1", "Veranstaltung 1", "sport", "Wien", from, till, 10);
+					Veranstaltung veranstaltung = new Veranstaltung(veranstalter1, "Veranstaltung 1", "Veranstaltung 1", "Sport", "Wien", from, till, 10);
 					PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem(veranstaltung);
 					veranstaltung1 = veranstaltung.getId();
 					
@@ -119,7 +119,7 @@ public class PoolDAO {
 					java.util.Calendar till = java.util.Calendar.getInstance();
 					till.set(2017, java.util.Calendar.JANUARY, 01, 05, 00);
 
-					Veranstaltung veranstaltung = new Veranstaltung(veranstalter1, "Veranstaltung 2", "Veranstaltung 2", "sport", "Wien", from, till, 10);
+					Veranstaltung veranstaltung = new Veranstaltung(veranstalter1, "Veranstaltung 2", "Veranstaltung 2", "Sport", "Wien", from, till, 10);
 					PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem(veranstaltung);
 					veranstaltung2 = veranstaltung.getId();
 				}
@@ -132,7 +132,7 @@ public class PoolDAO {
 					java.util.Calendar till = java.util.Calendar.getInstance();
 					till.set(2017, java.util.Calendar.JANUARY, 01, 05, 0, 0);
 
-					Veranstaltung veranstaltung = new Veranstaltung(veranstalter2, "Veranstaltung 3", "Veranstaltung 3", "kochkurs", "Wien", from, till, 10);
+					Veranstaltung veranstaltung = new Veranstaltung(veranstalter2, "Veranstaltung 3", "Veranstaltung 3", "Kochkurs", "Wien", from, till, 10);
 					PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem(veranstaltung);
 					veranstaltung3 = veranstaltung.getId();
 				}
@@ -145,7 +145,7 @@ public class PoolDAO {
 					java.util.Calendar till = java.util.Calendar.getInstance();
 					till.set(2017, java.util.Calendar.JANUARY, 01, 05, 0, 0);
 
-					Veranstaltung veranstaltung = new Veranstaltung(veranstalter2, "Veranstaltung 4", "Veranstaltung 4", "kochkurs", "Wien", from, till, 10);
+					Veranstaltung veranstaltung = new Veranstaltung(veranstalter2, "Veranstaltung 4", "Veranstaltung 4", "Kochkurs", "Wien", from, till, 10);
 					PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem(veranstaltung);
 					veranstaltung4 = veranstaltung.getId();
 				}
