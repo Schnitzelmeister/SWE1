@@ -101,22 +101,23 @@ public class PoolDAO {
 				int veranstaltung1 = 0, veranstaltung2 = 0, veranstaltung3 = 0, veranstaltung4 = 0;
 				try {
 					java.util.Calendar from = java.util.Calendar.getInstance();
-					from.set(2016, 12, 31, 22, 00);
+					from.set(2016, java.util.Calendar.DECEMBER, 31, 22, 0, 0);
 					java.util.Calendar till = java.util.Calendar.getInstance();
-					till.set(2017, 01, 01, 05, 00);
+					till.set(2017, java.util.Calendar.JANUARY, 01, 05, 0, 0);
 
 					Veranstaltung veranstaltung = new Veranstaltung(veranstalter1, "Veranstaltung 1", "Veranstaltung 1", "sport", "Wien", from, till, 10);
 					PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem(veranstaltung);
 					veranstaltung1 = veranstaltung.getId();
+					
 				}
 				catch (Exception e) {
 				}
 				
 				try {
 					java.util.Calendar from = java.util.Calendar.getInstance();
-					from.set(2016, 12, 31, 22, 00);
+					from.set(2016, java.util.Calendar.DECEMBER, 31, 22, 00);
 					java.util.Calendar till = java.util.Calendar.getInstance();
-					till.set(2017, 01, 01, 05, 00);
+					till.set(2017, java.util.Calendar.JANUARY, 01, 05, 00);
 
 					Veranstaltung veranstaltung = new Veranstaltung(veranstalter1, "Veranstaltung 2", "Veranstaltung 2", "sport", "Wien", from, till, 10);
 					PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem(veranstaltung);
@@ -127,9 +128,9 @@ public class PoolDAO {
 				
 				try {
 					java.util.Calendar from = java.util.Calendar.getInstance();
-					from.set(2016, 12, 31, 22, 00);
+					from.set(2016, java.util.Calendar.DECEMBER, 31, 22, 0, 0);
 					java.util.Calendar till = java.util.Calendar.getInstance();
-					till.set(2017, 01, 01, 05, 00);
+					till.set(2017, java.util.Calendar.JANUARY, 01, 05, 0, 0);
 
 					Veranstaltung veranstaltung = new Veranstaltung(veranstalter2, "Veranstaltung 3", "Veranstaltung 3", "kochkurs", "Wien", from, till, 10);
 					PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem(veranstaltung);
@@ -140,9 +141,9 @@ public class PoolDAO {
 				
 				try {
 					java.util.Calendar from = java.util.Calendar.getInstance();
-					from.set(2016, 12, 31, 22, 00);
+					from.set(2016, java.util.Calendar.DECEMBER, 31, 22, 0, 0);
 					java.util.Calendar till = java.util.Calendar.getInstance();
-					till.set(2017, 01, 01, 05, 00);
+					till.set(2017, java.util.Calendar.JANUARY, 01, 05, 0, 0);
 
 					Veranstaltung veranstaltung = new Veranstaltung(veranstalter2, "Veranstaltung 4", "Veranstaltung 4", "kochkurs", "Wien", from, till, 10);
 					PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem(veranstaltung);

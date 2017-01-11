@@ -1,6 +1,7 @@
 package reporting;
 
 import java.io.*;
+import java.util.Calendar;
 import java.util.Date;
 import DAO.PoolDAO;
 import user.Veranstalter;
@@ -33,9 +34,26 @@ public class VeranstaltungenStat extends Report {
 		try {
 			
 			boolean isDiagram = (paramValues.get("IsDiagramm").equals("1"));
-			Date dateFrom = (Date)paramValues.get("DateFrom");
-			Date dateTo = (Date)paramValues.get("DateTo");
+			Calendar dFC = Calendar.getInstance();
+			dFC.setTime((Date)paramValues.get("DateFrom"));  
+			dFC.set(Calendar.HOUR, 0);
+			dFC.set(Calendar.MINUTE, 0);
+			dFC.set(Calendar.SECOND, 0);
+			dFC.add(Calendar.SECOND, -1);
 			
+			Date dateFrom = dFC.getTime();
+			//System.out.println( dateFrom );
+			
+			Calendar dTC = Calendar.getInstance();
+			dTC.setTime((Date)paramValues.get("DateTo")); 
+			dTC.set(Calendar.HOUR, 0);
+			dTC.set(Calendar.MINUTE, 0);
+			dTC.set(Calendar.SECOND, 0);
+			dTC.add(Calendar.DATE, 1);
+
+			Date dateTo = dTC.getTime();
+			//System.out.println( dateTo );
+
 			//calc Data
 			java.util.ArrayList<InnerDataClass> data = new java.util.ArrayList<InnerDataClass>();
 			for (user.User u : PoolDAO.poolDAO.getUserDAO().getItems().values()) {
@@ -45,9 +63,29 @@ public class VeranstaltungenStat extends Report {
 					int anzahlVeranstaltungen = 0, anzahlAnmeldungen = 0;
 
 					for (main.Veranstaltung veranstaltung : PoolDAO.poolDAO.getVeranstaltungDAO().getItems().values()) {
+/*						System.out.println( veranstaltung.getStartTime().getTime() );
+						System.out.println( veranstaltung.getEndTime().getTime() );
+						System.out.println( dateFrom );
+						System.out.println( dateTo );
+						Boolean a = (veranstaltung.getStartTime().after(dateFrom) || veranstaltung.getEndTime().after(dateFrom));
+						
+						Boolean q = (veranstaltung.getStartTime().getTime().compareTo( dateFrom ) > 0);
+						System.out.println( q );
+
+						System.out.println( veranstaltung.getStartTime().after(dateFrom) );
+						System.out.println( veranstaltung.getStartTime().before(dateFrom) );
+						System.out.println( veranstaltung.getStartTime().equals(dateFrom) );
+						System.out.println( "----" );
+
+						System.out.println( veranstaltung.getEndTime().after(dateFrom) );
+						System.out.println( a.toString() );
+						Boolean b = (veranstaltung.getStartTime().before(dateTo) || veranstaltung.getEndTime().before(dateTo) );
+						System.out.println( veranstaltung.getStartTime().before(dateTo) );
+						System.out.println( veranstaltung.getEndTime().before(dateTo) );
+						System.out.println( b.toString() );*/
 						if (veranstaltung.getUserId() == v.getId() 
-								&& !veranstaltung.getStartTime().after(dateTo)
-								&& !veranstaltung.getEndTime().before(dateFrom)) {
+								&& (veranstaltung.getStartTime().getTime().compareTo( dateFrom ) > 0 || veranstaltung.getEndTime().getTime().compareTo( dateFrom ) > 0)
+								&& (veranstaltung.getStartTime().getTime().compareTo( dateTo ) < 0 || veranstaltung.getEndTime().getTime().compareTo( dateTo ) < 0)) {
 							
 							++anzahlVeranstaltungen;
 							anzahlAnmeldungen += veranstaltung.getTeilnehmer();

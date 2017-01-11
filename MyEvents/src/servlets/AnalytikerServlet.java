@@ -92,8 +92,10 @@ public class AnalytikerServlet extends HttpServlet {
     			java.util.Map.Entry<String, reporting.ParamType> e = it.next();
     			if (e.getValue().equals(reporting.ParamType.Date) ) {
     				try {
-						java.text.DateFormat format = new java.text.SimpleDateFormat("dd.mm.yyyy");
+						java.text.DateFormat format = new java.text.SimpleDateFormat("dd.MM.yyyy");
+						//System.out.println( "request.getParameter(e.getKey()) = " + e.getKey() + "  " + request.getParameter(e.getKey()) );
 						paramValues.put(e.getKey(), format.parse( request.getParameter(e.getKey()) ) );
+						//System.out.println( ((java.util.Date)paramValues.get(e.getKey())) );
     				}
     				catch (Exception ex) {}
     			}
