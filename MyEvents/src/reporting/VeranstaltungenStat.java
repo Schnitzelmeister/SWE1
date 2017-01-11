@@ -47,10 +47,10 @@ public class VeranstaltungenStat extends Report {
 					for (main.Veranstaltung veranstaltung : PoolDAO.poolDAO.getVeranstaltungDAO().getItems().values()) {
 						if (veranstaltung.getUserId() == v.getId() 
 								&& !veranstaltung.getStartTime().after(dateTo)
-								&& !veranstaltung.getEndTime().after(dateFrom)) {
+								&& !veranstaltung.getEndTime().before(dateFrom)) {
 							
 							++anzahlVeranstaltungen;
-							anzahlAnmeldungen += veranstaltung.getAvailablePlaces();
+							anzahlAnmeldungen += veranstaltung.getTeilnehmer();
 							//anzahlAnmeldungen += ( veranstaltung.getAvailablePlaces() - veranstaltung.getPlaces() );
 						}
 					}
