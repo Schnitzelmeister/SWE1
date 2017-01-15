@@ -15,19 +15,19 @@
 <br><br><br><br>
 <form action ="/MyEvents/privatnutzer/AddRatingToEvent?id=${id}" method="post">
 	<label class="radio-inline">
-	<input type = "radio" name="wertung" value="1"> 1
+	<input type = "radio" name="wertung" value="1" > 1 (Schlecht)
 	</label>
 	<label class="radio-inline">
-	<input type = "radio" name="wertung" value="2"> 2
+	<input type = "radio" name="wertung" value="2"> 2 (Naja)
 	</label>
 	<label class="radio-inline">
-	<input type = "radio" name="wertung" value="3"> 3
+	<input type = "radio" name="wertung" value="3"> 3 (Nicht schlecht)
 	</label>
 	<label class="radio-inline">
-	<input type = "radio" name="wertung" value="4"> 4
+	<input type = "radio" name="wertung" value="4"> 4 (Gutes Event)
 	</label>
 	<label class="radio-inline">
-	<input type = "radio" name="wertung" value="5"> 5
+	<input type = "radio" name="wertung" value="5" checked="checked"> 5 (Super Event)
 	</label>
 	<input type = "submit" value="Bewerten">
 </form>

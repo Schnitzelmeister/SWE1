@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,8 +25,15 @@ public class AddVeranstaltungToPrivateCal extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	 try{	
-		Integer eventId = Integer.parseInt(request.getParameter("id"));
+	 try{
+		Integer eventId=-1;
+		
+		try{ 
+		 eventId = Integer.parseInt(request.getParameter("id"));
+		}catch(NumberFormatException e){
+			throw new IllegalArgumentException("Ungültige ID wurde angegeben, laden Sie die Seite bitte erneut");
+		}
+		
 		Integer userId = (Integer) request.getSession().getAttribute("userid");
 		boolean isAlreadyRegistered=false;
 		
@@ -41,8 +49,10 @@ public class AddVeranstaltungToPrivateCal extends HttpServlet {
 				break;
 			}
 		}
+
 		if(isAlreadyRegistered == true) throw new IllegalArgumentException("Sie haben sich bereits für diese Veranstaltung registriert");
 		if(available <= 0) throw new IllegalArgumentException("Es gibt keine freien Plätze, Sie können nicht an der Veranstaltung teilnehmen");
+		if(Calendar.getInstance().after(veranstaltung.getEndTime())) throw new IllegalArgumentException("Die Veranstaltung wurde schon beendet, sie können sich nicht mehr registrieren");
 		
 		veranstaltung.setAvailablePlaces(--available);
 		veranstaltung.setTeilnehmer(1);

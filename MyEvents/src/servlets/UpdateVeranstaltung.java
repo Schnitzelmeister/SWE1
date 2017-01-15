@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.PoolDAO;
-import main.Veranstaltung;
 import main.Event;
 import main.OeffentlicherKalender;
+import main.Veranstaltung;
 import user.Veranstalter;
 
 @WebServlet("/veranstalter/updateVeranstaltung")

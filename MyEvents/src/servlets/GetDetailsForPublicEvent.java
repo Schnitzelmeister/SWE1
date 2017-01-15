@@ -12,18 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import DAO.PoolDAO;
 import main.Veranstaltung;
 
-
 @WebServlet("/GetDetailsForPublicEvent/")
 public class GetDetailsForPublicEvent extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-  
-    public GetDetailsForPublicEvent() {
 
-    }
+	public GetDetailsForPublicEvent() {
 
-	
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try{
 		Integer eventId = Integer.parseInt(request.getParameter("id"));
 		
 		Veranstaltung veranstaltung = PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(eventId);
@@ -63,10 +61,13 @@ public class GetDetailsForPublicEvent extends HttpServlet {
 			String infoMessage = request.getParameter("info");
 			request.setAttribute("infoMessage", infoMessage);
 		}
+		}catch(IllegalArgumentException e){
+			System.out.println("Fehlermeldung: "+e.getMessage());
+		}
 	}
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	}
 
 }

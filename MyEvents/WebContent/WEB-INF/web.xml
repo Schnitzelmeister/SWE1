@@ -13,7 +13,7 @@
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>servlets.LoginServlet</servlet-class>
   </servlet>
-  <servlet>
+  <servlet>  
     <servlet-name>AddRatingToEvent</servlet-name>
     <servlet-class>servlets.AddRatingToEvent</servlet-class>
   </servlet>

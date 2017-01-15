@@ -33,6 +33,7 @@ public class Veranstaltung extends PersistableObject {
 		this.availablePlaces=availablePlaces;
 		rating = new ArrayList<Integer>();
 		this.teilnehmer=0;
+		rating.add(0);
 	}
 	
 	public Veranstaltung(){}
