@@ -34,7 +34,7 @@
 	</div>
 	
 	<div class="button">
-	<a href="MyEvents/veranstalter/main.jsp"> Zurück</a>
+	<a href="MyEvents/veranstalter/vermain.jsp"> Zurück</a>
 	</div>
 	
 	<!--Veranstaltung löschen-->

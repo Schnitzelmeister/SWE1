@@ -19,7 +19,7 @@
 	    <input type="submit" value="Veranstaltung löschen" />
 	    </form>
  
-	<a href="MyEvents/veranstalter/main.jsp"> Hauptseite</a>
+	<a href="MyEvents/veranstalter/vermain.jsp"> Hauptseite</a>
 </body>
 
 </html>

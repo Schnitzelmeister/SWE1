@@ -1,5 +1,6 @@
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
  <link href='../fullcalendar/fullcalendar.min.css' rel='stylesheet' />
 <link href='../fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
@@ -17,7 +18,10 @@
 				right: 'month,agendaWeek,agendaDay,listWeek'
 			},
 			eventClick: function(calEvent, jsEvent, view) {
-				location.href="MyEvents/veranstalter/detailsVeranstaltung.jsp?id=calEvent.id;
+				if(calEvent.type="public"){}
+				location.href = "MyEvents/veranstalter/DetailsVeranstaltung.jsp?id"+calEvent.id;
+			}
+			else{}
 		        $(this).css('border-color', 'red');
 
 		    },
@@ -78,7 +82,7 @@
 <body>
 
 	<div class="topleft">
-     <a href="/MyEvents/veranstalter/main.jsp">&lt;&lt; Zurück</a>
+     <a href="/MyEvents/veranstalter/vermain.jsp">&lt;&lt; Zurück</a>
     </div>
 
 	<div id='calendar'></div>
