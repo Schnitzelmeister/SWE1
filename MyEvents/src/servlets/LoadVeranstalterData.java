@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import DAO.PoolDAO;
 import user.Veranstalter;
 
-//@WebServlet("/veranstalter/LoadVeranstalterData")
+//@WebServlet("/LoadVeranstalterData")
 public class LoadVeranstalterData extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	

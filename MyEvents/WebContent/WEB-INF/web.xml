@@ -58,6 +58,10 @@
     <servlet-class>servlets.LoadDataServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>LoadVeranstalterData</servlet-name>
+    <servlet-class>servlets.LoadVeranstalterData</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>register</servlet-name>
     <servlet-class>servlets.LoginServlet</servlet-class>
   </servlet>
@@ -96,6 +100,10 @@
   <servlet-mapping>
     <servlet-name>LoadDataServlet</servlet-name>
     <url-pattern>/MyEvents/privatnutzer/LoadDataServlet/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoadVeranstalterData</servlet-name>
+    <url-pattern>/MyEvents/veranstalter/LoadVeranstalterData/</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>CalendarJsonServlet</servlet-name>
