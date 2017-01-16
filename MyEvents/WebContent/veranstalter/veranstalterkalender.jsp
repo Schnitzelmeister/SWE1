@@ -83,6 +83,7 @@
 
 	<div class="topleft">
      <a href="/MyEvents/veranstalter/vermain.jsp">&lt;&lt; Zurück</a>
+     <a href="MyEvents/veranstalter/ChangeProfileVeranstalter.jsp">&lt; &lt; Profil bearbeiten</a>
     </div>
 
 	<div id='calendar'></div>
