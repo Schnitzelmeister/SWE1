@@ -42,7 +42,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/MyEvents/veranstalter/main.jsp">Startseite</a></li>
+            <li><a href="/MyEvents/veranstalter/vermain.jsp">Startseite</a></li>
             <li class="active"><a href="#">Neue Veranstaltung</a></li>
             <li><a href="/MyEvents/veranstalter/veranstalterkalender.jsp">Kalender</a></li>
             <li class="dropdown">
