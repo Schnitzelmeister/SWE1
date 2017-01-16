@@ -85,7 +85,7 @@ public class LoginServlet extends HttpServlet {
 	    	session.setAttribute("usertype", "organiser");
 	    	session.setAttribute("userid", currentUser.getId());
 
-	    	response.sendRedirect("/MyEvents/veranstalter/main.jsp");
+	    	response.sendRedirect("/MyEvents/veranstalter/vermain.jsp");
 	    	return;
 	    }
 	    
