@@ -72,7 +72,7 @@ public class SaveVeranstalterData extends HttpServlet{
 	 */
 	public void validValues(String password, String realName, String email, String phone) throws IllegalArgumentException{
 	    
-    	if( password.equals("") || realName.equals("") || email.equals("") || phone.equals(""))
+    	if( password==null || realName==null || email==null || phone==null )
     		throw new IllegalArgumentException("Kein Feld darf leer bleiben");
     	
     	if(password.length() < 8){
