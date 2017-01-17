@@ -81,7 +81,7 @@
 	  <label>Name: <input type="text" name="name" value="${name}" /></label></br>
       <label>Passwort: <input type="password" name="password" value="${password}" /></label></br>
       <label>E-Mail: <input type="text" name="email" value="${email}"/></label></br>
-      <label>Telefonnummer: <input type="text" name="Phonenumber" value="${telnr}" /></label></br>
+      <label>Telefonnummer: <input type="text" name="telnr" value="${telnr}" /></label></br>
 
   	  </br>
 	  <label><input type="submit" value="Änderungen speichern"></label>

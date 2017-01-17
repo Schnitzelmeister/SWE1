@@ -44,7 +44,7 @@ public class SaveVeranstalterData extends HttpServlet{
 			  request.setAttribute("password", pw);
 			  request.setAttribute("telnr", telnr);
 			  request.setAttribute("infoMessage", "Die Daten wurden erfolgreich geändert");
-		      request.getRequestDispatcher("/privatnutzer/manage_profile.jsp").forward(request, response); 
+		      request.getRequestDispatcher("/veranstalter/ChangeProfileVeranstalter.jsp").forward(request, response); 
 		}
 		catch(IllegalArgumentException e){
 				  Integer Id = (Integer) request.getSession().getAttribute("userid");
@@ -72,7 +72,7 @@ public class SaveVeranstalterData extends HttpServlet{
 	 */
 	public void validValues(String password, String realName, String email, String phone) throws IllegalArgumentException{
 	    
-    	if( password==null || realName==null || email==null || phone==null )
+    	if( password.equals("") || realName.equals("") || email.equals("") || phone.equals("") )
     		throw new IllegalArgumentException("Kein Feld darf leer bleiben");
     	
     	if(password.length() < 8){
