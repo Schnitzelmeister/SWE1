@@ -13,7 +13,7 @@ import user.Veranstalter;
 public class LoadVeranstalterData extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
-	LoadVeranstalterData(){
+	public LoadVeranstalterData(){
 		super();
 	}
 	
