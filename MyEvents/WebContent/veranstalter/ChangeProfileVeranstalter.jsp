@@ -1,9 +1,8 @@
 <html>
 	<head>
 	<title> Profildaten verwalten </title>
-	<jsp:include page="/MyEvents/veranstalter/LoadVeranstalterData/" />
-	
-	
+	 <link rel="stylesheet" type="text/css" href="/MyEvents/style/register.css">
+	<jsp:include page="/MyEvents/veranstalter/LoadVeranstalterData/" />	
 	</head>
 	
 	<body>

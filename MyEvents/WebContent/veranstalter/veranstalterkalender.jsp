@@ -1,6 +1,6 @@
 <html>
 <head>
-
+ <jsp:include page="/MyEvents/privatnutzer/LoadInfoMessage/" />
 <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
  <link href='../fullcalendar/fullcalendar.min.css' rel='stylesheet' />
 <link href='../fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
@@ -18,7 +18,7 @@
 				right: 'month,agendaWeek,agendaDay,listWeek'
 			},
 			eventClick: function(calEvent, jsEvent, view) {
-				if(calEvent.type="public"){}
+				if(calEvent.type="public"){
 				location.href = "MyEvents/veranstalter/DetailsVeranstaltung.jsp?id"+calEvent.id;
 			}
 			else{}
@@ -83,7 +83,7 @@
 
 	<div class="topleft">
      <a href="/MyEvents/veranstalter/vermain.jsp">&lt;&lt; Zurück</a>
-     <a href="MyEvents/veranstalter/ChangeProfileVeranstalter.jsp">&lt; &lt; Profil bearbeiten</a>
+     <a href="/MyEvents/veranstalter/ChangeProfileVeranstalter.jsp">&lt; &lt; Profil bearbeiten</a>
     </div>
 
 	<div id='calendar'></div>

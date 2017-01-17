@@ -43,6 +43,24 @@
 	});
 
 </script>
+
+<style>
+
+	body {
+		margin: 40px 10px;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 14px;
+	}
+
+	#calendar {
+		top: 5%;
+		max-width: 1000px;
+		margin: 0 auto;
+		position: relative;
+	}
+</style>
+
 </head>
  <body>
  	<!--  Formular fürs ausloggen -->
