@@ -38,13 +38,19 @@
 			navLinks: true, // can click day/week names to navigate views
 			editable: false,
 			eventLimit: true, // allow "more" link when too many events
-			events: "/MyEvents/LoadPublicEvents?kategorie=${kategorie}"	
+			events: "/MyEvents/FetchAllEvents"	
 		 });
 	});
 
 </script>
 
 <style>
+body {
+		margin: 40px 10px;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 14px;
+	}
 
 	#calendar {
 		top: 5%;
@@ -104,7 +110,9 @@
         <p>Willkommen auf der Hauptseite des Veranstalters</p>
       </div>
     <p>Normaler Text</p>
+    
     </div>
+    <div id='calendar'></div>
     
     <!-- Bootstrap core JavaScript
     ================================================== -->
