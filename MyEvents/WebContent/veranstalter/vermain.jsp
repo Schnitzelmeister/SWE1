@@ -46,13 +46,6 @@
 
 <style>
 
-	body {
-		margin: 40px 10px;
-		padding: 0;
-		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-		font-size: 14px;
-	}
-
 	#calendar {
 		top: 5%;
 		max-width: 1000px;
@@ -83,6 +76,7 @@
             <li class="active"><a href="#">Startseite</a></li>
             <li><a href="/MyEvents/veranstalter/NewVeranstaltung.jsp">Neue Veranstaltung</a></li>
             <li><a href="/MyEvents/veranstalter/veranstalterkalender.jsp">Kalender</a></li>
+            <li><a href="/MyEvents/veranstalter/ChangeProfileVeranstalter.jsp">Profil bearbeiten</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                 <ul class="dropdown-menu">

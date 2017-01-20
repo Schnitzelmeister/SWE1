@@ -1,6 +1,6 @@
 <html>
 <head>
- <jsp:include page="/MyEvents/privatnutzer/LoadInfoMessage/" />
+ <!--<jsp:include page="/MyEvents/privatnutzer/LoadInfoMessage/" />-->
 <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
  <link href='../fullcalendar/fullcalendar.min.css' rel='stylesheet' />
 <link href='../fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
