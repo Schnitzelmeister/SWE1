@@ -70,7 +70,7 @@ public class UniversalDAO <T extends PersistableObject> {
 	public void speichereItem(T item) throws IllegalArgumentException {
 		
 		//add new item, sonst edit
-		if ( item.getId() == -1 ) {
+		if ( item.getId().equals(-1) ) {
 			item.setId(this.idGen.incrementAndGet());
 			this.container.put(item.getId(), item);
 		}
