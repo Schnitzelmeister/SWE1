@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.PoolDAO;
+import user.Veranstalter;
+
 /**
  * Servlet implementation class LoadInfoMainPage
  */
@@ -19,7 +22,12 @@ public class LoadInfoMainPage extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Integer Id = (Integer) request.getSession().getAttribute("userid");
+		Veranstalter veranstalter = (Veranstalter) PoolDAO.poolDAO.getUserDAO().getItemById(Id);
+		String real=veranstalter.getRealName();
 		String kategorie = request.getParameter("kategorie");
+		
+		request.setAttribute("name", real);
 		request.setAttribute("kategorie", kategorie);
 	}
 
