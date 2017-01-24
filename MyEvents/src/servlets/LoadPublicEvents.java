@@ -49,7 +49,7 @@ public class LoadPublicEvents extends HttpServlet {
 			from=sdf.format(veranstaltung.getStartTime().getTime());
 			to=sdf.format(veranstaltung.getEndTime().getTime());
 			
-			eventToAdd= new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#00ff00", "private");
+			eventToAdd= new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#6600FF", "private");
 			eventListe.add(eventToAdd);
 		}
 	  }else{	
@@ -59,7 +59,7 @@ public class LoadPublicEvents extends HttpServlet {
 			  from=sdf.format(veranstaltung.getStartTime().getTime());
 			  to=sdf.format(veranstaltung.getEndTime().getTime());
 			
-			eventToAdd= new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#00ff00", "private");
+			eventToAdd= new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#6600FF", "private");
 			eventListe.add(eventToAdd);
 		 }
 		}

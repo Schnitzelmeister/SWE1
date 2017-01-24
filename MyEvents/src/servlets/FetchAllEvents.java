@@ -70,7 +70,7 @@ public class FetchAllEvents extends HttpServlet {
 			 from = sdf.format(veranstaltung.getStartTime().getTime());
 			 to = sdf.format(veranstaltung.getEndTime().getTime());
 			
-			 eventToAdd = new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#fddfe5", "public"); //Veranstaltungen die der Privatbenutzer hinzugefügt hat werden geladen
+			 eventToAdd = new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#6600FF", "public"); //Veranstaltungen die der Privatbenutzer hinzugefügt hat werden geladen
 			 eventListe.add(eventToAdd);
 		 }catch(Exception e){ }
 		}
