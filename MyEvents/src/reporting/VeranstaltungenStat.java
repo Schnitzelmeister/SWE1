@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.Calendar;
 import java.util.Date;
 import DAO.PoolDAO;
+import management.AnalytikerManagement;
 import user.Veranstalter;
 /* 
  * Beispiel eines Reportes
@@ -107,9 +108,51 @@ public class VeranstaltungenStat extends Report {
 				w.write("ID\tRealName\tAnzahlVeranstaltungen\tAnzahlAnmeldungen\r\n");
 			}
 			else {
-	    		w.write("<HTML><HEAD><style> .container { width: 80%; margin: 15px auto; } </style>\r\n");
+	    		w.write("<HTML><HEAD>"
+	    				+ "<title>Hauptseite</title>"
+	    				+ "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">"
+	    				+ "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+	    				+ "  <!-- The above 2 meta tags *must* come first in the head; any other head content must come *after* these tags -->"
+	    				+ "  <!-- Bootstrap core CSS -->"
+	    				+ "  <link href=\"../style/css/bootstrap.min.css\" rel=\"stylesheet\">"
+	    				+ "  <!-- Bootstrap theme -->"
+	    				+ "  <link href=\"../style/css/bootstrap-theme.min.css\" rel=\"stylesheet\">"
+	    				+ "  <!-- Custom styles for this template -->"
+	    				+ "  <link href=\"../style/css/bootstrap-general-theme.css\" rel=\"stylesheet\">\r\n");
 	    		w.write("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js\"></script>");
-	    		w.write("</HEAD><BODY><h2>Veranstaltungen Statistik</h2><canvas id=\"myChart\"></canvas>\r\n");
+	    		w.write("</HEAD><BODY>"
+	    				+ "    <!--  Formular fürs ausloggen -->"
+	    				+ "    <form method=\"post\" action=\"../logout\" id=\"my_form\">"
+	    				+ "    </form>"
+	    				+ " 	<!-- Fixed navbar -->"
+	    				+ "    <nav class=\"navbar navbar-inverse navbar-fixed-top\">"
+	    				+ "      <div class=\"container\">"
+	    				+ "        <div class=\"navbar-header\">"
+	    				+ "          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">"
+	    				+ "            <span class=\"sr-only\">Toggle navigation</span>"
+	    				+ "            <span class=\"icon-bar\"></span>"
+	    				+ "            <span class=\"icon-bar\"></span>"
+	    				+ "            <span class=\"icon-bar\"></span>"
+	    				+ "          </button>"
+	    				+ "          <a class=\"navbar-brand\" href=\"#\">MyEvents</a>"
+	    				+ "        </div>"
+	    				+ "        <div id=\"navbar\" class=\"navbar-collapse collapse\">"
+	    				+ "          <ul class=\"nav navbar-nav\">"
+	    				+ "            <li><a href=\"/MyEvents/analytiker/main.jsp\">Startseite</a></li>");
+	        		for(java.util.Iterator<java.util.Map.Entry<String, String> > it = AnalytikerManagement.getReportList().entrySet().iterator(); it.hasNext(); ) {
+	    				java.util.Map.Entry<String, String> e = it.next();
+	    				response.getWriter().println("<li><a href=\"?step=1&report="+ e.getKey() + "\">"+ e.getValue() + "</a></li>");
+	    			}
+	        		response.getWriter().println("</ul>"
+	    				+ "          <ul class=\"nav navbar-nav navbar-right\">"
+	    				+ "            <li><a href=\"javascript:{}\" onclick=\"document.getElementById('my_form').submit(); return false;\">Logout</a></li>"
+	    				+ "          </ul>"
+	    				+ "        </div><!--/.nav-collapse -->"
+	    				+ "      </div>"
+	    				+ "    </nav>"
+	    				+ "    "
+	    				+ "    <div class=\"container theme-showcase\" role=\"main\">"
+	    				+ "<h1>Veranstaltungen Statistik</h1><canvas id=\"myChart\"></canvas>\r\n");
 			}
 			
 			
@@ -155,7 +198,12 @@ public class VeranstaltungenStat extends Report {
 	    				+ "}]\r\n"
 	    				+ "}\r\n"
 	    				+ "});\r\n");
-	    		w.write("</script></BODY></HTML>");
+	    		w.write("</script>"
+	    				+ "    <!-- Bootstrap core JavaScript"
+	    				+ "    ================================================== -->"
+	    				+ "    <!-- Placed at the end of the document so the pages load faster -->"
+	    				+ "    <script src=\"js/bootstrap.min.js\"></script>"
+	    				+ "</BODY></HTML>");
 			}
 		 
 			w.flush();

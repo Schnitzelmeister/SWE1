@@ -122,8 +122,12 @@ public class AnalytikerServlet extends HttpServlet {
     				+ "        </div>"
     				+ "        <div id=\"navbar\" class=\"navbar-collapse collapse\">"
     				+ "          <ul class=\"nav navbar-nav\">"
-    				+ "            <li class=\"active\"><a href=\"#\">Startseite</a></li>"
-    				+ "          </ul>"
+    				+ "            <li><a href=\"/MyEvents/analytiker/main.jsp\">Startseite</a></li>");
+        		for(java.util.Iterator<java.util.Map.Entry<String, String> > it = AnalytikerManagement.getReportList().entrySet().iterator(); it.hasNext(); ) {
+    				java.util.Map.Entry<String, String> e = it.next();
+    				response.getWriter().println("<li><a href=\"?step=1&report="+ e.getKey() + "\">"+ e.getValue() + "</a></li>");
+    			}
+        		response.getWriter().println("</ul>"
     				+ "          <ul class=\"nav navbar-nav navbar-right\">"
     				+ "            <li><a href=\"javascript:{}\" onclick=\"document.getElementById('my_form').submit(); return false;\">Logout</a></li>"
     				+ "          </ul>"

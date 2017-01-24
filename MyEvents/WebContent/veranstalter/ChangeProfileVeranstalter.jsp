@@ -36,7 +36,7 @@
             <li><a href="/MyEvents/veranstalter/vermain.jsp">Startseite</a></li>
             <li><a href="/MyEvents/veranstalter/NewVeranstaltung.jsp">Neue Veranstaltung</a></li>
             <li><a href="/MyEvents/veranstalter/veranstalterkalender.jsp">Eigener Kalender</a></li>
-            <li class="active"><a href="/MyEvents/veranstalter/ChangeProfileVeranstalter.jsp">Profil bearbeiten</a></li>
+            <li class="active"><a href="#">Profil bearbeiten</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="javascript:{}" onclick="document.getElementById('my_form').submit(); return false;">Logout</a></li>
