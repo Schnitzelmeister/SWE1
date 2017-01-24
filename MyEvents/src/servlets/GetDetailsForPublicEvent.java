@@ -37,8 +37,11 @@ public class GetDetailsForPublicEvent extends HttpServlet {
 		String bisDatum= sdf2.format(veranstaltung.getEndTime().getTime());
 		Integer freiePlaetze= veranstaltung.getAvailablePlaces();
 		String info= veranstaltung.getDescription();
-		double average=veranstaltung.calculateRatingAverage();
 		String location= veranstaltung.getLocation();
+
+		
+		double average=veranstaltung.calculateRatingAverage();
+
 		
 		request.setAttribute("id", eventId);
 		request.setAttribute("name", name);

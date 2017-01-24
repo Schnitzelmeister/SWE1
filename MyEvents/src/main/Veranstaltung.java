@@ -117,12 +117,15 @@ public class Veranstaltung extends PersistableObject {
 	public double calculateRatingAverage(){
 		double average=0;
 		Integer sum=0;
-		
+	
+	if(rating.size()==1){
+		return average=rating.get(0);
+	}else{			
 		for(int i=0; i<rating.size(); i++){
 			sum+=rating.get(i);
 		}
-		
-		return average=(((double)sum)/((double)rating.size()));
+		return average=(((double)sum)/((double)rating.size()-1));
+	 }
 	}
 	
 	public void setTeilnehmer(int t){

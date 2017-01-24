@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,6 +46,8 @@ public class CreateNewTerminServlet extends HttpServlet {
 		String endDatum = request.getParameter("enddatum");
 		Calendar dateStart=Calendar.getInstance();
 		Calendar dateEnd=Calendar.getInstance();
+		
+//		ServletContext context = getServletContext();
 		
 		Integer id = (Integer) request.getSession().getAttribute("userid");
 		Privatnutzer user = (Privatnutzer) PoolDAO.poolDAO.getUserDAO().getItemById(id);

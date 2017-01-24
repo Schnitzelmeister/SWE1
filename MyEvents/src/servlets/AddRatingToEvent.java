@@ -51,6 +51,7 @@ public class AddRatingToEvent extends HttpServlet {
 			if (veranstaltung.getEndTime().after(now))
 				throw new IllegalArgumentException("Eine Veranstaltung kann erst nach Ablauf beurteilt werden");
 
+			
 			user.getBewertete_veranstaltungen().add(veranstaltungId);
 			veranstaltung.addRating(ratingFromUser);
 			PoolDAO.poolDAO.getVeranstaltungDAO().speichereItem(veranstaltung);
