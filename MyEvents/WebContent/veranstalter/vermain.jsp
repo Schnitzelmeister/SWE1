@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Hauptseite</title>
-<!--<link rel="stylesheet" type="text/css" href="/MyEvents/style/privateuser_main.css">-->
+<link rel="stylesheet" type="text/css" href="/MyEvents/style/privateuser_main.css">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 2 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -29,7 +29,7 @@
 			},
 			eventClick: function(calEvent, jsEvent, view) {
 
-		         location.href = "/MyEvents/veranstalter/detailsVeranstaltung.jsp?id="+calEvent.id;
+		         location.href = "/MyEvents/veranstalter/DetailsVeranstaltung.jsp?id="+calEvent.id;
 				
 		        $(this).css('border-color', 'red');
 
@@ -38,7 +38,7 @@
 			navLinks: true, // can click day/week names to navigate views
 			editable: false,
 			eventLimit: true, // allow "more" link when too many events
-			events: "/MyEvents/FetchAllEvents"	
+			events: "/MyEvents/LoadPublicEvents?kategorie=${kategorie}"	
 		 });
 	});
 
@@ -81,7 +81,7 @@ body {
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Startseite</a></li>
             <li><a href="/MyEvents/veranstalter/NewVeranstaltung.jsp">Neue Veranstaltung</a></li>
-            <li><a href="/MyEvents/veranstalter/veranstalterkalender.jsp">Kalender</a></li>
+            <li><a href="/MyEvents/veranstalter/veranstalterkalender.jsp">Eigener Kalender</a></li>
             <li><a href="/MyEvents/veranstalter/ChangeProfileVeranstalter.jsp">Profil bearbeiten</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -103,16 +103,29 @@ body {
       </div>
     </nav>
     
-    <div class="container theme-showcase" role="main">
+    <!-- <div class="container theme-showcase" role="main">
       <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
+      <!--  <div class="jumbotron">
         <h1>Willkommen!</h1>
         <p>Willkommen auf der Hauptseite des Veranstalters</p>
-      </div>
-    <p>Normaler Text</p>
+      </div>-->
     
-    </div>
+    
+   <!--  </div>-->
     <div id='calendar'></div>
+     Veranstaltungen nach bestimmter Kategorie anzeigen:
+     <form action="/MyEvents/veranstalter/vermain.jsp" method="get">
+      <label for="kategorie"> Kategorie: </label>
+	   <select name="kategorie">
+	    	<option>Alle Kategorien</option>
+			<option>Fortbildungskurs</option>
+			<option>Sport</option>
+			<option>Kochkurs</option>
+			<option>Andere Kategorie</option>
+	   </select>
+	   <input type="submit" value="Filtern">
+	   </label>
+	   </form>
     
     <!-- Bootstrap core JavaScript
     ================================================== -->
