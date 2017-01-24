@@ -88,7 +88,7 @@
     <div class="container theme-showcase" role="main">
     <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>Willkommen ${name}!</h1>
+        <h1>Willkommen!</h1>
       </div>
     <h1>Öffentlicher Kalender</h1></br>
     <div id='calendar'></div>

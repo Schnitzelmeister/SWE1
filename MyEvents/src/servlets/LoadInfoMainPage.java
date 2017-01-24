@@ -22,12 +22,7 @@ public class LoadInfoMainPage extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Integer Id = (Integer) request.getSession().getAttribute("userid");
-		Veranstalter veranstalter = (Veranstalter) PoolDAO.poolDAO.getUserDAO().getItemById(Id);
-		String real=veranstalter.getRealName();
 		String kategorie = request.getParameter("kategorie");
-		
-		request.setAttribute("name", real);
 		request.setAttribute("kategorie", kategorie);
 	}
 

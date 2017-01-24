@@ -75,7 +75,6 @@
 	  <label><input type="submit" value="Änderungen speichern"></label>
    </form>
    
-   <a href="/MyEvents/veranstalter/vermain.jsp"> Zurück</a>
    </div>
    
    <!-- Bootstrap core JavaScript
