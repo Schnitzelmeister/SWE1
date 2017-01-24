@@ -1,7 +1,7 @@
 <html>
 <head>
   <jsp:include page="/MyEvents/privatnutzer/LoadInfoMainPage/" />
-
+<!-- Versuch bzw Probe, den allgemeinen öffentlichen Kalender funktionsfähig zu machen. -->
  <title>Hauptseite des Veranstalters</title>
  	 <link rel="stylesheet" type="text/css" href="/MyEvents/style/privateuser_main.css">
  	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">

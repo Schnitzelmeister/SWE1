@@ -2,12 +2,12 @@ package main;
 
 import java.util.ArrayList;
 
-public class OeffentlicherKalender {
+public class OeffentlicherKalender implements java.io.Serializable{
 	private static final long serialVersionUID = 100L;
 	
 	ArrayList<Integer> events;
 	
-	OeffentlicherKalender(){
+	public OeffentlicherKalender(){
 		events=new ArrayList<Integer>();
 	}
 	

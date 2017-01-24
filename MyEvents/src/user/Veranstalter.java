@@ -31,6 +31,7 @@ public class Veranstalter extends User{
 	public Veranstalter(String un, String pw, String rn, String e, String p){
 		super(un, pw, rn, e, p);
 		myEvents = new ArrayList<Integer>();
+		kalender=new OeffentlicherKalender();
 	}
 	
 	public void addEventToMyEvents(Integer eventId){

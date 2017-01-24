@@ -72,7 +72,7 @@ public class FetchAllEvents extends HttpServlet {
 			
 			 eventToAdd = new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#fddfe5", "public"); //Veranstaltungen die der Privatbenutzer hinzugefügt hat werden geladen
 			 eventListe.add(eventToAdd);
-		 }catch(Exception e){}
+		 }catch(Exception e){ }
 		}
 
 		Gson gson = new Gson();
