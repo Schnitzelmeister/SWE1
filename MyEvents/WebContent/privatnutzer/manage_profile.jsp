@@ -64,7 +64,6 @@
     <%        	
     }
     %>
-   <div class="registerform">
     <form method="post" action="/MyEvents/privatnutzer/ManageUserDataServlet">
     
       <label>Name: <input type="text" name="name" value="${name}" /></label></br>
@@ -76,7 +75,6 @@
 	  <label><input type="submit" value="Änderungen speichern"></label>
    		
    </form>
-  </div>
   
     </div>
   	<!-- Bootstrap core JavaScript

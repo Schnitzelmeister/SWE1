@@ -53,7 +53,26 @@
 <b>Beschreibung:</b> ${info} <br>
 <b>Ort:</b>   ${location} <br>
 </br></br>
+<%
+    if(!(request.getAttribute("errorMessage")==null)) {
+    %>
+    <div class="alert alert-danger" role="alert">
+    <strong>${errorMessage}</strong>
+    </div></br>
+    <%        	
+    }
+    %>
+    <%
+    if(!(request.getAttribute("infoMessage")==null)) {
+    %>
+    <div class="alert alert-success" role="alert">
+    <strong>${infoMessage}</strong>
+    </div></br>
+    <%        	
+    }
+    %>
 <form action ="/MyEvents/privatnutzer/AddRatingToEvent?id=${id}" method="post">
+	<div class="row">
 	<div class="col-md-12">
 	<div class="col-md-2">
 	<label>
@@ -87,27 +106,9 @@
 	<label><input type = "submit" value="Bewerten"></label>
 	</div>
 	</div>
+	</div>
 </form>
-
-<p>&nbsp;</p>
-    <%
-    if(!(request.getAttribute("errorMessage")==null)) {
-    %>
-    <div class="alert alert-danger" role="alert">
-    <strong>${errorMessage}</strong>
-    </div></br>
-    <%        	
-    }
-    %>
-    <%
-    if(!(request.getAttribute("infoMessage")==null)) {
-    %>
-    <div class="alert alert-success" role="alert">
-    <strong>${infoMessage}</strong>
-    </div></br>
-    <%        	
-    }
-    %>
+</br>
 <a style="color: #333333;" href="/MyEvents/privatnutzer/DeleteVeranstaltungFromPrivCal?id=${id}"><label><input type="button" value="Ich möchte nicht mehr an der Veranstaltung teilnehmen" /></label></a>
 
 
