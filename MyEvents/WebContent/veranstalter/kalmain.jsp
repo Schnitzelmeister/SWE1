@@ -55,7 +55,9 @@
 
 </head>
 <body>
-     
+     <a href="/MyEvents/veranstalter/NewVeranstaltung.jsp">Neue Veranstaltung</a>
+     <a href="/MyEvents/veranstalter/veranstalterkalender.jsp">Eigener Kalender</a>
+     <a href="/MyEvents/veranstalter/ChangeProfileVeranstalter.jsp">Profil bearbeiten</a>
     
     
        	<div id='calendar'></div>
