@@ -107,5 +107,8 @@
 	   </label>
 	   </form>
 	</div>
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="../js/bootstrap.min.js"></script>
  </body>
 </html>
