@@ -29,7 +29,7 @@
 			},
 			eventClick: function(calEvent, jsEvent, view) {
 				if(calEvent.type="public"){
-				location.href = "MyEvents/veranstalter/DetailsVeranstaltung.jsp?id"+calEvent.id;
+				location.href = "/MyEvents/veranstalter/DetailsVeranstaltung.jsp?id="+calEvent.id;
 			}
 			else{}
 		        $(this).css('border-color', 'red');
