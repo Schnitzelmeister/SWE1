@@ -26,7 +26,7 @@ public class DeleteVeranstaltung extends HttpServlet {
 			Veranstaltung veranstaltung=PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(id);
 			if(veranstaltung.getTeilnehmer()>=1) throw new IllegalArgumentException("Es sind schon Teilnehmer vorhanden.");
 		PoolDAO.poolDAO.getVeranstaltungDAO().loescheItem(veranstaltung);
-		response.sendRedirect("/MyEvents/veranstalter/vermain.jsp?=Die Veranstaltung wurde gelöscht.");
+		response.sendRedirect("/MyEvents/veranstalter/vermain.jsp?info=Die Veranstaltung wurde gelöscht.");
 		}
 		catch(IllegalArgumentException e){
 			throw new IllegalArgumentException("Ein Fehler ist aufgetreten"+e.getMessage());

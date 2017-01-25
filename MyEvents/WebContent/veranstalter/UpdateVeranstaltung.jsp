@@ -93,7 +93,6 @@
 	<label><input type="submit" value="Änderungen speichern"></label>
 	</form>
 	
-	<a style="color: #333333;" href="/MyEvents/veranstalter/DeleteVeranstaltung?id=${id}"><label><input type="button" value="Löschen" /></label></a>
 	</div>
    <div class="col-md-1"></div>
    <div class="col-md-6 bild-veranstaltung">

@@ -91,6 +91,15 @@
         <h1>Willkommen!</h1>
       </div>
     <h1>Öffentlicher Kalender</h1></br>
+    <%
+    if(!(request.getAttribute("infoMessage")==null)) {
+    %>
+    <div class="alert alert-success" role="alert">
+    <strong>${infoMessage}</strong>
+    </div></br>
+    <%        	
+    }
+    %>
     <div id='calendar'></div>
      
      Veranstaltungen nach bestimmter Kategorie anzeigen:
