@@ -29,10 +29,12 @@ public class FetchEventsVeranstaltung extends HttpServlet{
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		TreeMap<Integer, Veranstaltung> treemap = PoolDAO.poolDAO.getVeranstaltungDAO().getItems();
+		ArrayList<Veranstaltung> liste = new ArrayList<Veranstaltung>(treemap.values());
 		Integer userid = (Integer) request.getSession().getAttribute("userid");
 		Veranstalter veranstalter=(Veranstalter) PoolDAO.poolDAO.getUserDAO().getItemById(userid);
 		
-		ArrayList<Integer> liste = veranstalter.getOeKalender().getEvents();
+		//ArrayList<Integer> liste = veranstalter.getOeKalender().getEvents();
 		//ArrayList<Event> event = new ArrayList<Event>();
 		
 		//event=Umwandlung(liste);
@@ -42,14 +44,17 @@ public class FetchEventsVeranstaltung extends HttpServlet{
 		String to;
 		Veranstaltung veranstaltung;
 		ArrayList<Event> events=new ArrayList<Event>();
+		System.out.println(liste.size());
 		
 		for(int i=0; i<liste.size(); i++){
 			try{
-			veranstaltung=PoolDAO.poolDAO.getVeranstaltungDAO().getItemById(liste.get(i));
-			from = sdf.format(veranstaltung.getStartTime().getTime());
-			to = sdf.format(veranstaltung.getEndTime().getTime());
-			 addev=new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#fddfe5", "public");
-			 events.add(addev);
+				veranstaltung=liste.get(i);
+				if(veranstaltung.getUserId()==userid) {
+					from=sdf.format(veranstaltung.getStartTime().getTime());
+					to=sdf.format(veranstaltung.getEndTime().getTime());
+					addev=new Event(veranstaltung.getId(), veranstaltung.getName(), from, to, "#6600FF", "public");
+					events.add(addev);
+				}
 			}
 			catch(Exception e){
 				throw new IllegalArgumentException(e.getMessage());
@@ -57,10 +62,11 @@ public class FetchEventsVeranstaltung extends HttpServlet{
 			}
 		}
 		
+		
 		Gson gson = new Gson();
 		PrintWriter out = response.getWriter();
 		out.write(gson.toJson(events));			 //Arrayliste wird in JSON transformiert
-		System.out.println(out);
+		System.out.println(gson.toJson(events)); //Das Ergebnis wird ausgegeben
 	
 	}
 	
