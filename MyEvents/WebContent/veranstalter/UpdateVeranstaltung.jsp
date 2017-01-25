@@ -11,6 +11,8 @@
     <!-- Custom styles for this template -->
     <link href="../style/css/bootstrap-general-theme.css" rel="stylesheet">
     
+    <jsp:include page="/MyEvents/veranstalter/GetDetailsForPublicEvent/" />
+    
 <title>Veranstaltung bearbeiten</title>
 
 </head>
@@ -72,10 +74,10 @@
 	<form action="UpdateVeranstaltung" method ="post">
 	<input type="hidden" name="id" value="${id}">
 	<label>Titel: <input type="text" name="name" id="name" value="${name}" value="${startdatum}" /></label></br>
-    <label>Datum (von): <input type="text" name="startdatum" id="startdatum" value="${startdatum}" /></label></br>
-    <label>Startzeit: <input type="text" name="starttime" id="starttime" value="${starttime}" /></label></br>
-    <label>Datum (bis): <input type="text" name="enddatum" id="enddatum" value="${enddatum}" /></label></br>
-    <label>Endzeit: <input type="text" name="endtime" id="endtime" value="${endtime}" /></label></br>
+    <label>Datum (von): <input type="text" name="startdatum" id="startdatum" value="${startDate}" /></label></br>
+    <label>Startzeit: <input type="text" name="starttime" id="starttime" value="${startTime}" /></label></br>
+    <label>Datum (bis): <input type="text" name="enddatum" id="enddatum" value="${endDate}" /></label></br>
+    <label>Endzeit: <input type="text" name="endtime" id="endtime" value="${endTime}" /></label></br>
     <label>Ort: <input type="text" name="location" id="location" value="${location}" /></label></br>
     <label>Platzbeschränkung: <input type="text" name="plaetze" id="plaetze" value="${plaetze}" /></label></br>
     <label>Beschreibung: <input type="text" name="info" id="info" value="${info}" /></label></br>

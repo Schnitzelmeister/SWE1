@@ -17,12 +17,12 @@ import main.OeffentlicherKalender;
 import main.Veranstaltung;
 import user.Veranstalter;
 
-@WebServlet("/veranstalter/updateVeranstaltung")
+@WebServlet("/veranstalter/UpdateVeranstaltung")
 public class UpdateVeranstaltung extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
 	
-	UpdateVeranstaltung(){
+	public UpdateVeranstaltung(){
 		super();
 	}
 	
@@ -35,12 +35,12 @@ public class UpdateVeranstaltung extends HttpServlet{
 			String name= request.getParameter("name");
 			String location= request.getParameter("location");
 			String plaetze = request.getParameter("plaetze");
-			String  ende =request.getParameter("endzeit");
-			String anfang =request.getParameter("startzeit");
-			String anfangsdatum =request.getParameter("anfangsdatum");
-			String enddatum =request.getParameter("Enddatum");
+			String  ende =request.getParameter("endtime");
+			String anfang =request.getParameter("starttime");
+			String anfangsdatum =request.getParameter("startdatum");
+			String enddatum =request.getParameter("enddatum");
 			String info =request.getParameter("info");
-			String cat=request.getParameter("category");
+			String cat=request.getParameter("kat");
 			Calendar start =Calendar.getInstance();
 			Calendar end = Calendar.getInstance();
 			
@@ -68,16 +68,18 @@ public class UpdateVeranstaltung extends HttpServlet{
 			event.setDescription(info);
 			event.setCategory(cat);
 			event.setStartTime(start);
-			event.setEndTime(end);			
+			event.setEndTime(end);		
+			
+			response.sendRedirect("/MyEvents/veranstalter/UpdateVeranstaltung.jsp?id="+veranstaltungid + "&info=Die Änderungen wurden gespeichert");
 			
 		}
 		catch(IllegalArgumentException e){
 			Integer veranstaltungid= Integer.parseInt(request.getParameter("id"));
-			response.sendRedirect("MyEvents/veranstalter/UpdateVeranstaltung.jsp?id="+veranstaltungid + "&error="+e.getMessage());
+			response.sendRedirect("/MyEvents/veranstalter/UpdateVeranstaltung.jsp?id="+veranstaltungid + "&error="+e.getMessage());
 		}
 		catch(Exception e){
 			Integer veranstaltungid= Integer.parseInt(request.getParameter("id"));
-			response.sendRedirect("MyEvents/veranstalter/UpdateVeranstaltung.jsp?id="+veranstaltungid + "&error=Ein Fehler ist aufgetreten.");
+			response.sendRedirect("/MyEvents/veranstalter/UpdateVeranstaltung.jsp?id="+veranstaltungid + "&error=Ein Fehler ist aufgetreten.");
 		}
 	}
 

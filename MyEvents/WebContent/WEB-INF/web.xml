@@ -35,6 +35,10 @@
     <servlet-class>servlets.GetDetailsForPublicEvent</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>GetDetailsForPublicEventVeranstalter</servlet-name>
+    <servlet-class>servlets.GetDetailsForPublicEvent</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>LoadInfoMessage</servlet-name>
     <servlet-class>servlets.LoadInfoMessage</servlet-class>
   </servlet>
@@ -77,6 +81,10 @@
   <servlet>
     <servlet-name>ManageUserDataServlet</servlet-name>
     <servlet-class>servlets.ManageUserDataServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdateVeranstaltung</servlet-name>
+    <servlet-class>servlets.UpdateVeranstaltung</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
@@ -131,6 +139,10 @@
     <url-pattern>/MyEvents/privatnutzer/GetDetailsForPublicEvent/</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+    <servlet-name>GetDetailsForPublicEventVeranstalter</servlet-name>
+    <url-pattern>/MyEvents/veranstalter/GetDetailsForPublicEvent/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>AddVeranstaltungToPrivateCal</servlet-name>
     <url-pattern>/MyEvents/privatnutzer/AddVeranstaltungToPrivateCal/</url-pattern>
   </servlet-mapping>
@@ -145,5 +157,9 @@
   <servlet-mapping>
     <servlet-name>AddRatingToEvent</servlet-name>
     <url-pattern>/MyEvents/privatnutzer/AddRatingToEvent/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateVeranstaltung</servlet-name>
+    <url-pattern>/MyEvents/veranstalter/UpdateVeranstaltung/</url-pattern>
   </servlet-mapping>
 </web-app>
